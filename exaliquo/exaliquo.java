@@ -12,7 +12,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 
-@Mod(modid = "exaliquo", name = "Ex Aliquo 1.6.4", version = "0.3", dependencies = "required-after:crowley.skyblock;after:TConstruct;after:Natura")
+@Mod(modid = "exaliquo", name = "Ex Aliquo 1.6.4", version = "0.4", dependencies = "required-after:crowley.skyblock;after:TConstruct;after:Natura")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 
 public class exaliquo {
@@ -39,6 +39,14 @@ public class exaliquo {
 		{
 			BonusSieving.addTinkerToSieves();
 			MoltenMetals.addToSmelting();
+			Colors.registerTinkerColors();
+			ExtraCompost.registerTinkerCompost();
+		}
+		if (Loader.isModLoaded("Natura"))
+		{
+			BonusSieving.addNaturaToSieves();
+			Colors.registerNaturaColors();
+			ExtraCompost.registerNaturaCompost();
 		}
 	}
 }
