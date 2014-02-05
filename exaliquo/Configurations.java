@@ -23,7 +23,7 @@ public class Configurations {
 	
 	public static void Load (File location)
 	{
-		File file = new File(location + "exaliquo.cfg");
+		File file = new File(location + "/exaliquo.cfg");
 		
 		try {
 			file.createNewFile();
@@ -48,5 +48,7 @@ public class Configurations {
 		sieveNetherTrees = config.get("Natura Tweaks", "Can nether trees be obtained", true).getBoolean(true);
 		sieveBerryBushes = config.get("Natura Tweaks", "Can berry bushes be obtained", true).getBoolean(true);
 		sieveDarkBerries = config.get("Natura Tweaks", "Can nether bushes be obtained", true).getBoolean(true);
+		
+		config.save();
 	}
 }
