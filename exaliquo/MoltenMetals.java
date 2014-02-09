@@ -27,6 +27,7 @@ public class MoltenMetals {
 		Block LeadOre = findBlock(exnihilo, "lead_ore");
 		Block NickelOre = findBlock(exnihilo, "nickel_ore");
 		Block PlatinumOre = findBlock(exnihilo, "platinum_ore");
+		Block AluminumOre = findBlock(exnihilo, "aluminum_ore");
 		
 		Smeltery.addMelting(IronOre, 0, 600, new FluidStack(getFluid("iron.molten"), ingotcost));
 		Smeltery.addMelting(IronOre, 1, 600, new FluidStack(getFluid("iron.molten"), ingotcost));
@@ -59,6 +60,10 @@ public class MoltenMetals {
 		Smeltery.addMelting(PlatinumOre, 0, 400, new FluidStack(getFluid("platinum.molten"), ingotcost));
 		Smeltery.addMelting(PlatinumOre, 1, 400, new FluidStack(getFluid("platinum.molten"), ingotcost));
 		Smeltery.addMelting(PlatinumOre, 2, 400, new FluidStack(getFluid("platinum.molten"), ingotcost));
+		
+		Smeltery.addMelting(AluminumOre, 0, 400, new FluidStack(getFluid("aluminum.molten"), ingotcost));
+		Smeltery.addMelting(AluminumOre, 1, 400, new FluidStack(getFluid("aluminum.molten"), ingotcost));
+		Smeltery.addMelting(AluminumOre, 2, 400, new FluidStack(getFluid("aluminum.molten"), ingotcost));
 		
 		if (Configurations.allowDustSmelting)
 		{
@@ -93,6 +98,10 @@ public class MoltenMetals {
 			Smeltery.addMelting(new ItemStack(findItem(exnihilo, "platinum_broken"),4,0), PlatinumOre.blockID, 0, 400, new FluidStack(getFluid("platinum.molten"), ingotcost/dustvalue));
 			Smeltery.addMelting(new ItemStack(findItem(exnihilo, "platinum_crushed"),4,0), PlatinumOre.blockID, 1, 400, new FluidStack(getFluid("platinum.molten"), ingotcost/dustvalue));
 			Smeltery.addMelting(new ItemStack(findItem(exnihilo, "platinum_pulverized"),4,0), PlatinumOre.blockID, 2, 400, new FluidStack(getFluid("platinum.molten"), ingotcost/dustvalue));
+			
+			Smeltery.addMelting(new ItemStack(findItem(exnihilo, "aluminum_broken"),4,0), AluminumOre.blockID, 0, 400, new FluidStack(getFluid("aluminum.molten"), ingotcost/dustvalue));
+			Smeltery.addMelting(new ItemStack(findItem(exnihilo, "aluminum_crushed"),4,0), AluminumOre.blockID, 1, 400, new FluidStack(getFluid("aluminum.molten"), ingotcost/dustvalue));
+			Smeltery.addMelting(new ItemStack(findItem(exnihilo, "aluminum_pulverized"),4,0), AluminumOre.blockID, 2, 400, new FluidStack(getFluid("aluminum.molten"), ingotcost/dustvalue));
 		}
 	}
 }

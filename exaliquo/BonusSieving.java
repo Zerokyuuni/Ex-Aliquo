@@ -31,10 +31,6 @@ public class BonusSieving
 		{
 			SieveRegistry.register(dirt, 0, getIDs(Info.oreberrybush2), 9, 128);
 		}
-		if (Configurations.sieveAluminum)
-		{
-			SieveRegistry.register(gravel, 0, getIDs(Info.materials), 22, 3); //Aluminum
-		}
 		if (Configurations.sieveNetherOres)
 		{
 			SieveRegistry.register(soulsand, 0, getIDs(Info.materials), 28, 64); //Cobalt
