@@ -12,7 +12,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 
-@Mod(modid = "exaliquo", name = "Ex Aliquo 1.6.4", version = "0.4", dependencies = "required-after:crowley.skyblock;after:TConstruct;after:Natura")
+@Mod(modid = "exaliquo", name = "Ex Aliquo 1.6.4", version = "0.7", dependencies = "required-after:crowley.skyblock@[1.23,);after:TConstruct;after:Natura;after:arsmagica2")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 
 public class exaliquo {
@@ -47,6 +47,21 @@ public class exaliquo {
 			BonusSieving.addNaturaToSieves();
 			Colors.registerNaturaColors();
 			ExtraCompost.registerNaturaCompost();
+		}
+		if (Loader.isModLoaded("arsmagica2"))
+		{
+			if (Configurations.sieveNovas)
+			{
+			BonusSieving.addArsToSieves();
+			}
+			EssenceRefining.addNihiloToArs();
+			BonusHammerTime.addArstoMCHammer();
+			Colors.registerArsColors();
+			ExtraCompost.registerArsCompost();
+			if (Loader.isModLoaded("TConstruct"))
+			{
+				MoltenMetals.WYNAUT();
+			}
 		}
 	}
 }

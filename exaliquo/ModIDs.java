@@ -2,6 +2,8 @@ package exaliquo;
 
 import static cpw.mods.fml.common.registry.GameRegistry.findBlock;
 import static cpw.mods.fml.common.registry.GameRegistry.findItem;
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import exaliquo.ModIDs.Info;
 
 public class ModIDs
@@ -22,9 +24,7 @@ public class ModIDs
 		monochrome("Natura","block","floraleavesnocolor"),
 		good("Natura","block","BerryBush"),
 		evil("Natura","block","NetherBerryBush"),
-		blueshroom("Natura","block","blueGlowshroom"),
-		greenshroom("Natura","block","greenGlowshroom"),
-		purpleshroom("Natura","block","purpleGlowshroom"),
+		glowshroom("Natura","block","Glowshroom"),
 		thornvines("Natura","block","Thornvines"),
 		cactus("Natura","block","Saguaro"),
 		bluebell("Natura","block","Bluebells"),
@@ -33,7 +33,19 @@ public class ModIDs
 		badberry("Natura","item","berry.nether"),
 		potash("Natura","item","Natura.netherfood"),
 		plants("Natura","item","barleyFood"),
-		impmeat("Natura","item","impmeat");
+		impmeat("Natura","item","impmeat"),
+		
+		magicore("arsmagica2","item","itemOre"),
+		essences("arsmagica2","item","essence"),
+		orchid("arsmagica2","block","blueOrchid"),
+		nova("arsmagica2","block","desertNova"),
+		aum("arsmagica2","block","Aum"),
+		witchwood("arsmagica2","block","saplingWitchwood"),
+		witchleaves("arsmagica2","block","WitchwoodLeaves"),
+		wakebloom("arsmagica2","block","WakeBloom"),
+		tarma("arsmagica2","block","TarmaRoot"),
+		essenceBucket("arsmagica2","item","liquidEssenceBucket"),
+		essenceBlock("arsmagica2","block","liquidEssence");
 		
 		private final String mod;
 		private final String type;
@@ -60,5 +72,13 @@ public class ModIDs
 		{
 			return findItem(info.mod, info.sname).itemID;
 		}
+	}
+	public static Block getBlock(Info info)
+	{
+		return findBlock(info.mod, info.sname);
+	}
+	public static Item getItem(Info info)
+	{
+		return findItem(info.mod, info.sname);
 	}
 }

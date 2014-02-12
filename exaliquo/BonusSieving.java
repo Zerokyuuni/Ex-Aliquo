@@ -77,10 +77,15 @@ public class BonusSieving
 			SieveRegistry.register(soulsand, 0, getIDs(Info.evil), 14, 64);
 			SieveRegistry.register(soulsand, 0, getIDs(Info.evil), 15, 64);
 		}
-		SieveRegistry.register(soulsand, 0, getIDs(Info.blueshroom), 0, 128);
-		SieveRegistry.register(soulsand, 0, getIDs(Info.greenshroom), 0, 128);
-		SieveRegistry.register(soulsand, 0, getIDs(Info.purpleshroom), 0, 128);
+		SieveRegistry.register(soulsand, 0, getIDs(Info.glowshroom), 0, 128);
+		SieveRegistry.register(soulsand, 0, getIDs(Info.glowshroom), 1, 128);
+		SieveRegistry.register(soulsand, 0, getIDs(Info.glowshroom), 2, 128);
 		SieveRegistry.register(soulsand, 0, getIDs(Info.thornvines), 0, 48);
 		SieveRegistry.register(sand, 0, getIDs(Info.fruit), 0, 32);
+	}
+
+	public static void addArsToSieves()
+	{
+		SieveRegistry.register(sand, 0, getIDs(Info.nova), 0, 32);
 	}
 }

@@ -58,4 +58,13 @@ public class Colors {
 		ColorRegistry.register("thornvine", new Color("DFE485"));
 		ColorRegistry.register("impmeat", new Color("70B25C"));
 	}
+	
+	public static void registerArsColors()
+	{
+		ColorRegistry.register("witchwood", new Color("132510"));
+		ColorRegistry.register("nova", new Color("8B2511"));
+		ColorRegistry.register("orchid", new Color("6070C9"));
+		ColorRegistry.register("tarma", new Color("3C2D1B"));
+		ColorRegistry.register("wakebloom", new Color("4B00D8"));
+	}
 }

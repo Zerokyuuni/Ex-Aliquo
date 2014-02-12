@@ -73,9 +73,9 @@ public class ExtraCompost {
 		CompostRegistry.register(getIDs(Info.raresap), 3, 0.125F, ColorRegistry.color("tigerwood"));
 		CompostRegistry.register(getIDs(Info.raresap), 4, 0.125F, ColorRegistry.color("willow"));
 		
-		CompostRegistry.register(getIDs(Info.blueshroom), 0, 0.1F, ColorRegistry.color("blueglow"));
-		CompostRegistry.register(getIDs(Info.greenshroom), 0, 0.1F, ColorRegistry.color("greenglow"));
-		CompostRegistry.register(getIDs(Info.purpleshroom), 0, 0.1F, ColorRegistry.color("purpleglow"));
+		CompostRegistry.register(getIDs(Info.glowshroom), 0, 0.1F, ColorRegistry.color("blueglow"));
+		CompostRegistry.register(getIDs(Info.glowshroom), 1, 0.1F, ColorRegistry.color("greenglow"));
+		CompostRegistry.register(getIDs(Info.glowshroom), 2, 0.1F, ColorRegistry.color("purpleglow"));
 		
 		CompostRegistry.register(getIDs(Info.cactus), 0, 0.1F, ColorRegistry.color("saguaro"));
 		CompostRegistry.register(getIDs(Info.fruit), 0, 0.1F, ColorRegistry.color("fruit"));
@@ -88,5 +88,16 @@ public class ExtraCompost {
 		CompostRegistry.register(getIDs(Info.thornvines), 0, 0.1F, ColorRegistry.color("thornvine"));
 		CompostRegistry.register(getIDs(Info.impmeat), 0, 0.2F, ColorRegistry.color("impmeat"));
 		CompostRegistry.register(getIDs(Info.impmeat), 1, 0.2F, ColorRegistry.color("impmeat"));
+	}
+	
+	public static void registerArsCompost()
+	{
+		CompostRegistry.register(getIDs(Info.nova), 0, 0.1F, ColorRegistry.color("nova"));
+		CompostRegistry.register(getIDs(Info.orchid), 0, 0.1F, ColorRegistry.color("orchid"));
+		CompostRegistry.register(getIDs(Info.aum), 0, 0.1F, ColorRegistry.color("white"));
+		CompostRegistry.register(getIDs(Info.witchwood), 0, 0.125F, ColorRegistry.color("witchwood"));
+		CompostRegistry.register(getIDs(Info.witchleaves), 0, 0.125F, ColorRegistry.color("witchwood"));
+		CompostRegistry.register(getIDs(Info.wakebloom), 0, 0.125F, ColorRegistry.color("wakebloom"));
+		CompostRegistry.register(getIDs(Info.tarma), 0, 0.125F, ColorRegistry.color("tarma"));
 	}
 }
