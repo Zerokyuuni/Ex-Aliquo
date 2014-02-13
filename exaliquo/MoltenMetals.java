@@ -68,9 +68,12 @@ public class MoltenMetals {
 		Smeltery.addMelting(PlatinumOre, 1, 400, new FluidStack(getFluid("platinum.molten"), ingotcostSmeltery));
 		Smeltery.addMelting(PlatinumOre, 2, 400, new FluidStack(getFluid("platinum.molten"), ingotcostSmeltery));
 		
-		Smeltery.addMelting(AluminumOre, 0, 400, new FluidStack(getFluid("aluminum.molten"), ingotcostSmeltery));
-		Smeltery.addMelting(AluminumOre, 1, 400, new FluidStack(getFluid("aluminum.molten"), ingotcostSmeltery));
-		Smeltery.addMelting(AluminumOre, 2, 400, new FluidStack(getFluid("aluminum.molten"), ingotcostSmeltery));
+		if (AluminumOre != null)
+		{
+			Smeltery.addMelting(AluminumOre, 0, 400, new FluidStack(getFluid("aluminum.molten"), ingotcostSmeltery));
+			Smeltery.addMelting(AluminumOre, 1, 400, new FluidStack(getFluid("aluminum.molten"), ingotcostSmeltery));
+			Smeltery.addMelting(AluminumOre, 2, 400, new FluidStack(getFluid("aluminum.molten"), ingotcostSmeltery));
+		}
 		if (Configurations.miniSmelting)
 		{
 			CrucibleRegistry.register(IronOre.blockID, 0, ingotcostCrucible*2, getFluid("iron.molten"), ingotcostCrucible, IronOre);
@@ -105,9 +108,12 @@ public class MoltenMetals {
 			CrucibleRegistry.register(PlatinumOre.blockID, 1, ingotcostCrucible*2, getFluid("platinum.molten"), ingotcostCrucible, PlatinumOre);
 			CrucibleRegistry.register(PlatinumOre.blockID, 2, ingotcostCrucible*2, getFluid("platinum.molten"), ingotcostCrucible, PlatinumOre);
 			
-			CrucibleRegistry.register(AluminumOre.blockID, 0, ingotcostCrucible*2, getFluid("aluminum.molten"), ingotcostCrucible, AluminumOre);
-			CrucibleRegistry.register(AluminumOre.blockID, 1, ingotcostCrucible*2, getFluid("aluminum.molten"), ingotcostCrucible, AluminumOre);
-			CrucibleRegistry.register(AluminumOre.blockID, 2, ingotcostCrucible*2, getFluid("aluminum.molten"), ingotcostCrucible, AluminumOre);
+			if (AluminumOre != null)
+			{
+				CrucibleRegistry.register(AluminumOre.blockID, 0, ingotcostCrucible*2, getFluid("aluminum.molten"), ingotcostCrucible, AluminumOre);
+				CrucibleRegistry.register(AluminumOre.blockID, 1, ingotcostCrucible*2, getFluid("aluminum.molten"), ingotcostCrucible, AluminumOre);
+				CrucibleRegistry.register(AluminumOre.blockID, 2, ingotcostCrucible*2, getFluid("aluminum.molten"), ingotcostCrucible, AluminumOre);
+			}
 		}
 		if (Configurations.allowDustSmelting)
 		{
@@ -143,9 +149,12 @@ public class MoltenMetals {
 			Smeltery.addMelting(new ItemStack(findItem(exnihilo, "platinum_crushed"),4,0), PlatinumOre.blockID, 1, 400, new FluidStack(getFluid("platinum.molten"), ingotcostSmeltery/dustvalue));
 			Smeltery.addMelting(new ItemStack(findItem(exnihilo, "platinum_pulverized"),4,0), PlatinumOre.blockID, 2, 400, new FluidStack(getFluid("platinum.molten"), ingotcostSmeltery/dustvalue));
 			
-			Smeltery.addMelting(new ItemStack(findItem(exnihilo, "aluminum_broken"),4,0), AluminumOre.blockID, 0, 400, new FluidStack(getFluid("aluminum.molten"), ingotcostSmeltery/dustvalue));
-			Smeltery.addMelting(new ItemStack(findItem(exnihilo, "aluminum_crushed"),4,0), AluminumOre.blockID, 1, 400, new FluidStack(getFluid("aluminum.molten"), ingotcostSmeltery/dustvalue));
-			Smeltery.addMelting(new ItemStack(findItem(exnihilo, "aluminum_pulverized"),4,0), AluminumOre.blockID, 2, 400, new FluidStack(getFluid("aluminum.molten"), ingotcostSmeltery/dustvalue));
+			if (AluminumOre != null)
+			{
+				Smeltery.addMelting(new ItemStack(findItem(exnihilo, "aluminum_broken"),4,0), AluminumOre.blockID, 0, 400, new FluidStack(getFluid("aluminum.molten"), ingotcostSmeltery/dustvalue));
+				Smeltery.addMelting(new ItemStack(findItem(exnihilo, "aluminum_crushed"),4,0), AluminumOre.blockID, 1, 400, new FluidStack(getFluid("aluminum.molten"), ingotcostSmeltery/dustvalue));
+				Smeltery.addMelting(new ItemStack(findItem(exnihilo, "aluminum_pulverized"),4,0), AluminumOre.blockID, 2, 400, new FluidStack(getFluid("aluminum.molten"), ingotcostSmeltery/dustvalue));
+			}
 			
 			CrucibleRegistry.register(findItem(exnihilo, "iron_broken").itemID, 0, ingotcostCrucible/dustvalue*2, getFluid("iron.molten"), ingotcostCrucible/dustvalue, IronOre);
 			CrucibleRegistry.register(findItem(exnihilo, "iron_crushed").itemID, 0, ingotcostCrucible/dustvalue*2, getFluid("iron.molten"), ingotcostCrucible/dustvalue, IronOre);
@@ -179,9 +188,12 @@ public class MoltenMetals {
 			CrucibleRegistry.register(findItem(exnihilo, "platinum_crushed").itemID, 0, ingotcostCrucible/dustvalue*2, getFluid("platinum.molten"), ingotcostCrucible/dustvalue, PlatinumOre);
 			CrucibleRegistry.register(findItem(exnihilo, "platinum_pulverized").itemID, 0, ingotcostCrucible/dustvalue*2, getFluid("platinum.molten"), ingotcostCrucible/dustvalue, PlatinumOre);
 			
-			CrucibleRegistry.register(findItem(exnihilo, "aluminum_broken").itemID, 0, ingotcostCrucible/dustvalue*2, getFluid("aluminum.molten"), ingotcostCrucible/dustvalue, AluminumOre);
-			CrucibleRegistry.register(findItem(exnihilo, "aluminum_crushed").itemID, 0, ingotcostCrucible/dustvalue*2, getFluid("aluminum.molten"), ingotcostCrucible/dustvalue, AluminumOre);
-			CrucibleRegistry.register(findItem(exnihilo, "aluminum_pulverized").itemID, 0, ingotcostCrucible/dustvalue*2, getFluid("aluminum.molten"), ingotcostCrucible/dustvalue, AluminumOre);
+			if (AluminumOre != null)
+			{
+				CrucibleRegistry.register(findItem(exnihilo, "aluminum_broken").itemID, 0, ingotcostCrucible/dustvalue*2, getFluid("aluminum.molten"), ingotcostCrucible/dustvalue, AluminumOre);
+				CrucibleRegistry.register(findItem(exnihilo, "aluminum_crushed").itemID, 0, ingotcostCrucible/dustvalue*2, getFluid("aluminum.molten"), ingotcostCrucible/dustvalue, AluminumOre);
+				CrucibleRegistry.register(findItem(exnihilo, "aluminum_pulverized").itemID, 0, ingotcostCrucible/dustvalue*2, getFluid("aluminum.molten"), ingotcostCrucible/dustvalue, AluminumOre);
+			}
 		}
 		
 		CrucibleRegistry.register(Block.sand.blockID, 0, 2000, getFluid("glass.molten"), 1000, Block.sand);
