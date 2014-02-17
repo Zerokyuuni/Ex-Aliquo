@@ -1,5 +1,8 @@
 package exaliquo;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 
@@ -12,13 +15,15 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 
-@Mod(modid = "exaliquo", name = "Ex Aliquo 1.6.4", version = "0.7", dependencies = "required-after:crowley.skyblock@[1.23,);after:TConstruct;after:Natura;after:arsmagica2")
+@Mod(modid = "exaliquo", name = "Ex Aliquo 1.6.4", version = "0.7.5", dependencies = "required-after:crowley.skyblock@[1.23,);after:TConstruct;after:Natura@[2.1.14,);after:arsmagica2")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 
 public class exaliquo {
 
 	@Instance("exaliquo")
 	public static exaliquo instance;
+	
+	public static final Logger logger = Logger.getLogger("exaliquo");
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
@@ -35,8 +40,10 @@ public class exaliquo {
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
+		
 		if (Loader.isModLoaded("TConstruct"))
 		{
+			exaliquo.logger.log(Level.INFO,"Loading Tinker's Construct Compat");
 			BonusSieving.addTinkerToSieves();
 			MoltenMetals.addToSmelting();
 			Colors.registerTinkerColors();
@@ -44,12 +51,14 @@ public class exaliquo {
 		}
 		if (Loader.isModLoaded("Natura"))
 		{
+			exaliquo.logger.log(Level.INFO,"Loading Natura Compat");
 			BonusSieving.addNaturaToSieves();
 			Colors.registerNaturaColors();
 			ExtraCompost.registerNaturaCompost();
 		}
 		if (Loader.isModLoaded("arsmagica2"))
 		{
+			exaliquo.logger.log(Level.INFO,"Loading Ars Magica 2 Compat");
 			if (Configurations.sieveNovas)
 			{
 			BonusSieving.addArsToSieves();
@@ -58,8 +67,9 @@ public class exaliquo {
 			BonusHammerTime.addArstoMCHammer();
 			Colors.registerArsColors();
 			ExtraCompost.registerArsCompost();
-			if (Loader.isModLoaded("TConstruct"))
+			if (Loader.isModLoaded("TConstruct") && (Configurations.WYNAUT))
 			{
+				exaliquo.logger.log(Level.INFO,"What's better than a single Wobbuffet? ALL THE WYNAUT");
 				MoltenMetals.WYNAUT();
 			}
 		}

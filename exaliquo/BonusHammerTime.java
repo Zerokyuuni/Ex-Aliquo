@@ -11,7 +11,6 @@ public class BonusHammerTime {
 	private static final int stone = Block.stone.blockID;
 	private static final int stonebrick = Block.stoneBrick.blockID;
 	private static final int netherrack = Block.netherrack.blockID;
-	private static final int netherbrick = Block.netherBrick.blockID;
 	
 	public static void addArstoMCHammer()
 	{

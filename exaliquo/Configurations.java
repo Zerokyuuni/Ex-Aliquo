@@ -7,6 +7,7 @@ import net.minecraftforge.common.Configuration;
 
 public class Configurations {
 
+	public static boolean WYNAUT;
 	public static boolean isOre;
 	public static boolean allowDustSmelting;
 	public static boolean dustValue;
@@ -22,6 +23,7 @@ public class Configurations {
 	public static boolean hammerMoonstone;
 	public static boolean sieveNovas;
 	public static boolean miniSmelting;
+	public static boolean silverwoodSwitch;
 	
 	public static void Load (File location)
 	{
@@ -53,6 +55,8 @@ public class Configurations {
 		
 		hammerMoonstone = config.get("ArsMagica Tweaks", "Can moonstone be obtained", false).getBoolean(false);
 		sieveNovas = config.get("ArsMagica Tweaks", "Can desert novas be obtained", true).getBoolean(true);
+		
+		WYNAUT = config.get("ArsMagica Tweaks","TinkerBridge", true).getBoolean(true);
 		
 		config.save();
 	}
