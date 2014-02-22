@@ -12,12 +12,12 @@ public class ExtraCompost {
 	{
 		if (Configurations.allowTinkerBushCompost)
 		{
-			CompostRegistry.register(getIDs(Info.oreberry), 8, 1.0F, ColorRegistry.color("ironberry"));
-			CompostRegistry.register(getIDs(Info.oreberry), 9, 1.0F, ColorRegistry.color("goldberry"));
-			CompostRegistry.register(getIDs(Info.oreberry), 10, 1.0F, ColorRegistry.color("copperberry"));
-			CompostRegistry.register(getIDs(Info.oreberry), 11, 1.0F, ColorRegistry.color("tinberry"));
-			CompostRegistry.register(getIDs(Info.oreberrybush2), 8, 1.0F, ColorRegistry.color("aluminumberry"));
-			CompostRegistry.register(getIDs(Info.oreberrybush2), 9, 1.0F, ColorRegistry.color("essenceberry"));
+			CompostRegistry.register(getIDs(Info.oreberry), 0, 1.0F, ColorRegistry.color("ironberry"));
+			CompostRegistry.register(getIDs(Info.oreberry), 1, 1.0F, ColorRegistry.color("goldberry"));
+			CompostRegistry.register(getIDs(Info.oreberry), 2, 1.0F, ColorRegistry.color("copperberry"));
+			CompostRegistry.register(getIDs(Info.oreberry), 3, 1.0F, ColorRegistry.color("tinberry"));
+			CompostRegistry.register(getIDs(Info.oreberrybush2), 0, 1.0F, ColorRegistry.color("aluminumberry"));
+			CompostRegistry.register(getIDs(Info.oreberrybush2), 1, 1.0F, ColorRegistry.color("essenceberry"));
 		}
 		CompostRegistry.register(getIDs(Info.oreberry), 5, 0.1F, ColorRegistry.color("essenceberry"));
 		CompostRegistry.register(getIDs(Info.hambone), 0, 1.0F, ColorRegistry.color("pork_raw"));
@@ -25,14 +25,14 @@ public class ExtraCompost {
 
 	public static void registerNaturaCompost()
 	{
-		CompostRegistry.register(getIDs(Info.good), 12, 0.2F, ColorRegistry.color("raspbush"));
-		CompostRegistry.register(getIDs(Info.good), 13, 0.2F, ColorRegistry.color("bluebush"));
-		CompostRegistry.register(getIDs(Info.good), 14, 0.2F, ColorRegistry.color("blackbush"));
-		CompostRegistry.register(getIDs(Info.good), 15, 0.2F, ColorRegistry.color("geobush"));
-		CompostRegistry.register(getIDs(Info.evil), 12, 0.2F, ColorRegistry.color("blightbush"));
-		CompostRegistry.register(getIDs(Info.evil), 13, 0.2F, ColorRegistry.color("duskbush"));
-		CompostRegistry.register(getIDs(Info.evil), 14, 0.2F, ColorRegistry.color("skybush"));
-		CompostRegistry.register(getIDs(Info.evil), 15, 0.2F, ColorRegistry.color("stingbush"));
+		CompostRegistry.register(getIDs(Info.good), 0, 0.2F, ColorRegistry.color("raspbush"));
+		CompostRegistry.register(getIDs(Info.good), 1, 0.2F, ColorRegistry.color("bluebush"));
+		CompostRegistry.register(getIDs(Info.good), 2, 0.2F, ColorRegistry.color("blackbush"));
+		CompostRegistry.register(getIDs(Info.good), 3, 0.2F, ColorRegistry.color("geobush"));
+		CompostRegistry.register(getIDs(Info.evil), 0, 0.2F, ColorRegistry.color("blightbush"));
+		CompostRegistry.register(getIDs(Info.evil), 1, 0.2F, ColorRegistry.color("duskbush"));
+		CompostRegistry.register(getIDs(Info.evil), 2, 0.2F, ColorRegistry.color("skybush"));
+		CompostRegistry.register(getIDs(Info.evil), 3, 0.2F, ColorRegistry.color("stingbush"));
 		
 		CompostRegistry.register(getIDs(Info.goodberry), 0, 0.05F, ColorRegistry.color("raspberry"));
 		CompostRegistry.register(getIDs(Info.goodberry), 1, 0.05F, ColorRegistry.color("blueberry"));

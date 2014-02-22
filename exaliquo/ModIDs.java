@@ -13,6 +13,14 @@ public class ModIDs
 {
 	enum Info
 	{
+		woodbarrel("crowley.skyblock","block","barrel"),
+		stonebarrel("crowley.skyblock","block","barrel_stone"),
+		crucible("crowley.skyblock","block","crucible"),
+		dust("crowley.skyblock","block","dust"),
+		silkleaves("crowley.skyblock","block","infested_leaves"),
+		beetrap("crowley.skyblock","block","bee_trap"),
+		scentedtrap("crowley.skyblock","block","bee_trap_treated"),
+		witchwater("crowley.skyblock","block","witchwater"),
 		ironore("crowley.skyblock","block","iron_ore"),
 		goldore("crowley.skyblock","block","gold_ore"),
 		copperore("crowley.skyblock","block","copper_ore"),
@@ -21,7 +29,22 @@ public class ModIDs
 		leadore("crowley.skyblock","block","lead_ore"),
 		nickelore("crowley.skyblock","block","nickel_ore"),
 		platinumore("crowley.skyblock","block","platinum_ore"),
+		osmiumore("crowley.skyblock","block","osmium_ore"),
 		aluminumore("crowley.skyblock","block","aluminum_ore"),
+		silkworm("crowley.skyblock","item","silkworm"),
+		nomworm("crowley.skyblock","item","silkworm_cooked"),
+		spores("crowley.skyblock","item","spores"),
+		grass("crowley.skyblock","item","seed_grass"),
+		oakseed("crowley.skyblock","item","seed_oak"),
+		zebraseed("crowley.skyblock","item","seed_birch"),
+		spruceseed("crowley.skyblock","item","seed_spruce"),
+		jungleseed("crowley.skyblock","item","seed_jungle"),
+		cactusseed("crowley.skyblock","item","seed_cactus"),
+		caneseed("crowley.skyblock","item","seed_sugar_cane"),
+		carrotseed("crowley.skyblock","item","seed_carrot"),
+		taterseed("crowley.skyblock","item","seed_potato"),
+		rubberseed("crowley.skyblock","item","seed_rubber"),
+		witchbucket("crowley.skyblock","item","bucket_witchwater"),
 		irongrav("crowley.skyblock","item","iron_broken"),
 		ironsand("crowley.skyblock","item","iron_crushed"),
 		irondust("crowley.skyblock","item","iron_pulverized"),
@@ -46,11 +69,13 @@ public class ModIDs
 		platinumgrav("crowley.skyblock","item","platinum_broken"),
 		platinumsand("crowley.skyblock","item","platinum_crushed"),
 		platinumdust("crowley.skyblock","item","platinum_pulverized"),
+		osmiumgrav("crowley.skyblock","item","osmium_broken"),
+		osmiumsand("crowley.skyblock","item","osmium_crushed"),
+		osmiumdust("crowley.skyblock","item","osmium_pulverized"),
 		aluminumgrav("crowley.skyblock","item","aluminum_broken"),
 		aluminumsand("crowley.skyblock","item","aluminum_crushed"),
 		aluminumdust("crowley.skyblock","item","aluminum_pulverized"),
 		stones("crowley.skyblock","item","stone"),
-		
 		
 		oreberrybush("TConstruct","block","ore.berries.one"),
 		oreberrybush2("TConstruct","block","ore.berries.two"),
@@ -87,7 +112,14 @@ public class ModIDs
 		essenceBlock("arsmagica2","block","liquidEssence"),
 		essenceBucket("arsmagica2","item","liquidEssenceBucket"),
 		magicore("arsmagica2","item","itemOre"),
-		essences("arsmagica2","item","essence");
+		essences("arsmagica2","item","essence"),
+		
+		thaumplants("Thaumcraft","block","blockCustomPlant"),
+		shard("Thaumcraft","item","ItemShard"),
+		resources("Thaumcraft","item","ItemResource"),
+		nuggets("Thaumcraft","item","ItemNugget"),
+		manabean("Thaumcraft","item","ItemManaBean"),
+		nodejar("Thaumcraft","item","BlockJarNodeItem");
 		
 		private final String mod;
 		private final String type;

@@ -23,3 +23,10 @@ exa.page.SILVERWOOD.2=<BR><BR><BR><BR><BR><BR>THIS RECIPE CHANGES DEPENDING ON T
 #
 exa.name.SILVERWOOD2=Silverwood [ExA]
 exa.flavor.SILVERWOOD2=Sky Alchemy Transmutation: Silverwood
+#
+tc.research_category.SKYCHEMY=Sky Alchemy [ExA]
+#
+exa.name.THAUMHAMMER=Thaumium Hammers [ExA]
+exa.flavor.THAUMHAMMER=Magical Hammering
+exa.page.THAUMHAMMER.1=Any Alchemist that lives in the sky has a best friend in the form of his favorite hammer. Through the efforts of imbuing basic metals with magical aspects, along with your knowledge of Sky-tools, you have learned how to forge Hammers made of Thaumium.
+item.ExAliquo.ThaumHammer.name=Thaumium Hammer

@@ -21,15 +21,15 @@ public class BonusSieving
 		//SieveRegistry.SieveRegistry.register(gravel, 0, Block.tnt.blockID, 0, 1); //WYNAUT
 		if (Configurations.sieveOreBushes)
 		{
-			SieveRegistry.register(dirt, 0, getIDs(Info.oreberrybush), 8, 256);		//Iron
-			SieveRegistry.register(dirt, 0, getIDs(Info.oreberrybush), 9, 256);		//Gold
-			SieveRegistry.register(dirt, 0, getIDs(Info.oreberrybush), 10, 256);	//Copper
-			SieveRegistry.register(dirt, 0, getIDs(Info.oreberrybush), 11, 256);	//Tin
-			SieveRegistry.register(dirt, 0, getIDs(Info.oreberrybush2), 8, 256);	//Aluminum
+			SieveRegistry.register(dirt, 0, getIDs(Info.oreberrybush), 0, 256);		//Iron
+			SieveRegistry.register(dirt, 0, getIDs(Info.oreberrybush), 1, 256);		//Gold
+			SieveRegistry.register(dirt, 0, getIDs(Info.oreberrybush), 2, 256);	//Copper
+			SieveRegistry.register(dirt, 0, getIDs(Info.oreberrybush), 3, 256);	//Tin
+			SieveRegistry.register(dirt, 0, getIDs(Info.oreberrybush2), 0, 256);	//Aluminum
 		}
 		if (Configurations.sieveEssenceBushes)
 		{
-			SieveRegistry.register(dirt, 0, getIDs(Info.oreberrybush2), 9, 128);
+			SieveRegistry.register(dirt, 0, getIDs(Info.oreberrybush2), 1, 128);
 		}
 		if (Configurations.sieveNetherOres)
 		{
@@ -65,17 +65,17 @@ public class BonusSieving
 		}
 		if (Configurations.sieveBerryBushes)
 		{
-			SieveRegistry.register(dirt, 0, getIDs(Info.good), 12, 64);
-			SieveRegistry.register(dirt, 0, getIDs(Info.good), 13, 64);
-			SieveRegistry.register(dirt, 0, getIDs(Info.good), 14, 64);
-			SieveRegistry.register(dirt, 0, getIDs(Info.good), 15, 64);
+			SieveRegistry.register(dirt, 0, getIDs(Info.good), 0, 64);
+			SieveRegistry.register(dirt, 0, getIDs(Info.good), 1, 64);
+			SieveRegistry.register(dirt, 0, getIDs(Info.good), 2, 64);
+			SieveRegistry.register(dirt, 0, getIDs(Info.good), 3, 64);
 		}
 		if (Configurations.sieveDarkBerries)
 		{
-			SieveRegistry.register(soulsand, 0, getIDs(Info.evil), 12, 64);
-			SieveRegistry.register(soulsand, 0, getIDs(Info.evil), 13, 64);
-			SieveRegistry.register(soulsand, 0, getIDs(Info.evil), 14, 64);
-			SieveRegistry.register(soulsand, 0, getIDs(Info.evil), 15, 64);
+			SieveRegistry.register(soulsand, 0, getIDs(Info.evil), 0, 64);
+			SieveRegistry.register(soulsand, 0, getIDs(Info.evil), 1, 64);
+			SieveRegistry.register(soulsand, 0, getIDs(Info.evil), 2, 64);
+			SieveRegistry.register(soulsand, 0, getIDs(Info.evil), 3, 64);
 		}
 		SieveRegistry.register(soulsand, 0, getIDs(Info.glowshroom), 0, 128);
 		SieveRegistry.register(soulsand, 0, getIDs(Info.glowshroom), 1, 128);
@@ -87,5 +87,11 @@ public class BonusSieving
 	public static void addArsToSieves()
 	{
 		SieveRegistry.register(sand, 0, getIDs(Info.nova), 0, 32);
+	}
+
+	public static void addThaumcraftToSieves()
+	{
+		SieveRegistry.register(gravel, 0, getIDs(Info.nuggets), 5, 8);
+		SieveRegistry.register(gravel, 0, getIDs(Info.resources), 6, 8);
 	}
 }

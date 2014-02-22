@@ -15,7 +15,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 
-@Mod(modid = "exaliquo", name = "Ex Aliquo 1.6.4", version = "0.7.5", dependencies = "required-after:crowley.skyblock@[1.23,);after:TConstruct;after:Natura@[2.1.14,);after:arsmagica2")
+@Mod(modid = "exaliquo", name = "Ex Aliquo 1.6.4", version = "0.8", dependencies = "required-after:crowley.skyblock@[1.23,);after:TConstruct;after:Natura@[2.1.14,);after:arsmagica2;after:Thaumcraft@[4.1,)")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 
 public class exaliquo {
@@ -72,6 +72,19 @@ public class exaliquo {
 				exaliquo.logger.log(Level.INFO,"What's better than a single Wobbuffet? ALL THE WYNAUT");
 				MoltenMetals.WYNAUT();
 			}
+		}
+		if (Loader.isModLoaded("Thaumcraft"))
+		{
+			exaliquo.logger.info("Loading Thaumcraft 4 Compat");
+			Registries.registerThaumItems();
+			ExThaumiquo.addAspectstoNihilo();
+			ExThaumiquo.addCrucibleRecipes();
+			ExThaumiquo.addWorkbenchRecipes();
+			ExThaumiquo.addInfusionRecipes();
+			ExThaumiquo.addPages();
+			ExThaumiquo.addResearch();
+			BonusSieving.addThaumcraftToSieves();
+			BonusHammerTime.addThaumcraftToMCHammer();
 		}
 	}
 }
