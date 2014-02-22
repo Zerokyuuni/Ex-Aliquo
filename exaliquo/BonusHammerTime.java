@@ -17,6 +17,7 @@ public class BonusHammerTime {
 	private static final int grass = Block.grass.blockID;
 	private static final int obsidian = Block.obsidian.blockID;
 	private static final int winthatfight = Block.tnt.blockID;
+	private static final int clay = Block.blockClay.blockID;
 	
 	public static void addArstoMCHammer()
 	{
@@ -32,9 +33,10 @@ public class BonusHammerTime {
 
 	public static void addThaumcraftToMCHammer()
 	{
+		int watershard = (Configurations.alternatewater) ? clay : ice; 
 		HammerRegistry.register(sandstone, 1, getIDs(Info.shard), 0, 0.1F, 0.03F);
 		HammerRegistry.register(netherrack, 0, getIDs(Info.shard), 1, 0.1F, 0.03F);
-		HammerRegistry.register(ice, 0, getIDs(Info.shard), 2, 0.1F, 0.03F);
+		HammerRegistry.register(watershard, 0, getIDs(Info.shard), 2, 0.1F, 0.03F);
 		HammerRegistry.register(grass, 0, getIDs(Info.shard), 3, 0.1F, 0.03F);
 		HammerRegistry.register(obsidian, 0, getIDs(Info.shard), 4, 0.25F, 0.05F);
 		HammerRegistry.register(winthatfight, 0, getIDs(Info.shard), 5, 0.15F, 0.05F);

@@ -79,6 +79,7 @@ public class exaliquo {
 			Registries.registerThaumItems();
 			ExThaumiquo.addAspectstoNihilo();
 			ExThaumiquo.addCrucibleRecipes();
+			ExThaumiquo.addArcaneRecipes();
 			ExThaumiquo.addWorkbenchRecipes();
 			ExThaumiquo.addInfusionRecipes();
 			ExThaumiquo.addPages();

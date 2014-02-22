@@ -14,6 +14,7 @@ import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.crafting.CrucibleRecipe;
+import thaumcraft.api.crafting.IArcaneRecipe;
 import thaumcraft.api.crafting.InfusionRecipe;
 import thaumcraft.api.research.ResearchCategories;
 import thaumcraft.api.research.ResearchItem;
@@ -101,6 +102,16 @@ public class ExThaumiquo {
 				new ItemStack(Registries.hammerThaum)).setPages(new ResearchPage[] {
 						new ResearchPage("exa.page.THAUMHAMMER.1"), new ResearchPage((IRecipe)ConfigResearch.recipes.get("ThaumiumHammer"))
 				}).setAutoUnlock().setConcealed().setParentsHidden("THAUMIUM").registerResearchItem();
+		
+		new ExAResearchItem("SKYFILTER",
+				"SKYCHEMY",
+				new AspectList(),
+				3,
+				3,
+				0,
+				new ItemStack(getItem(Info.resources), 1, 8)).setPages(new ResearchPage[] {
+						new ResearchPage("exa.page.SKYFILTER.1"), new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("Skyfilter"))
+				}).setAutoUnlock().setConcealed().setParentsHidden("DISTILLESSENTIA").registerResearchItem();
 	}
 	
 	public static void addInfusionRecipes()
@@ -155,9 +166,15 @@ public class ExThaumiquo {
 		}
 	}
 
-	public static void addCrucibleRecipes() {
+	public static void addCrucibleRecipes()
+	{
 		ConfigResearch.recipes.put("Shimmerleaf", ThaumcraftApi.addCrucibleRecipe("SHIMMERLEAF", new ItemStack(getBlock(Info.thaumplants), 1, 2), new ItemStack(Block.plantRed, 1, 0), new AspectList().add(Aspect.MAGIC, 12).add(Aspect.EXCHANGE, 12).add(Aspect.PLANT, 12).add(Aspect.POISON, 12)));
 		ConfigResearch.recipes.put("Cinderpearl", ThaumcraftApi.addCrucibleRecipe("CINDERPEARL", new ItemStack(getBlock(Info.thaumplants), 1, 3), new ItemStack(Block.plantYellow, 1, 0), new AspectList().add(Aspect.MAGIC, 12).add(Aspect.EXCHANGE, 12). add(Aspect.PLANT, 12).add(Aspect.FIRE, 12)));
+	}
+	
+	public static void addArcaneRecipes()
+	{
+	    ConfigResearch.recipes.put("Skyfilter", ThaumcraftApi.addArcaneCraftingRecipe("SKYFILTER", new ItemStack(getItem(Info.resources), 1, 8), new AspectList().add(Aspect.ORDER, 5).add(Aspect.WATER, 5), new Object[] { "mmm", "imi", "mmm", 'i', Item.ingotGold, 'm', new ItemStack(getItem(Info.mesh), 1, 0) }));
 	}
 
 	public static void addWorkbenchRecipes()

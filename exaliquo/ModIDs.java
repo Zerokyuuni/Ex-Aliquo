@@ -45,6 +45,7 @@ public class ModIDs
 		taterseed("crowley.skyblock","item","seed_potato"),
 		rubberseed("crowley.skyblock","item","seed_rubber"),
 		witchbucket("crowley.skyblock","item","bucket_witchwater"),
+		mesh("crowley.skyblock","item","mesh"),
 		irongrav("crowley.skyblock","item","iron_broken"),
 		ironsand("crowley.skyblock","item","iron_crushed"),
 		irondust("crowley.skyblock","item","iron_pulverized"),

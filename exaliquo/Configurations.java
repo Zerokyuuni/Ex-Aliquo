@@ -25,6 +25,7 @@ public class Configurations {
 	public static boolean miniSmelting;
 	public static int silverwoodSwitch;
 	public static int thaumHammer;
+	public static boolean alternatewater;
 	
 	public static void Load (File location)
 	{
@@ -61,6 +62,7 @@ public class Configurations {
 		
 		silverwoodSwitch = config.get("Thaumcraft Tweaks","Silverwood Setting", 0, "Set 0 for default, 1 for tweaked difficulty, and -1 to disable. See the forum post for difficulty changes").getInt(0);
 		thaumHammer = config.get("Thaumcraft Tweaks","Thaumium Hammer ID", 20160).getInt(20160);
+		alternatewater = config.get("Thaumcraft Tweaks","For tundra-less skyblocks", false).getBoolean(false);
 		
 		config.save();
 	}

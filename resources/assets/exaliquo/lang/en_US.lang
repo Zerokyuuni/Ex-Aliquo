@@ -30,3 +30,7 @@ exa.name.THAUMHAMMER=Thaumium Hammers [ExA]
 exa.flavor.THAUMHAMMER=Magical Hammering
 exa.page.THAUMHAMMER.1=Any Alchemist that lives in the sky has a best friend in the form of his favorite hammer. Through the efforts of imbuing basic metals with magical aspects, along with your knowledge of Sky-tools, you have learned how to forge Hammers made of Thaumium.
 item.ExAliquo.ThaumHammer.name=Thaumium Hammer
+#
+exa.name.SKYFILTER=Sky Filter [Exa]
+exa.flavor.SKYFILTER=Less than Magical Filtering
+exa.page.SKYFILTER.1=During your time as an Alchemist in the sky, you have learned to make Vis filters out of less magical objects that function as their silverwoody counterparts
