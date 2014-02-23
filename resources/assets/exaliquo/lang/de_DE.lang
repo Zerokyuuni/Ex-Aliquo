@@ -23,3 +23,14 @@ exa.page.SILVERWOOD.2=<BR><BR><BR><BR><BR><BR>THIS RECIPE CHANGES DEPENDING ON T
 #
 exa.name.SILVERWOOD2=Silberholz [ExA]
 exa.flavor.SILVERWOOD2=Himmelsalchemie-Transmutation: Silberholz
+#
+tc.research_category.SKYCHEMY=Himmelsalchemie [ExA]
+#
+exa.name.THAUMHAMMER=Thaumiumhammer [ExA]
+exa.flavor.THAUMHAMMER=Magisches Hämmern
+exa.page.THAUMHAMMER.1=Any Alchemist that lives in the sky has a best friend in the form of his favorite hammer. Through the efforts of imbuing basic metals with magical aspects, along with your knowledge of Sky-tools, you have learned how to forge Hammers made of Thaumium.
+item.ExAliquo.ThaumHammer.name=Thaumium Hammer
+#
+exa.name.SKYFILTER=Himmelsfilter [Exa]
+exa.flavor.SKYFILTER=Weniger als Magisches Filtern
+exa.page.SKYFILTER.1=During your time as an Alchemist in the sky, you have learned to make Vis filters out of less magical objects that function as their silverwoody counterparts
