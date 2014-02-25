@@ -21,10 +21,11 @@ import thaumcraft.api.research.ResearchItem;
 import thaumcraft.api.research.ResearchPage;
 import thaumcraft.common.config.ConfigResearch;
 
-import static exaliquo.ModIDs.getBlock;
-import static exaliquo.ModIDs.getItem;
-import static exaliquo.ModIDs.getIDs;
-import exaliquo.ModIDs.Info;
+import static exaliquo.data.ModIDs.getBlock;
+import static exaliquo.data.ModIDs.getIDs;
+import static exaliquo.data.ModIDs.getItem;
+import exaliquo.data.Configurations;
+import exaliquo.data.ModIDs.Info;
 
 public class ExThaumiquo {
 
@@ -38,15 +39,40 @@ public class ExThaumiquo {
 				0,
 				new ItemStack(Block.cobblestone, 1, 0)).setPages(new ResearchPage("exa.page.SKYCHEMY")).setStub().setRound().setAutoUnlock().registerResearchItem();
 		
-		new ExAResearchItem("GREATWOOD",
-				"SKYCHEMY",
-				new AspectList().add(Aspect.TREE, 10).add(Aspect.PLANT, 10).add(Aspect.MAGIC, 10).add(Aspect.SEED, 10),
-				0,
-				-3,
-				3,
-				new ItemStack(getBlock(Info.thaumplants), 1, 0)).setPages(new ResearchPage[] {
-						new ResearchPage("exa.page.GREATWOOD.1"), new ResearchPage((InfusionRecipe)ConfigResearch.recipes.get("Greatwood1")), new ResearchPage((InfusionRecipe)ConfigResearch.recipes.get("Greatwood2"))
-				}).setParentsHidden("SKYCHEMY").registerResearchItem();
+		if (Configurations.runichax)
+		{
+			new ExAResearchItem("SKYMATRIX",
+					"SKYCHEMY",
+					new AspectList().add(Aspect.TOOL, 0).add(Aspect.AIR, 0),
+					3,
+					4,
+					0,
+					new ItemStack(getBlock(Info.devices), 1, 2)).setPages(new ResearchPage[] {
+							new ResearchPage("exa.page.SKYMATRIX.1"), new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("SkyMatrix"))
+					}).setParentsHidden("INFUSION").setConcealed().setSecondary().registerResearchItem();
+			
+			new ExAResearchItem("GREATWOOD",
+					"SKYCHEMY",
+					new AspectList().add(Aspect.TREE, 10).add(Aspect.PLANT, 10).add(Aspect.MAGIC, 10).add(Aspect.SEED, 10),
+					0,
+					-3,
+					3,
+					new ItemStack(getBlock(Info.thaumplants), 1, 0)).setPages(new ResearchPage[] {
+							new ResearchPage("exa.page.GREATWOOD.1"), new ResearchPage((InfusionRecipe)ConfigResearch.recipes.get("Greatwood1")), new ResearchPage((InfusionRecipe)ConfigResearch.recipes.get("Greatwood2"))
+					}).setParentsHidden("SKYCHEMY", "INFUSION").registerResearchItem();
+		}
+		else
+		{
+			new ExAResearchItem("GREATWOOD",
+					"SKYCHEMY",
+					new AspectList().add(Aspect.TREE, 10).add(Aspect.PLANT, 10).add(Aspect.MAGIC, 10).add(Aspect.SEED, 10),
+					0,
+					-3,
+					3,
+					new ItemStack(getBlock(Info.thaumplants), 1, 0)).setPages(new ResearchPage[] {
+							new ResearchPage("exa.page.GREATWOOD.1"), new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("Greatwood1")), new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("Greatwood2"))
+					}).setParentsHidden("SKYCHEMY", "INFUSION").registerResearchItem();
+		}
 		
 		if (Configurations.silverwoodSwitch == 0)
 		{
@@ -95,48 +121,51 @@ public class ExThaumiquo {
 		
 		new ExAResearchItem("THAUMHAMMER",
 				"SKYCHEMY",
-				new AspectList(),
+				new AspectList().add(Aspect.TOOL, 0).add(Aspect.AIR, 0),
 				-3,
 				3,
 				0,
 				new ItemStack(Registries.hammerThaum)).setPages(new ResearchPage[] {
 						new ResearchPage("exa.page.THAUMHAMMER.1"), new ResearchPage((IRecipe)ConfigResearch.recipes.get("ThaumiumHammer"))
-				}).setAutoUnlock().setConcealed().setParentsHidden("THAUMIUM").registerResearchItem();
+				}).setParentsHidden("THAUMIUM").setConcealed().setSecondary().registerResearchItem();
 		
 		new ExAResearchItem("SKYFILTER",
 				"SKYCHEMY",
-				new AspectList(),
+				new AspectList().add(Aspect.TOOL, 0).add(Aspect.AIR, 0),
 				3,
 				3,
 				0,
 				new ItemStack(getItem(Info.resources), 1, 8)).setPages(new ResearchPage[] {
 						new ResearchPage("exa.page.SKYFILTER.1"), new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("Skyfilter"))
-				}).setAutoUnlock().setConcealed().setParentsHidden("DISTILLESSENTIA").registerResearchItem();
+				}).setParentsHidden("DISTILESSENTIA").setConcealed().setSecondary().registerResearchItem();
 	}
 	
 	public static void addInfusionRecipes()
 	{
-		ConfigResearch.recipes.put("Greatwood1", ThaumcraftApi.addInfusionCraftingRecipe("GREATWOOD",
-				new ItemStack(getBlock(Info.thaumplants), 1, 0),
-				10,
-				new AspectList().add(Aspect.TREE, 128).add(Aspect.AIR, 64).add(Aspect.EARTH, 64).add(Aspect.FIRE, 64).add(Aspect.WATER, 64).add(Aspect.ORDER, 64).add(Aspect.ENTROPY, 64),
-				new ItemStack(Block.sapling, 1, 3),
-				new ItemStack[] {
-				new ItemStack(getItem(Info.witchbucket), 1, 0), new ItemStack(getItem(Info.witchbucket), 1, 0), new ItemStack(getBlock(Info.thaumplants), 1, 2), 
-				new ItemStack(getItem(Info.witchbucket), 1, 0), new ItemStack(getItem(Info.witchbucket), 1, 0), new ItemStack(getItem(Info.witchbucket), 1, 0), 
-				new ItemStack(getBlock(Info.thaumplants), 1, 3), new ItemStack(getItem(Info.witchbucket), 1, 0)
-		}));
-		
-		ConfigResearch.recipes.put("Greatwood2", ThaumcraftApi.addInfusionCraftingRecipe("GREATWOOD",
-				new ItemStack(getBlock(Info.thaumplants), 1, 0),
-				10,
-				new AspectList().add(Aspect.TREE, 128).add(Aspect.AIR, 64).add(Aspect.EARTH, 64).add(Aspect.FIRE, 64).add(Aspect.WATER, 64).add(Aspect.ORDER, 64).add(Aspect.ENTROPY, 64),
-				new ItemStack(Block.sapling, 1, 3),
-				new ItemStack[] {
-				new ItemStack(getItem(Info.witchbucket), 1, 0), new ItemStack(getItem(Info.witchbucket), 1, 0), new ItemStack(getBlock(Info.thaumplants), 1, 3), 
-				new ItemStack(getItem(Info.witchbucket), 1, 0), new ItemStack(getItem(Info.witchbucket), 1, 0), new ItemStack(getItem(Info.witchbucket), 1, 0), 
-				new ItemStack(getBlock(Info.thaumplants), 1, 2), new ItemStack(getItem(Info.witchbucket), 1, 0)
-		}));
+		if (Configurations.runichax)
+		{
+			ConfigResearch.recipes.put("Greatwood1", ThaumcraftApi.addInfusionCraftingRecipe("GREATWOOD",
+					new ItemStack(getBlock(Info.thaumplants), 1, 0),
+					10,
+					new AspectList().add(Aspect.TREE, 128).add(Aspect.AIR, 64).add(Aspect.EARTH, 64).add(Aspect.FIRE, 64).add(Aspect.WATER, 64).add(Aspect.ORDER, 64).add(Aspect.ENTROPY, 64),
+					new ItemStack(Block.sapling, 1, 3),
+					new ItemStack[] {
+					new ItemStack(getItem(Info.witchbucket), 1, 0), new ItemStack(getItem(Info.witchbucket), 1, 0), new ItemStack(getBlock(Info.thaumplants), 1, 2), 
+					new ItemStack(getItem(Info.witchbucket), 1, 0), new ItemStack(getItem(Info.witchbucket), 1, 0), new ItemStack(getItem(Info.witchbucket), 1, 0), 
+					new ItemStack(getBlock(Info.thaumplants), 1, 3), new ItemStack(getItem(Info.witchbucket), 1, 0)
+			}));
+			
+			ConfigResearch.recipes.put("Greatwood2", ThaumcraftApi.addInfusionCraftingRecipe("GREATWOOD",
+					new ItemStack(getBlock(Info.thaumplants), 1, 0),
+					10,
+					new AspectList().add(Aspect.TREE, 128).add(Aspect.AIR, 64).add(Aspect.EARTH, 64).add(Aspect.FIRE, 64).add(Aspect.WATER, 64).add(Aspect.ORDER, 64).add(Aspect.ENTROPY, 64),
+					new ItemStack(Block.sapling, 1, 3),
+					new ItemStack[] {
+					new ItemStack(getItem(Info.witchbucket), 1, 0), new ItemStack(getItem(Info.witchbucket), 1, 0), new ItemStack(getBlock(Info.thaumplants), 1, 3), 
+					new ItemStack(getItem(Info.witchbucket), 1, 0), new ItemStack(getItem(Info.witchbucket), 1, 0), new ItemStack(getItem(Info.witchbucket), 1, 0), 
+					new ItemStack(getBlock(Info.thaumplants), 1, 2), new ItemStack(getItem(Info.witchbucket), 1, 0)
+			}));
+		}
 		
 		if (Configurations.silverwoodSwitch == 0)
 		{
@@ -175,6 +204,15 @@ public class ExThaumiquo {
 	public static void addArcaneRecipes()
 	{
 	    ConfigResearch.recipes.put("Skyfilter", ThaumcraftApi.addArcaneCraftingRecipe("SKYFILTER", new ItemStack(getItem(Info.resources), 1, 8), new AspectList().add(Aspect.ORDER, 5).add(Aspect.WATER, 5), new Object[] { "mmm", "imi", "mmm", 'i', Item.ingotGold, 'm', new ItemStack(getItem(Info.mesh), 1, 0) }));
+	    if (Configurations.runichax)
+	    {
+	    	ConfigResearch.recipes.put("SkyMatrix", ThaumcraftApi.addArcaneCraftingRecipe("SKYMATRIX", new ItemStack(getBlock(Info.devices), 1, 2), new AspectList().add(Aspect.AIR, 10).add(Aspect.EARTH, 10).add(Aspect.FIRE, 10).add(Aspect.WATER, 10).add(Aspect.ORDER, 10).add(Aspect.ENTROPY, 10), new Object[] { "bcb", "cec", "bcb", 'b', new ItemStack(getBlock(Info.cosmetics), 1, 6), 'c', new ItemStack(getBlock(Info.cluster), 1, 6), 'e', Item.enderPearl }));
+	    }
+	    else
+	    {
+	    	ConfigResearch.recipes.put("Greatwood1", ThaumcraftApi.addArcaneCraftingRecipe("GREATWOOD", new ItemStack(getBlock(Info.thaumplants), 1, 0), new AspectList().add(Aspect.AIR, 25).add(Aspect.EARTH, 25).add(Aspect.FIRE, 25).add(Aspect.WATER, 25).add(Aspect.ORDER, 25).add(Aspect.ENTROPY, 25), new Object[] { "www", "csl", "www", 'w', getItem(Info.witchbucket), 'c', new ItemStack(getBlock(Info.thaumplants), 1, 3), 'l', new ItemStack(getBlock(Info.thaumplants),1, 2), 's', new ItemStack(Block.sapling, 1, 3) }));
+	    	ConfigResearch.recipes.put("Greatwood2", ThaumcraftApi.addArcaneCraftingRecipe("GREATWOOD", new ItemStack(getBlock(Info.thaumplants), 1, 0), new AspectList().add(Aspect.AIR, 25).add(Aspect.EARTH, 25).add(Aspect.FIRE, 25).add(Aspect.WATER, 25).add(Aspect.ORDER, 25).add(Aspect.ENTROPY, 25), new Object[] { "www", "lsc", "www", 'w', getItem(Info.witchbucket), 'c', new ItemStack(getBlock(Info.thaumplants), 1, 3), 'l', new ItemStack(getBlock(Info.thaumplants),1, 2), 's', new ItemStack(Block.sapling, 1, 3) }));
+	    }
 	}
 
 	public static void addWorkbenchRecipes()

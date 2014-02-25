@@ -14,8 +14,10 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import exaliquo.data.Colors;
+import exaliquo.data.Configurations;
 
-@Mod(modid = "exaliquo", name = "Ex Aliquo 1.6.4", version = "0.8", dependencies = "required-after:crowley.skyblock@[1.23,);after:TConstruct;after:Natura@[2.1.14,);after:arsmagica2;after:Thaumcraft@[4.1,)")
+@Mod(modid = "exaliquo", name = "Ex Aliquo 1.6.4", version = "0.8.2", dependencies = "required-after:crowley.skyblock@[1.26,);after:TConstruct;after:Natura@[2.1.14,);after:arsmagica2;after:Thaumcraft@[4.1,)")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 
 public class exaliquo {
@@ -29,6 +31,8 @@ public class exaliquo {
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		Configurations.Load(event.getModConfigurationDirectory());
+		Registries.registerItems();
+		Registries.registerRecipes();
 	}
 	
 	@EventHandler
@@ -48,6 +52,7 @@ public class exaliquo {
 			MoltenMetals.addToSmelting();
 			Colors.registerTinkerColors();
 			ExtraCompost.registerTinkerCompost();
+			HotStuff.addTinkerFuels();
 		}
 		if (Loader.isModLoaded("Natura"))
 		{
@@ -67,6 +72,7 @@ public class exaliquo {
 			BonusHammerTime.addArstoMCHammer();
 			Colors.registerArsColors();
 			ExtraCompost.registerArsCompost();
+			HotStuff.addArsFuels();
 			if (Loader.isModLoaded("TConstruct") && (Configurations.WYNAUT))
 			{
 				exaliquo.logger.log(Level.INFO,"What's better than a single Wobbuffet? ALL THE WYNAUT");
@@ -76,7 +82,6 @@ public class exaliquo {
 		if (Loader.isModLoaded("Thaumcraft"))
 		{
 			exaliquo.logger.info("Loading Thaumcraft 4 Compat");
-			Registries.registerThaumItems();
 			ExThaumiquo.addAspectstoNihilo();
 			ExThaumiquo.addCrucibleRecipes();
 			ExThaumiquo.addArcaneRecipes();
@@ -86,6 +91,9 @@ public class exaliquo {
 			ExThaumiquo.addResearch();
 			BonusSieving.addThaumcraftToSieves();
 			BonusHammerTime.addThaumcraftToMCHammer();
+			HotStuff.addThaumicFuels();
+			Colors.registerThaumicColors();
+			ExtraCompost.registerThaumicCompost();
 		}
 	}
 }

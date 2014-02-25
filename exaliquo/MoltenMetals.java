@@ -10,10 +10,11 @@ import tconstruct.TConstruct;
 import tconstruct.library.crafting.Smeltery;
 import exnihilo.registries.CrucibleRegistry;
 
-import static exaliquo.ModIDs.getIDs;
-import static exaliquo.ModIDs.getItem;
-import static exaliquo.ModIDs.getBlock;
-import exaliquo.ModIDs.Info;
+import static exaliquo.data.ModIDs.getBlock;
+import static exaliquo.data.ModIDs.getIDs;
+import static exaliquo.data.ModIDs.getItem;
+import exaliquo.data.Configurations;
+import exaliquo.data.ModIDs.Info;
 
 public class MoltenMetals {
 	

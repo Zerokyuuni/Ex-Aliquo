@@ -4,8 +4,9 @@ import net.minecraft.block.Block;
 import net.minecraftforge.oredict.OreDictionary;
 import exnihilo.registries.HammerRegistry;
 
-import static exaliquo.ModIDs.getIDs;
-import exaliquo.ModIDs.Info;
+import static exaliquo.data.ModIDs.getIDs;
+import exaliquo.data.Configurations;
+import exaliquo.data.ModIDs.Info;
 
 public class BonusHammerTime {
 

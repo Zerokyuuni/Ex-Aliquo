@@ -1,4 +1,4 @@
-package exaliquo;
+package exaliquo.data;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,8 +24,10 @@ public class Configurations {
 	public static boolean sieveNovas;
 	public static boolean miniSmelting;
 	public static int silverwoodSwitch;
-	public static int thaumHammer;
 	public static boolean alternatewater;
+	public static boolean runichax;
+	public static int thaumHammer;
+	public static int invarHammer;
 	
 	public static void Load (File location)
 	{
@@ -61,8 +63,12 @@ public class Configurations {
 		WYNAUT = config.get("ArsMagica Tweaks","TinkerBridge", true).getBoolean(true);
 		
 		silverwoodSwitch = config.get("Thaumcraft Tweaks","Silverwood Setting", 0, "Set 0 for default, 1 for tweaked difficulty, and -1 to disable. See the forum post for difficulty changes").getInt(0);
-		thaumHammer = config.get("Thaumcraft Tweaks","Thaumium Hammer ID", 20160).getInt(20160);
 		alternatewater = config.get("Thaumcraft Tweaks","For tundra-less skyblocks", false).getBoolean(false);
+		runichax = config.get("Thaumcraft Tweaks","Alternate Runics to prevent wall", true, "False to instead change how greatwoods are obtained").getBoolean(false);
+		
+		thaumHammer = config.get("Ex Aliquo things","Thaumium Hammer ID", 20160).getInt(20160);
+		invarHammer = config.get("Ex Aliquo things","Invar Hammer ID", 20161).getInt(20161);
+		
 		
 		config.save();
 	}

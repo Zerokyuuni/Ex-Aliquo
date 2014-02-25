@@ -3,8 +3,9 @@ package exaliquo;
 import exnihilo.registries.CompostRegistry;
 import exnihilo.registries.ColorRegistry;
 
-import static exaliquo.ModIDs.getIDs;
-import exaliquo.ModIDs.Info;
+import static exaliquo.data.ModIDs.getIDs;
+import exaliquo.data.Configurations;
+import exaliquo.data.ModIDs.Info;
 
 public class ExtraCompost {
 
@@ -99,5 +100,16 @@ public class ExtraCompost {
 		CompostRegistry.register(getIDs(Info.witchleaves), 0, 0.125F, ColorRegistry.color("witchwood"));
 		CompostRegistry.register(getIDs(Info.wakebloom), 0, 0.125F, ColorRegistry.color("wakebloom"));
 		CompostRegistry.register(getIDs(Info.tarma), 0, 0.125F, ColorRegistry.color("tarma"));
+	}
+	
+	public static void registerThaumicCompost()
+	{
+		CompostRegistry.register(getIDs(Info.thaumplants), 0, 0.125F, ColorRegistry.color("greatwood"));
+		CompostRegistry.register(getIDs(Info.thaumplants), 1, 0.125F, ColorRegistry.color("silverwood"));
+		CompostRegistry.register(getIDs(Info.thaumplants), 2, 0.1F, ColorRegistry.color("shimmerleaf"));
+		CompostRegistry.register(getIDs(Info.thaumplants), 3, 0.1F, ColorRegistry.color("cinderpearl"));
+		CompostRegistry.register(getIDs(Info.thaumplants), 4, 0.1F, ColorRegistry.color("etherealbloom"));
+		CompostRegistry.register(getIDs(Info.thaumleaves), 0, 0.125F, ColorRegistry.color("greatwood"));
+		CompostRegistry.register(getIDs(Info.thaumleaves), 1, 0.125F, ColorRegistry.color("silverwood"));
 	}
 }

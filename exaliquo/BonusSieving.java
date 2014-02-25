@@ -5,8 +5,9 @@ import net.minecraft.block.Block;
 import static cpw.mods.fml.common.registry.GameRegistry.findItem;
 import static cpw.mods.fml.common.registry.GameRegistry.findBlock;
 
-import static exaliquo.ModIDs.getIDs;
-import exaliquo.ModIDs.Info;
+import static exaliquo.data.ModIDs.getIDs;
+import exaliquo.data.Configurations;
+import exaliquo.data.ModIDs.Info;
 import exnihilo.registries.SieveRegistry;
 
 public class BonusSieving
@@ -18,7 +19,6 @@ public class BonusSieving
 	
 	public static void addTinkerToSieves()
 	{
-		//SieveRegistry.SieveRegistry.register(gravel, 0, Block.tnt.blockID, 0, 1); //WYNAUT
 		if (Configurations.sieveOreBushes)
 		{
 			SieveRegistry.register(dirt, 0, getIDs(Info.oreberrybush), 0, 256);		//Iron

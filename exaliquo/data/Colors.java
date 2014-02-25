@@ -1,4 +1,4 @@
-package exaliquo;
+package exaliquo.data;
 
 import exnihilo.registries.ColorRegistry;
 import exnihilo.registries.helpers.Color;
@@ -44,7 +44,7 @@ public class Colors {
 		ColorRegistry.register("willow", new Color("355A24"));
 		ColorRegistry.register("darkwood", new Color("172C51"));
 		ColorRegistry.register("fusewood", new Color("125561"));
-		ColorRegistry.register("ghostwood", new Color(149F, 136F, 108F,127F));
+		ColorRegistry.register("ghostwood", new Color(149F, 136F, 108F, 127F));
 		ColorRegistry.register("bloodwood", new Color("B40F0F"));
 		ColorRegistry.register("blueglow", new Color("2A3DC8"));
 		ColorRegistry.register("greenglow", new Color("7CFF1B"));
@@ -66,5 +66,14 @@ public class Colors {
 		ColorRegistry.register("orchid", new Color("6070C9"));
 		ColorRegistry.register("tarma", new Color("3C2D1B"));
 		ColorRegistry.register("wakebloom", new Color("4B00D8"));
+	}
+	
+	public static void registerThaumicColors()
+	{
+		ColorRegistry.register("shimmerleaf", new Color("74DB9E"));
+		ColorRegistry.register("cinderpearl", new Color("FF9611"));
+		ColorRegistry.register("greatwood", new Color("1E3017"));
+		ColorRegistry.register("silverwood", new Color("86A5D7"));
+		ColorRegistry.register("etherealbloom", new Color("8AD7C3"));
 	}
 }

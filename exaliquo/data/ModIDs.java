@@ -1,4 +1,4 @@
-package exaliquo;
+package exaliquo.data;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -7,11 +7,12 @@ import static cpw.mods.fml.common.registry.GameRegistry.findBlock;
 import static cpw.mods.fml.common.registry.GameRegistry.findItem;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import exaliquo.ModIDs.Info;
+import exaliquo.exaliquo;
+import exaliquo.data.ModIDs.Info;
 
 public class ModIDs
 {
-	enum Info
+	public enum Info
 	{
 		woodbarrel("crowley.skyblock","block","barrel"),
 		stonebarrel("crowley.skyblock","block","barrel_stone"),
@@ -81,6 +82,7 @@ public class ModIDs
 		oreberrybush("TConstruct","block","ore.berries.one"),
 		oreberrybush2("TConstruct","block","ore.berries.two"),
 		hambone("TConstruct","block","MeatBlock"),
+		storch("TConstruct","block","decoration.stonetorch"),
 		materials("TConstruct","item","materials"),
 		oreberry("TConstruct","item","oreBerries"),
 		
@@ -111,11 +113,18 @@ public class ModIDs
 		wakebloom("arsmagica2","block","WakeBloom"),
 		tarma("arsmagica2","block","TarmaRoot"),
 		essenceBlock("arsmagica2","block","liquidEssence"),
+		vtorch("arsmagica2","block","VinteumTorch"),
 		essenceBucket("arsmagica2","item","liquidEssenceBucket"),
 		magicore("arsmagica2","item","itemOre"),
 		essences("arsmagica2","item","essence"),
 		
 		thaumplants("Thaumcraft","block","blockCustomPlant"),
+		thaumleaves("Thaumcraft","block","blockMagicalLeaves"),
+		ttorch("Thaumcraft","block","blockAiry"),
+		candle("Thaumcraft","block","blockCandle"),
+		devices("Thaumcraft","block","blockStoneDevice"),
+		cosmetics("Thaumcraft","block","blockCosmeticSolid"),
+		cluster("Thaumcraft","block","blockCrystal"),
 		shard("Thaumcraft","item","ItemShard"),
 		resources("Thaumcraft","item","ItemResource"),
 		nuggets("Thaumcraft","item","ItemNugget"),
@@ -139,7 +148,6 @@ public class ModIDs
 	}
 	public static int getIDs(Info info)
 	{
-		//Integer id = (Integer) ((info.type == "block") ? findBlock(info.mod, info.sname) : findItem(info.mod, info.sname));
 		if (info.type == "block")
 		{
 			Block id = findBlock(info.mod, info.sname);

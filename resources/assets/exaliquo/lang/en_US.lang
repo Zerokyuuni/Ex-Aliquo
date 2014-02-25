@@ -29,8 +29,14 @@ tc.research_category.SKYCHEMY=Sky Alchemy [ExA]
 exa.name.THAUMHAMMER=Thaumium Hammers [ExA]
 exa.flavor.THAUMHAMMER=Magical Hammering
 exa.page.THAUMHAMMER.1=Any Alchemist that lives in the sky has a best friend in the form of his favorite hammer. Through the efforts of imbuing basic metals with magical aspects, along with your knowledge of Sky-tools, you have learned how to forge Hammers made of Thaumium.
-item.ExAliquo.ThaumHammer.name=Thaumium Hammer
 #
 exa.name.SKYFILTER=Sky Filter [Exa]
 exa.flavor.SKYFILTER=Less than Magical Filtering
 exa.page.SKYFILTER.1=During your time as an Alchemist in the sky, you have learned to make Vis filters out of less magical objects that function as their silverwoody counterparts
+#
+exa.name.SKYMATRIX=Sky Matrix [ExA]
+exa.flavor.SKYMATRIX=Roundabout Crafting
+exa.page.SKYMATRIX.1=Alchemists of the sky pass on knowledge that allows them to compress vis necessary to augment their arcane tinkering.
+#Items
+item.ExAliquo.ThaumHammer.name=Thaumium Hammer
+item.ExAliquo.InvarHammer.name=Invar Hammer

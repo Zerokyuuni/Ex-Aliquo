@@ -8,9 +8,9 @@ import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
-import static exaliquo.ModIDs.getItem;
-import static exaliquo.ModIDs.getBlock;
-import exaliquo.ModIDs.Info;
+import static exaliquo.data.ModIDs.getBlock;
+import static exaliquo.data.ModIDs.getItem;
+import exaliquo.data.ModIDs.Info;
 
 public class EssenceRefining
 {
