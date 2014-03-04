@@ -6,13 +6,12 @@ import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
-import thaumcraft.api.IRepairable;
 import exaliquo.data.ToolMaterials;
 import exaliquo.data.ModIDs.Info;
 import static exaliquo.data.ModIDs.getItem;
 import exnihilo.items.hammers.ItemHammerBase;
 
-public class ThaumiumHammer extends ItemHammerBase implements IRepairable
+public class ThaumiumHammer extends ItemHammerBase
 {
 	public ThaumiumHammer(int id, EnumToolMaterial material) {
 		super(id, material);

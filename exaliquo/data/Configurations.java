@@ -15,6 +15,7 @@ public class Configurations {
 	public static boolean sieveEssenceBushes;
 	public static boolean sieveNetherOres;
 	public static boolean sieveRedwoods;
+	public static boolean sieveHopseed;
 	public static boolean sieveOverworldTrees;
 	public static boolean allowTinkerBushCompost;
 	public static boolean sieveNetherTrees;
@@ -26,8 +27,11 @@ public class Configurations {
 	public static int silverwoodSwitch;
 	public static boolean alternatewater;
 	public static boolean runichax;
+	public static boolean fishingOysters;
+	public static boolean endOverride;
 	public static int thaumHammer;
 	public static int invarHammer;
+	public static int reedCrook;
 	
 	public static void Load (File location)
 	{
@@ -52,6 +56,7 @@ public class Configurations {
 		miniSmelting = config.get("TCon Tweaks", "Enable mini-smelteries", false).getBoolean(false);
 		
 		sieveRedwoods = config.get("Natura Tweaks", "Can redwood trees be obtained", false, "Redwoods eat every block going both up and down. Use at your own peril. Or enjoyment").getBoolean(false);
+		sieveHopseed = config.get("Natura Tweaks", "Can hopseed trees be obtained", false).getBoolean(false);
 		sieveOverworldTrees = config.get("Natura Tweaks", "Can natura trees be obtained", true).getBoolean(true);
 		sieveNetherTrees = config.get("Natura Tweaks", "Can nether trees be obtained", true).getBoolean(true);
 		sieveBerryBushes = config.get("Natura Tweaks", "Can berry bushes be obtained", true).getBoolean(true);
@@ -62,12 +67,16 @@ public class Configurations {
 		
 		WYNAUT = config.get("ArsMagica Tweaks","TinkerBridge", true).getBoolean(true);
 		
-		silverwoodSwitch = config.get("Thaumcraft Tweaks","Silverwood Setting", 0, "Set 0 for default, 1 for tweaked difficulty, and -1 to disable. See the forum post for difficulty changes").getInt(0);
-		alternatewater = config.get("Thaumcraft Tweaks","For tundra-less skyblocks", false).getBoolean(false);
-		runichax = config.get("Thaumcraft Tweaks","Alternate Runics to prevent wall", true, "False to instead change how greatwoods are obtained").getBoolean(false);
+		silverwoodSwitch = config.get("Thaumcraft Tweaks", "Silverwood Setting", 0, "Set 0 for default, 1 for tweaked difficulty, and -1 to disable. See the forum post for difficulty changes").getInt(0);
+		alternatewater = config.get("Thaumcraft Tweaks", "For tundra-less skyblocks", false).getBoolean(false);
+		runichax = config.get("Thaumcraft Tweaks", "Alternate Runics to prevent wall", true, "False to instead change how greatwoods are obtained").getBoolean(false);
+		
+		fishingOysters = config.get("Mariculture Tweaks", "Can Oysters be obtained via fishing", true).getBoolean(true);
+		endOverride = config.get("Mariculture Tweaks", "Override end-only fishables", true).getBoolean(true);
 		
 		thaumHammer = config.get("Ex Aliquo things","Thaumium Hammer ID", 20160).getInt(20160);
 		invarHammer = config.get("Ex Aliquo things","Invar Hammer ID", 20161).getInt(20161);
+		reedCrook = config.get("Ex Aliquo things","Reed Crook", 20300).getInt(20300);
 		
 		
 		config.save();

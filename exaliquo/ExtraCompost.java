@@ -1,5 +1,6 @@
 package exaliquo;
 
+import net.minecraft.item.Item;
 import exnihilo.registries.CompostRegistry;
 import exnihilo.registries.ColorRegistry;
 
@@ -7,8 +8,8 @@ import static exaliquo.data.ModIDs.getIDs;
 import exaliquo.data.Configurations;
 import exaliquo.data.ModIDs.Info;
 
-public class ExtraCompost {
-
+public class ExtraCompost
+{
 	public static void registerTinkerCompost()
 	{
 		if (Configurations.allowTinkerBushCompost)
@@ -111,5 +112,16 @@ public class ExtraCompost {
 		CompostRegistry.register(getIDs(Info.thaumplants), 4, 0.1F, ColorRegistry.color("etherealbloom"));
 		CompostRegistry.register(getIDs(Info.thaumleaves), 0, 0.125F, ColorRegistry.color("greatwood"));
 		CompostRegistry.register(getIDs(Info.thaumleaves), 1, 0.125F, ColorRegistry.color("silverwood"));
+	}
+
+	public static void registerGrowthcraftAppleCompost()
+	{
+		CompostRegistry.register(getIDs(Info.gcapple), 0, 0.03125F, ColorRegistry.color("apple"));
+		CompostRegistry.register(Item.appleRed.itemID, 0, 0.03125F, ColorRegistry.color("apple"));
+	}
+	public static void registerGrowthcraftBambooCompost()
+	{
+		CompostRegistry.register(getIDs(Info.gcbamboo), 0, 0.125F, ColorRegistry.color("oak"));
+		CompostRegistry.register(getIDs(Info.gcleaves), 0, 0.125F, ColorRegistry.color("oak"));
 	}
 }

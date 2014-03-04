@@ -1,8 +1,10 @@
 package exaliquo;
 
+import java.lang.reflect.Constructor;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import mariculture.core.handlers.LogHandler;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 
@@ -17,7 +19,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 import exaliquo.data.Colors;
 import exaliquo.data.Configurations;
 
-@Mod(modid = "exaliquo", name = "Ex Aliquo 1.6.4", version = "0.8.2", dependencies = "required-after:crowley.skyblock@[1.26,);after:TConstruct;after:Natura@[2.1.14,);after:arsmagica2;after:Thaumcraft@[4.1,)")
+@Mod(modid = "exaliquo", name = "Ex Aliquo", version = "0.9", dependencies = "required-after:crowley.skyblock@[1.26b,);after:TConstruct;after:Natura@[2.1.14,);after:arsmagica2;after:Thaumcraft@[4.1,);after:Growthcraft|Apples;after:Growthcraft|Bamboo;after:Growthcraft|Bees;after:Mariculture")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 
 public class exaliquo {
@@ -44,7 +46,12 @@ public class exaliquo {
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
-		
+		if (Configurations.isOre)
+		{
+			Registries.registerOreDict();
+		}
+		GeneralAliquo.registerGeneralCompost();
+		GeneralAliquo.registerSieves();
 		if (Loader.isModLoaded("TConstruct"))
 		{
 			exaliquo.logger.log(Level.INFO,"Loading Tinker's Construct Compat");
@@ -60,6 +67,7 @@ public class exaliquo {
 			BonusSieving.addNaturaToSieves();
 			Colors.registerNaturaColors();
 			ExtraCompost.registerNaturaCompost();
+			Registries.addNaturaCrafting();
 		}
 		if (Loader.isModLoaded("arsmagica2"))
 		{
@@ -94,6 +102,29 @@ public class exaliquo {
 			HotStuff.addThaumicFuels();
 			Colors.registerThaumicColors();
 			ExtraCompost.registerThaumicCompost();
+		}
+		if(Loader.isModLoaded("Growthcraft|Apples"))
+		{
+			exaliquo.logger.info("Loading GC Apple Compat");
+			ExtraCompost.registerGrowthcraftAppleCompost();
+		}
+		if (Loader.isModLoaded("Growthcraft|Bamboo"))
+		{
+			exaliquo.logger.info("Loading GC Bamboo Compat");
+			BonusSieving.addBambooToSieves();
+			ExtraCompost.registerGrowthcraftBambooCompost();
+		}
+		if (Loader.isModLoaded("Growthcraft|Bees"))
+		{
+			exaliquo.logger.info("Loading GC Bees Compat");
+			BonusSieving.addBeesToSieves();
+		}
+		if (Loader.isModLoaded("Mariculture"))
+		{
+			exaliquo.logger.info("Loading Mariculture Compat");
+			BonusSieving.addMaricultureToSieves();
+			SkyFish.overrideFish();
+			SkyFish.addBooty();
 		}
 	}
 }

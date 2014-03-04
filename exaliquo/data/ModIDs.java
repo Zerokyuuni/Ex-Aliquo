@@ -98,6 +98,9 @@ public class ModIDs
 		thornvines("Natura","block","Thornvines"),
 		cactus("Natura","block","Saguaro"),
 		bluebell("Natura","block","Bluebells"),
+		topiary("Natura","block","GrassBlock"),
+		nethersoil("Natura","block","soil.tainted"),
+		nethersand("Natura","block","heatsand"),
 		fruit("Natura","item","saguaro.fruit"),
 		goodberry("Natura","item","berry"),
 		badberry("Natura","item","berry.nether"),
@@ -129,7 +132,17 @@ public class ModIDs
 		resources("Thaumcraft","item","ItemResource"),
 		nuggets("Thaumcraft","item","ItemNugget"),
 		manabean("Thaumcraft","item","ItemManaBean"),
-		nodejar("Thaumcraft","item","BlockJarNodeItem");
+		nodejar("Thaumcraft","item","BlockJarNodeItem"),
+		
+		gcbamboo("Growthcraft|Bamboo","block","grc.bambooShoot"),
+		gcleaves("Growthcraft|Bamboo","block","grc.bambooLeaves"),
+		gcapple("Growthcraft|Apples","item","grc.appleSeeds"),
+		gcbee("Growthcraft|Bees","item","grc.bee"),
+		
+		mariores("Mariculture","block","oreBlocks"),
+		marioyster("Mariculture","block","oysterBlock"),
+		maricoral("Mariculture","item","coral"),
+		maribottle("Mariculture","item","liquidContainers");
 		
 		private final String mod;
 		private final String type;
