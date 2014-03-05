@@ -20,7 +20,6 @@ public class GeneralAliquo
 	{
 		for (ItemStack sapling : treeSapling)
 		{
-			System.out.println(sapling.getDisplayName());
 			if (sapling.itemID != 6)
 			{
 				for (int i = 0; i < 16; i++)
@@ -31,7 +30,6 @@ public class GeneralAliquo
 		}
 		for (ItemStack leaves : treeLeaves)
 		{
-			System.out.println(leaves.getDisplayName());
 			if (leaves.itemID != 18)
 			{
 				for (int i = 0; i < 16; i++)
