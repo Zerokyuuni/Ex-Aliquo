@@ -19,7 +19,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 import exaliquo.data.Colors;
 import exaliquo.data.Configurations;
 
-@Mod(modid = "exaliquo", name = "Ex Aliquo", version = "0.9.1", dependencies = "required-after:crowley.skyblock@[1.26b,);after:TConstruct;after:Natura@[2.1.14,);after:arsmagica2;after:Thaumcraft@[4.1,);after:Growthcraft|Apples;after:Growthcraft|Bamboo;after:Growthcraft|Bees;after:Mariculture")
+@Mod(modid = "exaliquo", name = "Ex Aliquo", version = "0.9.2", dependencies = "required-after:crowley.skyblock@[1.26b,);after:TConstruct;after:Natura@[2.1.14,);after:arsmagica2;after:Thaumcraft@[4.1,);after:Growthcraft|Apples;after:Growthcraft|Bamboo;after:Growthcraft|Bees;after:Mariculture;after:MineFactoryReloaded;after:NetherOres")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 
 public class exaliquo {
@@ -52,6 +52,7 @@ public class exaliquo {
 		}
 		GeneralAliquo.registerGeneralCompost();
 		GeneralAliquo.registerSieves();
+		GeneralAliquo.registerHammering();
 		if (Loader.isModLoaded("TConstruct"))
 		{
 			exaliquo.logger.log(Level.INFO,"Loading Tinker's Construct Compat");

@@ -3,7 +3,6 @@ package exaliquo.items;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
 import exnihilo.items.ItemCrook;
 
 public class ReedCrook extends ItemCrook

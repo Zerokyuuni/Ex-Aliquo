@@ -83,8 +83,10 @@ public class ModIDs
 		oreberrybush2("TConstruct","block","ore.berries.two"),
 		hambone("TConstruct","block","MeatBlock"),
 		storch("TConstruct","block","decoration.stonetorch"),
+		craftedsoil("TConstruct","block","CraftedSoil"),
 		materials("TConstruct","item","materials"),
 		oreberry("TConstruct","item","oreBerries"),
+		tinkerfood("TConstruct","item","strangeFood"),
 		
 		flora("Natura","block","florasapling"),
 		leaves("Natura","block","floraleaves"),
@@ -134,6 +136,7 @@ public class ModIDs
 		manabean("Thaumcraft","item","ItemManaBean"),
 		nodejar("Thaumcraft","item","BlockJarNodeItem"),
 		
+		gcsappling("Growthcraft|Apples","block","grc.appleSapling"),
 		gcbamboo("Growthcraft|Bamboo","block","grc.bambooShoot"),
 		gcleaves("Growthcraft|Bamboo","block","grc.bambooLeaves"),
 		gcapple("Growthcraft|Apples","item","grc.appleSeeds"),
@@ -142,7 +145,12 @@ public class ModIDs
 		mariores("Mariculture","block","oreBlocks"),
 		marioyster("Mariculture","block","oysterBlock"),
 		maricoral("Mariculture","item","coral"),
-		maribottle("Mariculture","item","liquidContainers");
+		maribottle("Mariculture","item","liquidContainers"),
+		
+		hellfeesh("NetherOres","block","netherOresBlockHellfish"),
+		
+		rubbersapling("MineFactoryReloaded","block","mfr.rubberwood.sapling"),
+		rubberleaves("MineFactoryReloaded","block","mfr.rubberwood.leaves");
 		
 		private final String mod;
 		private final String type;

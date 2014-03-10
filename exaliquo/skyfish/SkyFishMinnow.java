@@ -15,6 +15,8 @@ import exaliquo.SkyFish;
 
 public class SkyFishMinnow extends FishMinnow
 {
+	private Icon theIcon;
+
 	public SkyFishMinnow(int id)
 	{
 		super(id);

@@ -118,10 +118,17 @@ public class ExtraCompost
 	{
 		CompostRegistry.register(getIDs(Info.gcapple), 0, 0.03125F, ColorRegistry.color("apple"));
 		CompostRegistry.register(Item.appleRed.itemID, 0, 0.03125F, ColorRegistry.color("apple"));
+		CompostRegistry.register(getIDs(Info.gcsappling), 0, 0.03125F, ColorRegistry.color("oak"));
 	}
 	public static void registerGrowthcraftBambooCompost()
 	{
 		CompostRegistry.register(getIDs(Info.gcbamboo), 0, 0.125F, ColorRegistry.color("oak"));
 		CompostRegistry.register(getIDs(Info.gcleaves), 0, 0.125F, ColorRegistry.color("oak"));
+	}
+	
+	public static void registerMFRCompost()
+	{
+		CompostRegistry.register(getIDs(Info.rubberleaves), 0, 0.125F, ColorRegistry.color("oak"));
+		CompostRegistry.register(getIDs(Info.rubbersapling), 0, 0.125F, ColorRegistry.color("oak"));
 	}
 }

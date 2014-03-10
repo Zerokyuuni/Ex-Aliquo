@@ -9,6 +9,7 @@ import static exaliquo.data.ModIDs.getIDs;
 import exaliquo.data.Configurations;
 import exaliquo.data.ModIDs.Info;
 import exnihilo.registries.SieveRegistry;
+import mariculture.world.WorldPlus;
 
 public class BonusSieving
 {
@@ -38,6 +39,9 @@ public class BonusSieving
 			SieveRegistry.register(soulsand, 0, getIDs(Info.materials), 28, 64); //Cobalt
 			SieveRegistry.register(soulsand, 0, getIDs(Info.materials), 29, 64); //Ardite
 		}
+		SieveRegistry.register(getIDs(Info.craftedsoil), 0, getIDs(Info.tinkerfood), 0, 4);
+		SieveRegistry.register(getIDs(Info.craftedsoil), 0, getIDs(Info.materials), 1, 3);
+		SieveRegistry.register(getIDs(Info.craftedsoil), 0, getIDs(Info.materials), 17, 10);
 	}
 
 	public static void addNaturaToSieves()
@@ -124,6 +128,7 @@ public class BonusSieving
 	{
 		SieveRegistry.register(gravel, 0, getIDs(Info.nuggets), 5, 8);
 		SieveRegistry.register(gravel, 0, getIDs(Info.resources), 6, 8);
+		SieveRegistry.register(dirt, 0, getIDs(Info.manabean), 0, 64);
 	}
 	
 	public static void addBambooToSieves()
@@ -142,7 +147,7 @@ public class BonusSieving
 	public static void addMaricultureToSieves()
 	{
 		SieveRegistry.register(sand, 0, getIDs(Info.mariores), 3, 12);
-		SieveRegistry.register(sand, 0, getIDs(Info.maricoral), 0, 64);
+		if (WorldPlus.isActive) SieveRegistry.register(sand, 0, getIDs(Info.maricoral), 0, 64);
 		SieveRegistry.register(getIDs(Info.mariores), 3, getIDs(Info.mariores), 2, 128);
 	}
 }

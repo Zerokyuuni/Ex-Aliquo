@@ -32,6 +32,7 @@ public class Configurations {
 	public static int thaumHammer;
 	public static int invarHammer;
 	public static int reedCrook;
+	public static boolean ninjaFeesh;
 	
 	public static void Load (File location)
 	{
@@ -77,6 +78,7 @@ public class Configurations {
 		thaumHammer = config.get("Ex Aliquo things","Thaumium Hammer ID", 20160).getInt(20160);
 		invarHammer = config.get("Ex Aliquo things","Invar Hammer ID", 20161).getInt(20161);
 		reedCrook = config.get("Ex Aliquo things","Reed Crook", 20300).getInt(20300);
+		ninjaFeesh = config.get("Ex Aliquo things","Hide Feesh from hammers",true).getBoolean(true);
 		
 		
 		config.save();
