@@ -1,4 +1,4 @@
-package exaliquo.skyfish; 
+package exaliquo.Skyfish; 
 
 import java.util.Random;
 
@@ -30,20 +30,5 @@ public class SkyFishAngel extends FishAngel
 			return true;
 		}
 		return false;
-	}
-	
-	@Override
-	public void onConsumed(World world, EntityPlayer player)
-	{
-		if (SkyFish.tastyfish)
-		{
-			player.getFoodStats().addStats(1, 0.07F);
-			world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-		}
-		else
-		{
-			player.getFoodStats().addStats(2, 2F);
-			world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-		}
 	}
 }

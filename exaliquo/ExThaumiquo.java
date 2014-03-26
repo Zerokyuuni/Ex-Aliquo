@@ -2,6 +2,7 @@ package exaliquo;
 
 import java.util.List;
 
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -37,7 +38,9 @@ public class ExThaumiquo {
 				0,
 				0,
 				0,
-				new ItemStack(Block.cobblestone, 1, 0)).setPages(new ResearchPage("exa.page.SKYCHEMY")).setStub().setRound().setAutoUnlock().registerResearchItem();
+				new ItemStack(Block.cobblestone, 1, 0)).setPages(new ResearchPage[] {		
+				new ResearchPage("exa.page.SKYCHEMY.1"), new ResearchPage("exa.page.SKYCHEMY.2"), new ResearchPage("exa.page.SKYCHEMY." + (Configurations.alternatewater ? 3 : 4))
+				}).setStub().setRound().setAutoUnlock().registerResearchItem();
 		
 		if (Configurations.runichax)
 		{
@@ -49,7 +52,7 @@ public class ExThaumiquo {
 					0,
 					new ItemStack(getBlock(Info.devices), 1, 2)).setPages(new ResearchPage[] {
 							new ResearchPage("exa.page.SKYMATRIX.1"), new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("SkyMatrix"))
-					}).setParentsHidden("INFUSION").setConcealed().setSecondary().registerResearchItem();
+					}).setParentsHidden("INFUSION").setConcealed().registerResearchItem();
 			
 			new ExAResearchItem("GREATWOOD",
 					"SKYCHEMY",
@@ -127,7 +130,7 @@ public class ExThaumiquo {
 				0,
 				new ItemStack(Registries.hammerThaum)).setPages(new ResearchPage[] {
 						new ResearchPage("exa.page.THAUMHAMMER.1"), new ResearchPage((IRecipe)ConfigResearch.recipes.get("ThaumiumHammer"))
-				}).setParentsHidden("THAUMIUM").setConcealed().setSecondary().registerResearchItem();
+				}).setParentsHidden("THAUMIUM").setConcealed().registerResearchItem();
 		
 		new ExAResearchItem("SKYFILTER",
 				"SKYCHEMY",
@@ -137,7 +140,17 @@ public class ExThaumiquo {
 				0,
 				new ItemStack(getItem(Info.resources), 1, 8)).setPages(new ResearchPage[] {
 						new ResearchPage("exa.page.SKYFILTER.1"), new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("Skyfilter"))
-				}).setParentsHidden("DISTILESSENTIA").setConcealed().setSecondary().registerResearchItem();
+				}).setParentsHidden("DISTILESSENTIA").setConcealed().registerResearchItem();
+		
+		new ExAResearchItem("OBSIDIANTOTEM",
+				"SKYCHEMY",
+				new AspectList().add(Aspect.ELDRITCH, 6).add(Aspect.STONE, 12).add(Aspect.DARKNESS, 6),
+				2,
+				4,
+				1,
+				new ItemStack(getBlock(Info.cosmetics), 1, 0)).setPages(new ResearchPage[] {
+						new ResearchPage("exa.page.OBSIDIANTOTEM.1"), new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("ObsidianTotem"))
+				}).setSecondary().registerResearchItem();
 	}
 	
 	public static void addInfusionRecipes()
@@ -197,8 +210,8 @@ public class ExThaumiquo {
 
 	public static void addCrucibleRecipes()
 	{
-		ConfigResearch.recipes.put("Shimmerleaf", ThaumcraftApi.addCrucibleRecipe("SHIMMERLEAF", new ItemStack(getBlock(Info.thaumplants), 1, 2), new ItemStack(Block.plantRed, 1, 0), new AspectList().add(Aspect.MAGIC, 12).add(Aspect.EXCHANGE, 12).add(Aspect.PLANT, 12).add(Aspect.POISON, 12)));
-		ConfigResearch.recipes.put("Cinderpearl", ThaumcraftApi.addCrucibleRecipe("CINDERPEARL", new ItemStack(getBlock(Info.thaumplants), 1, 3), new ItemStack(Block.plantYellow, 1, 0), new AspectList().add(Aspect.MAGIC, 12).add(Aspect.EXCHANGE, 12). add(Aspect.PLANT, 12).add(Aspect.FIRE, 12)));
+		ConfigResearch.recipes.put("Shimmerleaf", ThaumcraftApi.addCrucibleRecipe("SHIMMERLEAF", new ItemStack(getBlock(Info.thaumplants), 1, 2), new ItemStack(Block.plantRed, 1, 0), new AspectList().add(Aspect.MAGIC, 4).add(Aspect.EXCHANGE, 4).add(Aspect.PLANT, 4).add(Aspect.POISON, 4)));
+		ConfigResearch.recipes.put("Cinderpearl", ThaumcraftApi.addCrucibleRecipe("CINDERPEARL", new ItemStack(getBlock(Info.thaumplants), 1, 3), new ItemStack(Block.plantYellow, 1, 0), new AspectList().add(Aspect.MAGIC, 4).add(Aspect.EXCHANGE, 4). add(Aspect.PLANT, 4).add(Aspect.FIRE, 4)));
 	}
 	
 	public static void addArcaneRecipes()
@@ -213,6 +226,7 @@ public class ExThaumiquo {
 	    	ConfigResearch.recipes.put("Greatwood1", ThaumcraftApi.addArcaneCraftingRecipe("GREATWOOD", new ItemStack(getBlock(Info.thaumplants), 1, 0), new AspectList().add(Aspect.AIR, 25).add(Aspect.EARTH, 25).add(Aspect.FIRE, 25).add(Aspect.WATER, 25).add(Aspect.ORDER, 25).add(Aspect.ENTROPY, 25), new Object[] { "www", "csl", "www", 'w', getItem(Info.witchbucket), 'c', new ItemStack(getBlock(Info.thaumplants), 1, 3), 'l', new ItemStack(getBlock(Info.thaumplants),1, 2), 's', new ItemStack(Block.sapling, 1, 3) }));
 	    	ConfigResearch.recipes.put("Greatwood2", ThaumcraftApi.addArcaneCraftingRecipe("GREATWOOD", new ItemStack(getBlock(Info.thaumplants), 1, 0), new AspectList().add(Aspect.AIR, 25).add(Aspect.EARTH, 25).add(Aspect.FIRE, 25).add(Aspect.WATER, 25).add(Aspect.ORDER, 25).add(Aspect.ENTROPY, 25), new Object[] { "www", "lsc", "www", 'w', getItem(Info.witchbucket), 'c', new ItemStack(getBlock(Info.thaumplants), 1, 3), 'l', new ItemStack(getBlock(Info.thaumplants),1, 2), 's', new ItemStack(Block.sapling, 1, 3) }));
 	    }
+	    ConfigResearch.recipes.put("ObsidianTotem", ThaumcraftApi.addArcaneCraftingRecipe("OBSIDIANTOTEM", new ItemStack(getBlock(Info.cosmetics), 2, 0), new AspectList().add(Aspect.EARTH, 2).add(Aspect.FIRE, 2), new Object[] { " i ", "oeo", " i ", 'i', new ItemStack(Item.dyePowder, 1, 0), 'e', Item.enderPearl, 'o', new ItemStack(getBlock(Info.cosmetics), 1, 1) } ));
 	}
 
 	public static void addWorkbenchRecipes()
@@ -335,6 +349,18 @@ public class ExThaumiquo {
 		ThaumcraftApi.registerObjectTag(getIDs(Info.nomworm), 0, new AspectList().add(Aspect.BEAST, 1).add(Aspect.HUNGER, 1).add(Aspect.FLESH, 1));
 		ThaumcraftApi.registerObjectTag(getIDs(Info.witchbucket), 0, new AspectList().add(Aspect.METAL, 8).add(Aspect.VOID, 1).add(Aspect.WATER, 1).add(Aspect.POISON, 3).add(Aspect.DEATH, 3).add(Aspect.TAINT, 3).add(Aspect.DARKNESS, 3));
 		ThaumcraftApi.registerObjectTag(getIDs(Info.stones), 0, new AspectList().add(Aspect.STONE, 1));
+		
+		if (Configurations.ninjaFeesh && Loader.isModLoaded("NetherOres"))
+		{
+			if (Configurations.whenk)
+			{
+				ThaumcraftApi.registerObjectTag(Block.netherrack.blockID, 0, null);
+			}
+			else
+			{
+				ThaumcraftApi.registerObjectTag(getIDs(Info.hellfeesh), 0, new AspectList().add(Aspect.FIRE, 1).add(Aspect.STONE, 1).add(Aspect.EARTH, 1));
+			}
+		}
 	}
 
 	public static void addPages()

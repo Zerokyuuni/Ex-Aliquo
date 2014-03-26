@@ -41,7 +41,7 @@ public class ExtraCompost
 		CompostRegistry.register(getIDs(Info.goodberry), 2, 0.05F, ColorRegistry.color("blackberry"));
 		CompostRegistry.register(getIDs(Info.goodberry), 3, 0.05F, ColorRegistry.color("geoberry"));
 		CompostRegistry.register(getIDs(Info.badberry), 0, 0.05F, ColorRegistry.color("blightberry"));
-		CompostRegistry.register(getIDs(Info.badberry), 1, 0.05F, ColorRegistry.color("duskbery"));
+		CompostRegistry.register(getIDs(Info.badberry), 1, 0.05F, ColorRegistry.color("duskberry"));
 		CompostRegistry.register(getIDs(Info.badberry), 2, 0.05F, ColorRegistry.color("skyberry"));
 		CompostRegistry.register(getIDs(Info.badberry), 3, 0.05F, ColorRegistry.color("stingberry"));
 		
@@ -114,21 +114,46 @@ public class ExtraCompost
 		CompostRegistry.register(getIDs(Info.thaumleaves), 1, 0.125F, ColorRegistry.color("silverwood"));
 	}
 
-	public static void registerGrowthcraftAppleCompost()
+	public static void registerGCAppleCompost()
 	{
 		CompostRegistry.register(getIDs(Info.gcapple), 0, 0.03125F, ColorRegistry.color("apple"));
 		CompostRegistry.register(Item.appleRed.itemID, 0, 0.03125F, ColorRegistry.color("apple"));
 		CompostRegistry.register(getIDs(Info.gcsappling), 0, 0.03125F, ColorRegistry.color("oak"));
 	}
-	public static void registerGrowthcraftBambooCompost()
+	public static void registerGCBambooCompost()
 	{
-		CompostRegistry.register(getIDs(Info.gcbamboo), 0, 0.125F, ColorRegistry.color("oak"));
-		CompostRegistry.register(getIDs(Info.gcleaves), 0, 0.125F, ColorRegistry.color("oak"));
+		CompostRegistry.register(getIDs(Info.gcbamboo), 0, 0.125F, ColorRegistry.color("bamboo"));
+		CompostRegistry.register(getIDs(Info.gcleaves), 0, 0.125F, ColorRegistry.color("bamboo"));
+	}
+	
+
+	public static void registerGCGrapesCompost()
+	{
+		CompostRegistry.register(getIDs(Info.gcgrape), 0, 0.125F, ColorRegistry.color("grape"));
+		CompostRegistry.register(getIDs(Info.gcgrapeseed), 0, 0.125F, ColorRegistry.color("grape"));
+	}
+
+	public static void registerGCHopsCompost()
+	{
+		CompostRegistry.register(getIDs(Info.gchops), 0, 0.125F, ColorRegistry.color("hops"));
+		CompostRegistry.register(getIDs(Info.gchopseed), 0, 0.125F, ColorRegistry.color("hops"));
+	}
+
+	public static void registerGCRiceCompost()
+	{
+		CompostRegistry.register(getIDs(Info.gcrice), 0, 0.125F, ColorRegistry.color("white"));
+		CompostRegistry.register(getIDs(Info.gcriceball), 0, 0.125F, ColorRegistry.color("white"));
 	}
 	
 	public static void registerMFRCompost()
 	{
-		CompostRegistry.register(getIDs(Info.rubberleaves), 0, 0.125F, ColorRegistry.color("oak"));
-		CompostRegistry.register(getIDs(Info.rubbersapling), 0, 0.125F, ColorRegistry.color("oak"));
+		CompostRegistry.register(getIDs(Info.rubberleaves), 0, 0.125F, ColorRegistry.color("rubberwood"));
+		CompostRegistry.register(getIDs(Info.rubbersapling), 0, 0.125F, ColorRegistry.color("rubberwood"));
+	}
+
+	public static void registerDartcraftCompost()
+	{
+		CompostRegistry.register(getIDs(Info.dartsapling), 0, 0.125F, ColorRegistry.color("force"));
+		CompostRegistry.register(getIDs(Info.dartleaves), 0, 0.125F, ColorRegistry.color("force"));
 	}
 }

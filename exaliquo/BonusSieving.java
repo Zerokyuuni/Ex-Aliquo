@@ -18,6 +18,8 @@ public class BonusSieving
 	static int sand = Block.sand.blockID;
 	static int soulsand = Block.slowSand.blockID;
 	static int stone = Block.stone.blockID;
+	static int netherrack = Block.netherrack.blockID;
+	static int endstone = Block.whiteStone.blockID;
 	static int topiary = getIDs(Info.topiary);
 	
 	public static void addTinkerToSieves()
@@ -34,14 +36,21 @@ public class BonusSieving
 		{
 			SieveRegistry.register(stone, 0, getIDs(Info.oreberrybush2), 1, 128);
 		}
-		if (Configurations.sieveNetherOres)
-		{
-			SieveRegistry.register(soulsand, 0, getIDs(Info.materials), 28, 64); //Cobalt
-			SieveRegistry.register(soulsand, 0, getIDs(Info.materials), 29, 64); //Ardite
-		}
 		SieveRegistry.register(getIDs(Info.craftedsoil), 0, getIDs(Info.tinkerfood), 0, 4);
 		SieveRegistry.register(getIDs(Info.craftedsoil), 0, getIDs(Info.materials), 1, 3);
 		SieveRegistry.register(getIDs(Info.craftedsoil), 0, getIDs(Info.materials), 17, 10);
+	}
+	
+
+	public static void addTinkerOreToSieves()
+	{
+		if (Configurations.sieveNetherOres)
+		{
+			SieveRegistry.register(netherrack, 0, Registries.cobaltOreItem.itemID, 0, 96);
+			SieveRegistry.register(netherrack, 0, Registries.arditeOreItem.itemID, 0, 96);
+			SieveRegistry.register(soulsand, 0, Registries.cobaltOreItem.itemID, 1, 96);
+			SieveRegistry.register(soulsand, 0, Registries.arditeOreItem.itemID, 1, 96);
+		}
 	}
 
 	public static void addNaturaToSieves()
@@ -149,5 +158,54 @@ public class BonusSieving
 		SieveRegistry.register(sand, 0, getIDs(Info.mariores), 3, 12);
 		if (WorldPlus.isActive) SieveRegistry.register(sand, 0, getIDs(Info.maricoral), 0, 64);
 		SieveRegistry.register(getIDs(Info.mariores), 3, getIDs(Info.mariores), 2, 128);
+	}
+	
+	public static void addMFRToSieves()
+	{
+		if (Configurations.sacredohgodthewood) SieveRegistry.register(dirt, 0, getIDs(Info.rubbersapling), 1, 8192);
+	}
+
+
+	public static void addMetallurgyToSieves()
+	{
+		int[] overworld = { gravel, sand, getIDs(Info.dust) };
+		int[] nether = { netherrack, soulsand };
+		
+		//Overworld ores
+		for (int i = 0; i < 3; i++)
+		{
+			SieveRegistry.register(overworld[i], 0, Registries.adamantineOreItem.itemID, i, 128);
+			SieveRegistry.register(overworld[i], 0, Registries.astralsilverOreItem.itemID, i, 14);
+			SieveRegistry.register(overworld[i], 0, Registries.atlarusOreItem.itemID, i, 128);
+			SieveRegistry.register(overworld[i], 0, Registries.carmotOreItem.itemID, i, 32 );
+			SieveRegistry.register(overworld[i], 0, Registries.deepironOreItem.itemID, i, 8);
+			SieveRegistry.register(overworld[i], 0, Registries.infuscoliumOreItem.itemID, i, 12);
+			SieveRegistry.register(overworld[i], 0, Registries.manganeseOreItem.itemID, i, 6);
+			SieveRegistry.register(overworld[i], 0, Registries.mithrilOreItem.itemID, i, 96);
+			SieveRegistry.register(overworld[i], 0, Registries.orichalcumOreItem.itemID, i, 128);
+			SieveRegistry.register(overworld[i], 0, Registries.oureclaseOreItem.itemID, i, 32);
+			SieveRegistry.register(overworld[i], 0, Registries.prometheumOreItem.itemID, i, 6);
+			SieveRegistry.register(overworld[i], 0, Registries.rubraciumOreItem.itemID, i, 144);
+			SieveRegistry.register(overworld[i], 0, Registries.zincOreItem.itemID, i, 12);
+		}
+		
+		//Nether ores
+		for (int i = 0; i < 2; i++)
+		{
+			SieveRegistry.register(nether[i], 0, Registries.alduoriteOreItem.itemID, i, 14);
+			SieveRegistry.register(nether[i], 0, Registries.ceruclaseOreItem.itemID, i, 14);
+			SieveRegistry.register(nether[i], 0, Registries.ignatiusOreItem.itemID, i, 7);
+			SieveRegistry.register(nether[i], 0, Registries.kalendriteOreItem.itemID, i, 128);
+			SieveRegistry.register(nether[i], 0, Registries.lemuriteOreItem.itemID, i, 12);
+			SieveRegistry.register(nether[i], 0, Registries.midasiumOreItem.itemID, i, 18);
+			SieveRegistry.register(nether[i], 0, Registries.sanguiniteOreItem.itemID, i, 128);
+			SieveRegistry.register(nether[i], 0, Registries.shadowironOreItem.itemID, i, 8);
+			SieveRegistry.register(nether[i], 0, Registries.vulcaniteOreItem.itemID, i, 128);
+			SieveRegistry.register(nether[i], 0, Registries.vyroxeresOreItem.itemID, i, 64);
+		}
+		
+		//End ores
+		SieveRegistry.register(endstone, 0, Registries.eximiteOreItem.itemID, 0, 92);
+		SieveRegistry.register(endstone, 0, Registries.meuroiteOreItem.itemID, 0, 138);
 	}
 }

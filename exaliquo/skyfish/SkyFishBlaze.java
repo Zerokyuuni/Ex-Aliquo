@@ -1,4 +1,4 @@
-package exaliquo.skyfish; 
+package exaliquo.Skyfish; 
 
 import java.util.Random;
 
@@ -36,22 +36,5 @@ public class SkyFishBlaze extends FishBlaze
 	@Override
 	public boolean canLive(World world, int x, int y, int z) {
 		return getGroup().canLive(world, x, y, z);
-	}
-	
-	@Override
-	public void onConsumed(World world, EntityPlayer player)
-	{
-		if (SkyFish.tastyfish)
-		{
-			player.getFoodStats().addStats(2, 0.06F);
-			world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-			player.setFire(20);
-		}
-		else
-		{
-			player.getFoodStats().addStats(8, 1F);
-			world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-			player.setFire(7);
-		}
 	}
 }

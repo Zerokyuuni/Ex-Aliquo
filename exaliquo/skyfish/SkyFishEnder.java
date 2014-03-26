@@ -1,4 +1,4 @@
-package exaliquo.skyfish; 
+package exaliquo.Skyfish; 
 
 import java.util.Random;
 
@@ -57,52 +57,5 @@ public class SkyFishEnder extends FishEnder
 	public boolean canLive(World world, int x, int y, int z)
 	{
 		return getGroup().canLive(world, x, y, z);
-	}
-	
-	@Override
-	public void onConsumed(World world, EntityPlayer player)
-	{
-		if (SkyFish.tastyfish)
-		{
-			player.getFoodStats().addStats(1, -0.05F);
-			world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-			if(!world.isRemote)
-			{
-				world.playSoundEffect(player.posX, player.posY, player.posZ, "mob.endermen.portal", 1.0F, 1.0F);
-				int x = (int) ((player.posX) + Rand.rand.nextInt(64) - 32);
-				int z = (int) ((player.posZ) + Rand.rand.nextInt(64) - 32);
-				if(BlockHelper.chunkExists(world, x, z))
-				{
-					int y = world.getTopSolidOrLiquidBlock(x, z);
-					if(world.getBlockMaterial(x, y, z) != Material.lava)
-					{
-						world.playSoundEffect(x, y, z, "mob.endermen.portal", 1.0F, 1.0F);
-						player.setPositionAndUpdate(x, y, z);
-						world.playSoundEffect(player.posX, player.posY, player.posZ, "mob.endermen.portal", 1.0F, 1.0F);
-					}
-				}
-			}
-		}
-		else
-		{
-			player.getFoodStats().addStats(2, -0.1F);
-			world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-			if(!world.isRemote)
-			{
-				world.playSoundEffect(player.posX, player.posY, player.posZ, "mob.endermen.portal", 1.0F, 1.0F);
-				int x = (int) ((player.posX) + Rand.rand.nextInt(64) - 32);
-				int z = (int) ((player.posZ) + Rand.rand.nextInt(64) - 32);
-				if(BlockHelper.chunkExists(world, x, z))
-				{
-					int y = world.getTopSolidOrLiquidBlock(x, z);
-					if(world.getBlockMaterial(x, y, z) != Material.lava)
-					{
-						world.playSoundEffect(x, y, z, "mob.endermen.portal", 1.0F, 1.0F);
-						player.setPositionAndUpdate(x, y, z);
-						world.playSoundEffect(player.posX, player.posY, player.posZ, "mob.endermen.portal", 1.0F, 1.0F);
-					}
-				}
-			}
-		}
 	}
 }

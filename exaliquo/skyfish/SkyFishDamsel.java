@@ -1,4 +1,4 @@
-package exaliquo.skyfish; 
+package exaliquo.Skyfish; 
 
 import java.util.Random;
 
@@ -32,22 +32,5 @@ public class SkyFishDamsel extends FishDamsel
 			return true;
 		}
 		return false;
-	}
-	
-	@Override
-	public void onConsumed(World world, EntityPlayer player)
-	{
-		if (SkyFish.tastyfish)
-		{
-			player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 100, 0));
-			player.getFoodStats().addStats(1, 0.05F);
-			world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-		}
-		else
-		{
-			player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 100, 0));
-			player.getFoodStats().addStats(1, 1F);
-			world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-		}
 	}
 }

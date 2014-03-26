@@ -1,17 +1,20 @@
 package exaliquo.items;
 
+import thaumcraft.api.IRepairable;
+import cpw.mods.fml.common.Optional.Interface;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
-import exaliquo.data.ToolMaterials;
+import exaliquo.data.OreDict;
 import exaliquo.data.ModIDs.Info;
 import static exaliquo.data.ModIDs.getItem;
 import exnihilo.items.hammers.ItemHammerBase;
 
-public class ThaumiumHammer extends ItemHammerBase
+@Interface(iface="thaumcraft.api.IRepairable", modid="Thaumcraft")
+public class ThaumiumHammer extends ItemHammerBase implements IRepairable
 {
 	public ThaumiumHammer(int id, EnumToolMaterial material) {
 		super(id, material);
@@ -29,6 +32,6 @@ public class ThaumiumHammer extends ItemHammerBase
 	
 	public boolean getIsRepairable(ItemStack tool, ItemStack ingot)
 	{
-		return ToolMaterials.isOreDict(ingot, "ingotThaumium");
+		return OreDict.isOreDict(ingot, "ingotThaumium");
 	}
 }

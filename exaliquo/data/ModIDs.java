@@ -78,6 +78,7 @@ public class ModIDs
 		aluminumsand("crowley.skyblock","item","aluminum_crushed"),
 		aluminumdust("crowley.skyblock","item","aluminum_pulverized"),
 		stones("crowley.skyblock","item","stone"),
+		diamondhammer("crowley.skyblock","item","hammer_diamond"),
 		
 		oreberrybush("TConstruct","block","ore.berries.one"),
 		oreberrybush2("TConstruct","block","ore.berries.two"),
@@ -87,6 +88,7 @@ public class ModIDs
 		materials("TConstruct","item","materials"),
 		oreberry("TConstruct","item","oreBerries"),
 		tinkerfood("TConstruct","item","strangeFood"),
+		broadsword("TConstruct","item","broadsword"),
 		
 		flora("Natura","block","florasapling"),
 		leaves("Natura","block","floraleaves"),
@@ -141,6 +143,12 @@ public class ModIDs
 		gcleaves("Growthcraft|Bamboo","block","grc.bambooLeaves"),
 		gcapple("Growthcraft|Apples","item","grc.appleSeeds"),
 		gcbee("Growthcraft|Bees","item","grc.bee"),
+		gcgrape("Growthcraft|Grapes","item","grc.grapes"),
+		gcgrapeseed("Growthcraft|Grapes","item","grc.grapeSeeds"),
+		gchops("Growthcraft|Hops","item","grc.hops"),
+		gchopseed("Growthcraft|Hops","item","grc.hopSeeds"),
+		gcrice("Growthcraft|Rice","item","grc.rice"),
+		gcriceball("Growthcraft|Rice","item","grc.riceBall"),
 		
 		mariores("Mariculture","block","oreBlocks"),
 		marioyster("Mariculture","block","oysterBlock"),
@@ -150,7 +158,10 @@ public class ModIDs
 		hellfeesh("NetherOres","block","netherOresBlockHellfish"),
 		
 		rubbersapling("MineFactoryReloaded","block","mfr.rubberwood.sapling"),
-		rubberleaves("MineFactoryReloaded","block","mfr.rubberwood.leaves");
+		rubberleaves("MineFactoryReloaded","block","mfr.rubberwood.leaves"),
+		
+		dartsapling("DartCraft","block","forceSapling"),
+		dartleaves("DartCraft","block","forceLeaves");
 		
 		private final String mod;
 		private final String type;
@@ -195,17 +206,17 @@ public class ModIDs
 	
 	private static int debugIDInfo(Info info)
 	{
-		exaliquo.logger.log(Level.WARNING,"The " + info.type + "ID from " + info.mod + " called as " + info.sname + " could not be found.");
+		exaliquo.logger.log(Level.WARNING,"The " + info.type + "ID from " + info.mod + " called as " + info.sname + " could not be found. Report this to Ex Aliquo.");
 		return Block.sponge.blockID;
 	}
 	private static Block debugBlockInfo(Info info)
 	{
-		exaliquo.logger.log(Level.WARNING,"The block from " + info.mod + "called as " + info.sname + " could not be found");
+		exaliquo.logger.log(Level.WARNING,"The block from " + info.mod + "called as " + info.sname + " could not be found. Report this to Ex Aliquo");
 		return Block.cake;
 	}
 	private static Item debugItemInfo(Info info)
 	{
-		exaliquo.logger.log(Level.WARNING,"The item from " + info.mod + " called as " + info.sname + " could not be found.");
+		exaliquo.logger.log(Level.WARNING,"The item from " + info.mod + " called as " + info.sname + " could not be found. Report this to Ex Aliquo");
 		return Item.cake;
 	}
 }

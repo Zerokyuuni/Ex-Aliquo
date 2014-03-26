@@ -47,4 +47,45 @@ public class BonusHammerTime {
 			HammerRegistry.register(getIDs(Info.hellfeesh), 0, 0, 0, 0.0F, 0.0F);
 		}
 	}
+
+	public static void addTinkerToMCHammer()
+	{
+		for (int i = 0; i < 2; i++)
+		{
+			HammerRegistry.registerOre(Registries.cobaltOreBlock.blockID, i, Registries.cobaltOreItem.itemID, i+1);
+			HammerRegistry.registerOre(Registries.arditeOreBlock.blockID, i, Registries.arditeOreItem.itemID, i+1);
+		}
+	}
+
+	public static void addMetallurgyToMCHammer()
+	{
+		for (int i = 0; i < 2; i++)
+		{
+			HammerRegistry.registerOre(Registries.adamantineOreBlock.blockID, i, Registries.adamantineOreItem.itemID, i+1);
+			HammerRegistry.registerOre(Registries.alduoriteOreBlock.blockID, i, Registries.alduoriteOreItem.itemID, i+1);
+			HammerRegistry.registerOre(Registries.astralsilverOreBlock.blockID, i, Registries.astralsilverOreItem.itemID, i+1);
+			HammerRegistry.registerOre(Registries.atlarusOreBlock.blockID, i, Registries.atlarusOreItem.itemID, i+1);
+			HammerRegistry.registerOre(Registries.carmotOreBlock.blockID, i, Registries.carmotOreItem.itemID, i+1);
+			HammerRegistry.registerOre(Registries.ceruclaseOreBlock.blockID, i, Registries.ceruclaseOreItem.itemID, i+1);
+			HammerRegistry.registerOre(Registries.deepironOreBlock.blockID, i, Registries.deepironOreItem.itemID, i+1);
+			HammerRegistry.registerOre(Registries.eximiteOreBlock.blockID, i, Registries.eximiteOreItem.itemID, i+1);
+			HammerRegistry.registerOre(Registries.ignatiusOreBlock.blockID, i, Registries.ignatiusOreItem.itemID, i+1);
+			HammerRegistry.registerOre(Registries.infuscoliumOreBlock.blockID, i, Registries.infuscoliumOreItem.itemID, i+1);
+			HammerRegistry.registerOre(Registries.kalendriteOreBlock.blockID, i, Registries.kalendriteOreItem.itemID, i+1);
+			HammerRegistry.registerOre(Registries.lemuriteOreBlock.blockID, i, Registries.lemuriteOreItem.itemID, i+1);
+			HammerRegistry.registerOre(Registries.manganeseOreBlock.blockID, i, Registries.manganeseOreItem.itemID, i+1);
+			HammerRegistry.registerOre(Registries.meuroiteOreBlock.blockID, i, Registries.meuroiteOreItem.itemID, i+1);
+			HammerRegistry.registerOre(Registries.midasiumOreBlock.blockID, i, Registries.midasiumOreItem.itemID, i+1);
+			HammerRegistry.registerOre(Registries.mithrilOreBlock.blockID, i, Registries.mithrilOreItem.itemID, i+1);
+			HammerRegistry.registerOre(Registries.orichalcumOreBlock.blockID, i, Registries.orichalcumOreItem.itemID, i+1);
+			HammerRegistry.registerOre(Registries.oureclaseOreBlock.blockID, i, Registries.oureclaseOreItem.itemID, i+1);
+			HammerRegistry.registerOre(Registries.prometheumOreBlock.blockID, i, Registries.prometheumOreItem.itemID, i+1);
+			HammerRegistry.registerOre(Registries.rubraciumOreBlock.blockID, i, Registries.rubraciumOreItem.itemID, i+1);
+			HammerRegistry.registerOre(Registries.sanguiniteOreBlock.blockID, i, Registries.sanguiniteOreItem.itemID, i+1);
+			HammerRegistry.registerOre(Registries.shadowironOreBlock.blockID, i, Registries.shadowironOreItem.itemID, i+1);
+			HammerRegistry.registerOre(Registries.vulcaniteOreBlock.blockID, i, Registries.vulcaniteOreItem.itemID, i+1);
+			HammerRegistry.registerOre(Registries.vyroxeresOreBlock.blockID, i, Registries.vyroxeresOreItem.itemID, i+1);
+			HammerRegistry.registerOre(Registries.zincOreBlock.blockID, i, Registries.zincOreItem.itemID, i+1);
+		}		
+	}
 }

@@ -76,4 +76,29 @@ public class Colors {
 		ColorRegistry.register("silverwood", new Color("86A5D7"));
 		ColorRegistry.register("etherealbloom", new Color("8AD7C3"));
 	}
+
+	public static void registerGCBambooColors()
+	{
+		ColorRegistry.register("bamboo", new Color("D0CE81"));
+	}
+
+	public static void registerGCGrapesColors()
+	{
+		ColorRegistry.register("grape", new Color("4C2973"));
+	}
+
+	public static void registerGCHopsColors()
+	{
+		ColorRegistry.register("hops", new Color("7BC743"));
+	}
+	
+	public static void registerMFRColors()
+	{
+		ColorRegistry.register("rubberwood", new Color("29410A"));
+	}
+
+	public static void registerDartcraftColors()
+	{
+		ColorRegistry.register("force", new Color("E2C55F"));
+	}
 }

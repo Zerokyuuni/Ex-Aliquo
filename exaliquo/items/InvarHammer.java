@@ -6,7 +6,7 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemStack;
 import exaliquo.data.ModIDs.Info;
-import exaliquo.data.ToolMaterials;
+import exaliquo.data.OreDict;
 import exnihilo.items.hammers.ItemHammerBase;
 
 public class InvarHammer extends ItemHammerBase
@@ -23,6 +23,6 @@ public class InvarHammer extends ItemHammerBase
 	
 	public boolean getIsRepairable(ItemStack tool, ItemStack ingot)
 	{
-		return ToolMaterials.isOreDict(ingot, "ingotInvar");
+		return OreDict.isOreDict(ingot, "ingotInvar");
 	}
 }
