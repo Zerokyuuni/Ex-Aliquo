@@ -33,9 +33,8 @@ public class GeneralAliquo
 		{
 			if (sapling.itemID != 6)
 			{
-				for (int i = 0; i < sapling.getMaxDamage(); i++)
+				for (int i = 0; i <= sapling.getMaxDamage(); i++)
 				{
-					System.out.println("Sapling: " + sapling);
 					CompostRegistry.register(sapling.itemID, i, 0.125F, ColorRegistry.color("oak"));
 				}
 			}
@@ -44,7 +43,7 @@ public class GeneralAliquo
 		{
 			if (leaves.itemID != 18)
 			{
-				for (int i = 0; i < leaves.getMaxDamage(); i++)
+				for (int i = 0; i <= leaves.getMaxDamage(); i++)
 				{
 				CompostRegistry.register(leaves.itemID, i, 0.125F, ColorRegistry.color("oak"));
 				}
