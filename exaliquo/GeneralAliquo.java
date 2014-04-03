@@ -18,7 +18,6 @@ public class GeneralAliquo
 	
 	public static void initGeneralStuff()
 	{
-		System.out.println("debug: general stuff");
 		registerGeneralCompost();
 		registerGeneralSieving();
 		registerGeneralHammering();
@@ -29,11 +28,9 @@ public class GeneralAliquo
 		ArrayList<ItemStack> treeSapling = OreDictionary.getOres("treeSapling");
 		ArrayList<ItemStack> treeLeaves = OreDictionary.getOres("treeLeaves");
 		
-		System.out.println("debug: composting");
 		
 		for (ItemStack sapling : treeSapling)
 		{
-			System.out.println("debug: saplinging " + sapling);
 			if (sapling.itemID != 6)
 			{
 				for (int i = 0; i < sapling.getMaxDamage(); i++)
