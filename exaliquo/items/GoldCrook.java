@@ -3,6 +3,7 @@ package exaliquo.items;
 import static exaliquo.data.ModIDs.getIDs;
 import static exaliquo.data.ModIDs.getItem;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import net.minecraft.block.Block;
@@ -15,12 +16,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.Loader;
 import exaliquo.data.ModIDs.Info;
+import exaliquo.data.ModsLoaded;
 import exnihilo.data.ModData;
 import exnihilo.items.ItemCrook;
 
 public class GoldCrook extends ItemCrook
 {
-
+	private Class forestryLeafBlock = null;
+	private Method drops = null;
+	private boolean extras = false;
+	private boolean forestryrefcheck = true;
+	
 	public GoldCrook(int id)
 	{
 		super(id, EnumToolMaterial.GOLD);
@@ -54,31 +60,12 @@ public class GoldCrook extends ItemCrook
 		{
 			if (!world.isRemote)
 			{
-				if (Loader.isModLoaded("Forestry"))
+				if (forestryrefcheck && ModsLoaded.isForestryLoaded)
 				{
-					Class forestryLeafBlock = null;
-					try {
-						forestryLeafBlock = Class.forName("forestry.arboriculture.gadgets.BlockLeaves");
-
-						Method dropStuff = null;
-						if (forestryLeafBlock != null)
-						{	
-							dropStuff = forestryLeafBlock.cast(block).getClass().getDeclaredMethod("spawnLeafDrops", World.class, int.class, int.class, int.class, int.class, float.class, boolean.class);
-							dropStuff.setAccessible(true);
-						}
-
-						if (dropStuff != null)
-						{
-							dropStuff.invoke(forestryLeafBlock.cast(block), world, X, Y, Z, meta, 1.0F, true);
-							dropStuff.invoke(forestryLeafBlock.cast(block), world, X, Y, Z, meta, 1.0F, true);
-							dropStuff.invoke(forestryLeafBlock.cast(block), world, X, Y, Z, meta, 1.0F, true);
-							extraDropped = true;
-						}
-					}
-					catch (Exception ex){}
+					ForestryLeaves(world, block, meta, X, Y, Z);
 				}
 
-				if (!extraDropped)
+				if (!extras)
 				{
 					block.dropBlockAsItem(world, X, Y, Z, meta, 0);
 					block.dropBlockAsItem(world, X, Y, Z, meta, 0);
@@ -90,34 +77,73 @@ public class GoldCrook extends ItemCrook
 					world.spawnEntityInWorld(new EntityItem(world, X + 0.5D, Y + 0.5D, Z + 0.5D, new ItemStack(getItem(Info.silkworm), 1, 0)));
 				}
 			}
-
-			validTarget = true;
 		}
 
 		if (blockID == getIDs(Info.silkleaves))
 		{
 			if (!world.isRemote)
 			{
-				if (ModData.ALLOW_SILKWORMS && world.rand.nextInt(12) == 0)
+				if (ModData.ALLOW_SILKWORMS && world.rand.nextInt(10) == 0)
 				{
 					world.spawnEntityInWorld(new EntityItem(world, X + 0.5D, Y + 0.5D, Z + 0.5D, new ItemStack(getItem(Info.silkworm), 1, 0)));
-					world.getWorldTime();
 				}
 			}
-
-			validTarget = true;
 		}
-
-		if (validTarget)
+		
+		return false;
+	}
+	
+	private void ForestryLeaves(World world, Block block, int meta, int X, int Y, int Z)
+	{
+		try
 		{
-			//item.damageItem(3, player);
-
-			if (item.stackSize == 0)
+			if ((forestryLeafBlock != null) && (drops != null)) 
 			{
-				player.destroyCurrentEquippedItem();
+					drops.invoke(forestryLeafBlock.cast(block), world, X, Y, Z, meta, 1.0F, true);
+					drops.invoke(forestryLeafBlock.cast(block), world, X, Y, Z, meta, 1.0F, true);
+					drops.invoke(forestryLeafBlock.cast(block), world, X, Y, Z, meta, 1.0F, true);
+			}
+			else
+			{
+				forestryLeafBlock = Class.forName("forestry.arboriculture.gadgets.BlockLeaves");
+				
+				if (forestryLeafBlock != null)
+				{	
+					drops = forestryLeafBlock.cast(block).getClass().getDeclaredMethod("spawnLeafDrops", World.class, int.class, int.class, int.class, int.class, float.class, boolean.class);
+					drops.setAccessible(true);
+					extras = true;
+				}
 			}
 		}
-
-		return false;
+		catch (IllegalAccessException e)
+		{
+			forestryrefcheck = false;
+			e.printStackTrace();
+		}
+		catch (IllegalArgumentException e)
+		{
+			forestryrefcheck = false;
+			e.printStackTrace();
+		}
+		catch (InvocationTargetException e)
+		{
+			forestryrefcheck = false;
+			e.printStackTrace();
+		}
+		catch (ClassNotFoundException e)
+		{
+			forestryrefcheck = false;
+			e.printStackTrace();
+		}
+		catch (NoSuchMethodException e)
+		{
+			forestryrefcheck = false;
+			e.printStackTrace();
+		}
+		catch (SecurityException e)
+		{
+			forestryrefcheck = false;
+			e.printStackTrace();
+		}
 	}
 }

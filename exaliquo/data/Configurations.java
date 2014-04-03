@@ -8,6 +8,7 @@ import net.minecraftforge.common.Configuration;
 public class Configurations {
 
 	public static boolean WYNAUT;
+	
 	public static boolean isOre;
 	public static boolean allowDustSmelting;
 	public static boolean dustValue;
@@ -15,6 +16,9 @@ public class Configurations {
 	public static boolean sieveEssenceBushes;
 	public static boolean sieveNetherOres;
 	public static int dualTools;
+	public static boolean miniSmelting;
+	public static boolean registerTConstruct;
+	
 	public static boolean sieveRedwoods;
 	public static boolean sieveHopseed;
 	public static boolean sieveOverworldTrees;
@@ -22,19 +26,26 @@ public class Configurations {
 	public static boolean sieveNetherTrees;
 	public static boolean sieveBerryBushes;
 	public static boolean sieveDarkBerries;
+	
 	public static boolean hammerMoonstone;
 	public static boolean sieveNovas;
-	public static boolean miniSmelting;
+
 	public static int silverwoodSwitch;
 	public static boolean alternatewater;
 	public static boolean runichax;
+	public static boolean harderWands;
+	
 	public static boolean fishingOysters;
 	public static boolean endOverride;
+	
 	public static boolean sacredohgodthewood;
+	
 	public static int thaumHammer;
 	public static int invarHammer;
 	public static int reedCrook;
 	public static int goldCrook;
+	public static int hayCrook;
+	
 	public static boolean ninjaFeesh;
 	public static boolean hammerNetherOres;
 	public static boolean whenk;
@@ -54,7 +65,7 @@ public class Configurations {
 	public static int kalendriteOreBlock;
 	public static int lemuriteOreBlock;
 	public static int manganeseOreBlock;
-	public static int meuroiteOreBlock;
+	public static int meutoiteOreBlock;
 	public static int midasiumOreBlock;
 	public static int mithrilOreBlock;
 	public static int orichalcumOreBlock;
@@ -82,7 +93,7 @@ public class Configurations {
 	public static int kalendriteOreItem;
 	public static int lemuriteOreItem;
 	public static int manganeseOreItem;
-	public static int meuroiteOreItem;
+	public static int meutoiteOreItem;
 	public static int midasiumOreItem;
 	public static int mithrilOreItem;
 	public static int orichalcumOreItem;
@@ -94,7 +105,7 @@ public class Configurations {
 	public static int vulcaniteOreItem;
 	public static int vyroxeresOreItem;
 	public static int zincOreItem;
-	public static boolean registerTConstruct;
+	
 	public static boolean registerMetallurgy;
 	
 	public static void Load (File location)
@@ -134,6 +145,7 @@ public class Configurations {
 		silverwoodSwitch = config.get("Thaumcraft Tweaks", "Silverwood Setting", 0, "Set 0 for default, 1 for tweaked difficulty, and -1 to disable. See the forum post for difficulty changes").getInt(0);
 		alternatewater = config.get("Thaumcraft Tweaks", "For tundra-less skyblocks", false).getBoolean(false);
 		runichax = config.get("Thaumcraft Tweaks", "Alternate Runics to prevent wall", true, "False to instead change how greatwoods are obtained").getBoolean(false);
+		harderWands = config.get("Thaumcraft Tweaks", "Do the primal aspect wand cores require a Greatwood wand core", false).getBoolean(false);
 		
 		fishingOysters = config.get("Mariculture Tweaks", "Can Oysters be obtained via fishing", true).getBoolean(true);
 		endOverride = config.get("Mariculture Tweaks", "Override end-only fishables", true).getBoolean(true);
@@ -144,6 +156,7 @@ public class Configurations {
 		invarHammer = config.get("Ex Aliquo things","Invar Hammer ID", 20161).getInt(20161);
 		reedCrook = config.get("Ex Aliquo things","Reed Crook", 20300).getInt(20300);
 		goldCrook = config.get("Ex Aliquo things","Golden Crook", 20301).getInt(20301);
+		hayCrook = config.get("Ex Aliquo things","Hay Crook", 20302).getInt(20302);
 		
 		registerMetallurgy = config.get("Metallurgy Things", "Load ExMetallurgy ores anyway", false, "Only used to get the Gravel/Sand/Dust for decorative purposes").getBoolean(false);
 		
@@ -162,7 +175,7 @@ public class Configurations {
 		kalendriteOreBlock = config.get("Metallurgy Block IDs","KalendriteOre Block",2312).getInt(2312);
 		lemuriteOreBlock = config.get("Metallurgy Block IDs","LemuriteOre Block",2313).getInt(2313);
 		manganeseOreBlock = config.get("Metallurgy Block IDs","ManganeseOre Block",2314).getInt(2314);
-		meuroiteOreBlock = config.get("Metallurgy Block IDs","MeuroiteOre Block",2315).getInt(2315);
+		meutoiteOreBlock = config.get("Metallurgy Block IDs","MeuroiteOre Block",2315).getInt(2315);
 		midasiumOreBlock = config.get("Metallurgy Block IDs","MidasiumOre Block",2316).getInt(2316);
 		mithrilOreBlock = config.get("Metallurgy Block IDs","MithrilOre Block",2317).getInt(2317);
 		orichalcumOreBlock = config.get("Metallurgy Block IDs","OrichalcumOre Block",2318).getInt(2318);
@@ -190,7 +203,7 @@ public class Configurations {
 		kalendriteOreItem = config.get("Metallurgy Item IDs","KalendriteOre Item", 20512).getInt(20512);
 		lemuriteOreItem = config.get("Metallurgy Item IDs","LemuriteOre Item", 20513).getInt(20513);
 		manganeseOreItem = config.get("Metallurgy Item IDs","ManganeseOre Item", 20514).getInt(20514);
-		meuroiteOreItem = config.get("Metallurgy Item IDs","MeuroiteOre Item", 20515).getInt(20515);
+		meutoiteOreItem = config.get("Metallurgy Item IDs","MeuroiteOre Item", 20515).getInt(20515);
 		midasiumOreItem = config.get("Metallurgy Item IDs","MidasiumOre Item", 20516).getInt(20516);
 		mithrilOreItem = config.get("Metallurgy Item IDs","MithrilOre Item", 20517).getInt(20517);
 		orichalcumOreItem = config.get("Metallurgy Item IDs","OrichalcumOre Item", 20518).getInt(20518);

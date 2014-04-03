@@ -15,17 +15,30 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class GeneralAliquo
 {
-	private static ArrayList<ItemStack> treeSapling = OreDictionary.getOres("treeSapling");
-	private static ArrayList<ItemStack> treeLeaves = OreDictionary.getOres("treeLeaves");
+	
+	public static void initGeneralStuff()
+	{
+		System.out.println("debug: general stuff");
+		registerGeneralCompost();
+		registerGeneralSieving();
+		registerGeneralHammering();
+	}
 	
 	public static void registerGeneralCompost()
 	{
+		ArrayList<ItemStack> treeSapling = OreDictionary.getOres("treeSapling");
+		ArrayList<ItemStack> treeLeaves = OreDictionary.getOres("treeLeaves");
+		
+		System.out.println("debug: composting");
+		
 		for (ItemStack sapling : treeSapling)
 		{
+			System.out.println("debug: saplinging " + sapling);
 			if (sapling.itemID != 6)
 			{
-				for (int i = 0; i < 16; i++)
+				for (int i = 0; i < sapling.getMaxDamage(); i++)
 				{
+					System.out.println("Sapling: " + sapling);
 					CompostRegistry.register(sapling.itemID, i, 0.125F, ColorRegistry.color("oak"));
 				}
 			}
@@ -34,7 +47,7 @@ public class GeneralAliquo
 		{
 			if (leaves.itemID != 18)
 			{
-				for (int i = 0; i < 16; i++)
+				for (int i = 0; i < leaves.getMaxDamage(); i++)
 				{
 				CompostRegistry.register(leaves.itemID, i, 0.125F, ColorRegistry.color("oak"));
 				}
@@ -42,13 +55,13 @@ public class GeneralAliquo
 		}
 	}
 
-	public static void registerSieves()
+	public static void registerGeneralSieving()
 	{
 		SieveRegistry.register(Block.lavaStill.blockID, 0, Item.fishCooked.itemID, 0, 1);
 		SieveRegistry.register(Block.waterStill.blockID, 0, Item.fishRaw.itemID, 0, 1);
 	}
 	
-	public static void registerHammering()
+	public static void registerGeneralHammering()
 	{
 		if (Configurations.ninjaFeesh)
 		{
@@ -56,5 +69,5 @@ public class GeneralAliquo
 			HammerRegistry.register(Block.silverfish.blockID, 1, 0, 0, 0.0F, 0.0F);
 			HammerRegistry.register(Block.silverfish.blockID, 2, 0, 0, 0.0F, 0.0F);
 		}
-	}
+	}	
 }

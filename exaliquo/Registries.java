@@ -1,19 +1,13 @@
 package exaliquo;
 
 import static exaliquo.data.ModIDs.getBlock;
-import tconstruct.library.TConstructRegistry;
-import tconstruct.library.client.TConstructClientRegistry;
-import tconstruct.library.crafting.ToolBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-import exaliquo.Modifiers.ModCrooked;
-import exaliquo.Modifiers.ModHammered;
 import exaliquo.blocks.ores.OreAdamantine;
 import exaliquo.blocks.ores.OreAlduorite;
 import exaliquo.blocks.ores.OreArdite;
@@ -41,11 +35,16 @@ import exaliquo.blocks.ores.OreShadowIron;
 import exaliquo.blocks.ores.OreVulcanite;
 import exaliquo.blocks.ores.OreVyroxeres;
 import exaliquo.blocks.ores.OreZinc;
+import exaliquo.bridges.TConstruct.SkyModifiers;
+import exaliquo.bridges.TConstruct.Modifiers.ModCrooked;
+import exaliquo.bridges.TConstruct.Modifiers.ModHammered;
 import exaliquo.data.Configurations;
+import exaliquo.data.ExATab;
 import exaliquo.data.OreDict;
 import static exaliquo.data.ModIDs.getItem;
 import exaliquo.data.ModIDs.Info;
 import exaliquo.items.GoldCrook;
+import exaliquo.items.HayCrook;
 import exaliquo.items.InvarHammer;
 import exaliquo.items.ReedCrook;
 import exaliquo.items.ThaumiumHammer;
@@ -116,6 +115,7 @@ public class Registries
 	public static Item hammerInvar;
 	public static Item crookReed;
 	public static Item crookGold;
+	public static Item crookHay;
 	
 	public static Block cobaltOreBlock;
 	public static Block arditeOreBlock;
@@ -132,7 +132,7 @@ public class Registries
 	public static Block kalendriteOreBlock;
 	public static Block lemuriteOreBlock;
 	public static Block manganeseOreBlock;
-	public static Block meuroiteOreBlock;
+	public static Block meutoiteOreBlock;
 	public static Block midasiumOreBlock;
 	public static Block mithrilOreBlock;
 	public static Block orichalcumOreBlock;
@@ -160,7 +160,7 @@ public class Registries
 	public static Item kalendriteOreItem;
 	public static Item lemuriteOreItem;
 	public static Item manganeseOreItem;
-	public static Item meuroiteOreItem;
+	public static Item meutoiteOreItem;
 	public static Item midasiumOreItem;
 	public static Item mithrilOreItem;
 	public static Item orichalcumOreItem;
@@ -174,14 +174,16 @@ public class Registries
 	public static Item zincOreItem;
 	
 	public static void registerItems() {
-		hammerThaum = new ThaumiumHammer(Configurations.thaumHammer, OreDict.getMaterial("THAUMIUM")).setUnlocalizedName("ExAliquo.ThaumHammer").setCreativeTab(exatab);;
+		hammerThaum = new ThaumiumHammer(Configurations.thaumHammer, OreDict.getMaterial("THAUMIUM")).setUnlocalizedName("ExAliquo.ThaumHammer").setCreativeTab(exatab);
 		GameRegistry.registerItem(hammerThaum, "ExAliquo.ThaumHammer");
-		hammerInvar = new InvarHammer(Configurations.invarHammer, OreDict.getMaterial("INVAR")).setUnlocalizedName("ExAliquo.InvarHammer").setCreativeTab(exatab);;
+		hammerInvar = new InvarHammer(Configurations.invarHammer, OreDict.getMaterial("INVAR")).setUnlocalizedName("ExAliquo.InvarHammer").setCreativeTab(exatab);
 		GameRegistry.registerItem(hammerInvar,"ExAliquo.InvarHammer");
-		crookReed = new ReedCrook(Configurations.reedCrook).setUnlocalizedName("ExAliquo.ReedCrook").setCreativeTab(exatab);;
+		crookReed = new ReedCrook(Configurations.reedCrook).setUnlocalizedName("ExAliquo.ReedCrook").setCreativeTab(exatab);
 		GameRegistry.registerItem(crookReed, "ExAliquo.ReedCrook");
-		crookGold = new GoldCrook(Configurations.goldCrook).setUnlocalizedName("ExAliquo.GoldCrook").setCreativeTab(exatab);;
+		crookGold = new GoldCrook(Configurations.goldCrook).setUnlocalizedName("ExAliquo.GoldCrook").setCreativeTab(exatab);
 		GameRegistry.registerItem(crookGold, "ExAliquo.GoldCrook");
+		crookHay = new HayCrook(Configurations.hayCrook).setUnlocalizedName("ExAliquo.HayCrook").setCreativeTab(exatab);
+		GameRegistry.registerItem(crookHay, "ExAliquo.HayCrook");
 	}
 
 	public static void registerRecipes()
@@ -189,9 +191,10 @@ public class Registries
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(hammerInvar), new Object[] { hammershape, 's', "stickWood", 'i', "ingotInvar" }));
 		GameRegistry.addShapedRecipe(new ItemStack(crookReed), new Object[] { crookshape, 'i', Item.reed });
 		GameRegistry.addShapedRecipe(new ItemStack(crookGold), new Object[] { crookshape, 'i', Item.ingotGold });
+		GameRegistry.addShapedRecipe(new ItemStack(crookHay), new Object[] { "wwi", "iwi", " w ", 'w', Item.wheat, 'i', Block.fenceIron });
 	}
 
-	public static void registerOreDict()
+	public static void registerNihiloOreDict()
 	{
 		for (int i = 0; i < 3; i++)
 		{
@@ -207,22 +210,6 @@ public class Registries
 		}
 	}
 
-	public static void addNaturaCrafting()
-	{
-		GameRegistry.addShapelessRecipe(new ItemStack(getBlock(Info.nethersoil), 1, 0), Block.dirt, getItem(Info.witchbucket));
-		GameRegistry.addShapelessRecipe(new ItemStack(getBlock(Info.nethersand), 1, 0), Block.sand, getBlock(Info.thornvines), Item.blazePowder);
-	}
-
-	public static void addModifiers() {
-		ToolBuilder.instance.registerToolMod(new ModCrooked(new ItemStack[] { new ItemStack(crookGold, 1, 0) }, 60));
-		TConstructClientRegistry.addEffectRenderMapping(60, "exaliquo", "crook", true);
-		
-		ToolBuilder.instance.registerToolMod(new ModHammered(new ItemStack[] { new ItemStack(getItem(Info.diamondhammer), 1, 0) }, 61));
-		TConstructClientRegistry.addEffectRenderMapping(61, "exaliquo", "hammer", true);
-		
-		TConstructRegistry.registerActiveToolMod(new SkyModifiers());
-	}
-
 	public static void registerExTConstructOres()
 	{
 		cobaltOreBlock = new OreCobalt(Configurations.cobaltOreBlock).setCreativeTab(exatab);;
@@ -234,15 +221,6 @@ public class Registries
 		GameRegistry.registerItem(cobaltOreItem, "ExAliquo.OreCobaltItem");
 		arditeOreItem = new ItemOreArdite(Configurations.arditeOreItem).setCreativeTab(exatab).setUnlocalizedName("ExAliquo.OreArditeItem");
 		GameRegistry.registerItem(arditeOreItem, "ExAliquo.OreArditeItem");
-	}
-	
-	public static void addExTConstructOreDict()
-	{
-		for (int i = 3; i < 3; i++)
-		{
-			OreDictionary.registerOre("oreCobalt", new ItemStack(cobaltOreBlock, 1, i));
-			OreDictionary.registerOre("oreArdite", new ItemStack(arditeOreBlock, 1, i));
-		}
 	}
 	
 	public static void registerExTConstructCrafting()
@@ -282,8 +260,8 @@ public class Registries
 		GameRegistry.registerBlock(lemuriteOreBlock, ItemBlockOreLemurite.class, "ExAliquo.LemuriteOreBlock");
 		manganeseOreBlock = new OreManganese(Configurations.manganeseOreBlock).setCreativeTab(exatab);;
 		GameRegistry.registerBlock(manganeseOreBlock, ItemBlockOreManganese.class, "Exaliquo.ManganeseOreBlock");
-		meuroiteOreBlock = new OreMeuroite(Configurations.meuroiteOreBlock).setCreativeTab(exatab);;
-		GameRegistry.registerBlock(meuroiteOreBlock, ItemBlockOreMeuroite.class, "ExAliquo.MeuroiteOreBlock");
+		meutoiteOreBlock = new OreMeuroite(Configurations.meutoiteOreBlock).setCreativeTab(exatab);;
+		GameRegistry.registerBlock(meutoiteOreBlock, ItemBlockOreMeuroite.class, "ExAliquo.MeuroiteOreBlock");
 		midasiumOreBlock = new OreMidasium(Configurations.midasiumOreBlock).setCreativeTab(exatab);;
 		GameRegistry.registerBlock(midasiumOreBlock, ItemBlockOreMidasium.class, "ExAliquo.MidasiumOreBlock");
 		mithrilOreBlock = new OreMithril(Configurations.mithrilOreBlock).setCreativeTab(exatab);;
@@ -333,8 +311,8 @@ public class Registries
 		GameRegistry.registerItem(lemuriteOreItem, "ExAliquo.LemuriteOreItem");
 		manganeseOreItem = new ItemOreManganese(Configurations.manganeseOreItem).setCreativeTab(exatab).setUnlocalizedName("ExAliquo.OreManganeseItem");
 		GameRegistry.registerItem(manganeseOreItem, "Exaliquo.ManganeseOreItem");
-		meuroiteOreItem = new ItemOreMeuroite(Configurations.meuroiteOreItem).setCreativeTab(exatab).setUnlocalizedName("ExAliquo.OreMeuroiteItem");
-		GameRegistry.registerItem(meuroiteOreItem, "ExAliquo.MeuroiteOreItem");
+		meutoiteOreItem = new ItemOreMeuroite(Configurations.meutoiteOreItem).setCreativeTab(exatab).setUnlocalizedName("ExAliquo.OreMeuroiteItem");
+		GameRegistry.registerItem(meutoiteOreItem, "ExAliquo.MeuroiteOreItem");
 		midasiumOreItem = new ItemOreMidasium(Configurations.midasiumOreItem).setCreativeTab(exatab).setUnlocalizedName("ExAliquo.OreMidasiumItem");
 		GameRegistry.registerItem(midasiumOreItem, "ExAliquo.MidasiumOreItem");
 		mithrilOreItem = new ItemOreMithril(Configurations.mithrilOreItem).setCreativeTab(exatab).setUnlocalizedName("ExAliquo.OreMithrilItem");
@@ -359,39 +337,6 @@ public class Registries
 		GameRegistry.registerItem(zincOreItem, "ExAliquo.ZincOreItem");
 	}
 
-	public static void registerExMetallurgySmelting()
-	{
-		for (int i = 0; i < 3; i++)
-		{
-			GameRegistry.addSmelting(adamantineOreBlock.blockID, OreDict.getFirstOre("ingotAdamantine"), 3);
-			GameRegistry.addSmelting(alduoriteOreBlock.blockID, OreDict.getFirstOre("ingotAlduorite"), 3);
-			GameRegistry.addSmelting(astralsilverOreBlock.blockID, OreDict.getFirstOre("ingotAstral Silver"), 3);
-			GameRegistry.addSmelting(atlarusOreBlock.blockID, OreDict.getFirstOre("ingotAtlarus"), 3);
-			GameRegistry.addSmelting(carmotOreBlock.blockID, OreDict.getFirstOre("ingotCarmot"), 3);
-			GameRegistry.addSmelting(ceruclaseOreBlock.blockID, OreDict.getFirstOre("ingotCeruclase"), 3);
-			GameRegistry.addSmelting(deepironOreBlock.blockID, OreDict.getFirstOre("ingotDeep Iron"), 3);
-			GameRegistry.addSmelting(eximiteOreBlock.blockID, OreDict.getFirstOre("ingotEximite"), 3);
-			GameRegistry.addSmelting(ignatiusOreBlock.blockID, OreDict.getFirstOre("ingotIgnatius"), 3);
-			GameRegistry.addSmelting(infuscoliumOreBlock.blockID, OreDict.getFirstOre("ingotInfuscolium"), 3);
-			GameRegistry.addSmelting(kalendriteOreBlock.blockID, OreDict.getFirstOre("ingotKalendrite"), 3);
-			GameRegistry.addSmelting(lemuriteOreBlock.blockID, OreDict.getFirstOre("ingotLemurite"), 3);
-			GameRegistry.addSmelting(manganeseOreBlock.blockID, OreDict.getFirstOre("ingotManganese"), 3);
-			GameRegistry.addSmelting(meuroiteOreBlock.blockID, OreDict.getFirstOre("ingotMeutoite"), 3);
-			GameRegistry.addSmelting(midasiumOreBlock.blockID, OreDict.getFirstOre("ingotMidasium"), 3);
-			GameRegistry.addSmelting(mithrilOreBlock.blockID, OreDict.getFirstOre("ingotMithril"), 3);
-			GameRegistry.addSmelting(orichalcumOreBlock.blockID, OreDict.getFirstOre("ingotOrichalcum"), 3);
-			GameRegistry.addSmelting(oureclaseOreBlock.blockID, OreDict.getFirstOre("ingotOureclase"), 3);
-			GameRegistry.addSmelting(prometheumOreBlock.blockID, OreDict.getFirstOre("ingotPrometheum"), 3);
-			GameRegistry.addSmelting(rubraciumOreBlock.blockID, OreDict.getFirstOre("ingotRubracium"), 3);
-			GameRegistry.addSmelting(sanguiniteOreBlock.blockID, OreDict.getFirstOre("ingotSanguinite"), 3);
-			GameRegistry.addSmelting(shadowironOreBlock.blockID, OreDict.getFirstOre("ingotShadow Iron"), 3);
-			GameRegistry.addSmelting(vulcaniteOreBlock.blockID, OreDict.getFirstOre("ingotVulcanite"), 3);
-			GameRegistry.addSmelting(vyroxeresOreBlock.blockID, OreDict.getFirstOre("ingotVyroxeres"), 3);
-			GameRegistry.addSmelting(zincOreBlock.blockID, OreDict.getFirstOre("ingotZinc"), 3);
-			
-		}
-	}
-
 	public static void registerExMetallurgyCrafting()
 	{
 		for (int i = 0; i < 3; i++)
@@ -409,7 +354,7 @@ public class Registries
 			GameRegistry.addShapedRecipe(new ItemStack(kalendriteOreBlock, 1, i), new Object[] { oreshape, 'i', new ItemStack(kalendriteOreItem, 1, i)});
 			GameRegistry.addShapedRecipe(new ItemStack(lemuriteOreBlock, 1, i), new Object[] { oreshape, 'i', new ItemStack(lemuriteOreItem, 1, i)});
 			GameRegistry.addShapedRecipe(new ItemStack(manganeseOreBlock, 1, i), new Object[] { oreshape, 'i', new ItemStack(manganeseOreItem, 1, i)});
-			GameRegistry.addShapedRecipe(new ItemStack(meuroiteOreBlock, 1, i), new Object[] { oreshape, 'i', new ItemStack(meuroiteOreItem, 1, i)});
+			GameRegistry.addShapedRecipe(new ItemStack(meutoiteOreBlock, 1, i), new Object[] { oreshape, 'i', new ItemStack(meutoiteOreItem, 1, i)});
 			GameRegistry.addShapedRecipe(new ItemStack(midasiumOreBlock, 1, i), new Object[] { oreshape, 'i', new ItemStack(midasiumOreItem, 1, i)});
 			GameRegistry.addShapedRecipe(new ItemStack(mithrilOreBlock, 1, i), new Object[] { oreshape, 'i', new ItemStack(mithrilOreItem, 1, i)});
 			GameRegistry.addShapedRecipe(new ItemStack(orichalcumOreBlock, 1, i), new Object[] { oreshape, 'i', new ItemStack(orichalcumOreItem, 1, i)});
@@ -421,38 +366,6 @@ public class Registries
 			GameRegistry.addShapedRecipe(new ItemStack(vulcaniteOreBlock, 1, i), new Object[] { oreshape, 'i', new ItemStack(vulcaniteOreItem, 1, i)});
 			GameRegistry.addShapedRecipe(new ItemStack(vyroxeresOreBlock, 1, i), new Object[] { oreshape, 'i', new ItemStack(vyroxeresOreItem, 1, i)});
 			GameRegistry.addShapedRecipe(new ItemStack(zincOreBlock, 1, i), new Object[] { oreshape, 'i', new ItemStack(zincOreItem, 1, i)});
-		}
-	}
-
-	public static void registerExMetallurgyOreDict()
-	{
-		for (int i = 0; i < 3; i++)
-		{
-			OreDictionary.registerOre("oreAdamantine", new ItemStack(adamantineOreBlock, 1, i));
-			OreDictionary.registerOre("oreAlduorite", new ItemStack(alduoriteOreBlock, 1, i));
-			OreDictionary.registerOre("oreAstral Silver", new ItemStack(astralsilverOreBlock, 1, i));
-			OreDictionary.registerOre("oreAtlarus", new ItemStack(atlarusOreBlock, 1, i));
-			OreDictionary.registerOre("oreCarmot", new ItemStack(carmotOreBlock, 1, i));
-			OreDictionary.registerOre("oreCeruclase", new ItemStack(ceruclaseOreBlock, 1, i));
-			OreDictionary.registerOre("oreDeep Iron", new ItemStack(deepironOreBlock, 1, i));
-			OreDictionary.registerOre("oreEximite", new ItemStack(eximiteOreBlock, 1, i));
-			OreDictionary.registerOre("oreIgnatius", new ItemStack(ignatiusOreBlock, 1, i));
-			OreDictionary.registerOre("oreInfuscolium", new ItemStack(infuscoliumOreBlock, 1, i));
-			OreDictionary.registerOre("oreKalendrite", new ItemStack(kalendriteOreBlock, 1, i));
-			OreDictionary.registerOre("oreLemurite", new ItemStack(lemuriteOreBlock, 1, i));
-			OreDictionary.registerOre("oreManganese", new ItemStack(manganeseOreBlock, 1, i));
-			OreDictionary.registerOre("oreMeutoite", new ItemStack(meuroiteOreBlock, 1, i));
-			OreDictionary.registerOre("oreMidasium", new ItemStack(midasiumOreBlock, 1, i));
-			OreDictionary.registerOre("oreMithril", new ItemStack(mithrilOreBlock, 1, i));
-			OreDictionary.registerOre("oreOrichalcum", new ItemStack(orichalcumOreBlock, 1, i));
-			OreDictionary.registerOre("oreOureclase", new ItemStack(oureclaseOreBlock, 1, i));
-			OreDictionary.registerOre("orePrometheum", new ItemStack(prometheumOreBlock, 1, i));
-			OreDictionary.registerOre("oreRubracium", new ItemStack(rubraciumOreBlock, 1, i));
-			OreDictionary.registerOre("oreSanguinite", new ItemStack(sanguiniteOreBlock, 1, i));
-			OreDictionary.registerOre("oreShadow Iron", new ItemStack(shadowironOreBlock, 1, i));
-			OreDictionary.registerOre("oreVulcanite", new ItemStack(vulcaniteOreBlock, 1, i));
-			OreDictionary.registerOre("oreVyroxeres", new ItemStack(vyroxeresOreBlock, 1, i));
-			OreDictionary.registerOre("oreZinc", new ItemStack(zincOreBlock, 1, i));
 		}
 	}
 }

@@ -137,6 +137,7 @@ public class ModIDs
 		nuggets("Thaumcraft","item","ItemNugget"),
 		manabean("Thaumcraft","item","ItemManaBean"),
 		nodejar("Thaumcraft","item","BlockJarNodeItem"),
+		wands("Thaumcraft","item","WandRod"),
 		
 		gcsappling("Growthcraft|Apples","block","grc.appleSapling"),
 		gcbamboo("Growthcraft|Bamboo","block","grc.bambooShoot"),
@@ -157,8 +158,8 @@ public class ModIDs
 		
 		hellfeesh("NetherOres","block","netherOresBlockHellfish"),
 		
-		rubbersapling("MineFactoryReloaded","block","mfr.rubberwood.sapling"),
-		rubberleaves("MineFactoryReloaded","block","mfr.rubberwood.leaves"),
+		rubbersapling("MineFactoryReloaded","block","tile.mfr.rubberwood.sapling"),
+		rubberleaves("MineFactoryReloaded","block","tile.mfr.rubberwood.leaves"),
 		
 		dartsapling("DartCraft","block","forceSapling"),
 		dartleaves("DartCraft","block","forceLeaves");

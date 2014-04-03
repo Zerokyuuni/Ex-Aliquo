@@ -13,10 +13,24 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import exaliquo.bridges.ArsMagica.ArsMagica;
+import exaliquo.bridges.Dart.Dartcraft;
+import exaliquo.bridges.Growthcraft.Growthcraft;
+import exaliquo.bridges.Mariculture.AliquoFish;
+import exaliquo.bridges.Mariculture.Mariculture;
+import exaliquo.bridges.Metallurgy.Metallurgy;
+import exaliquo.bridges.MineFactoryReloaded.MineFactoryReloaded;
+import exaliquo.bridges.Natura.Natura;
+import exaliquo.bridges.TConstruct.TConstruct;
+import exaliquo.bridges.Thaumcraft.ExThaumiquo;
+import exaliquo.bridges.Thaumcraft.Thaumcraft;
+import exaliquo.bridges.crossmod.Crossmod;
 import exaliquo.data.Colors;
 import exaliquo.data.Configurations;
+import exaliquo.data.ExATab;
+import static exaliquo.data.ModsLoaded.*;
 
-@Mod(modid = "exaliquo", name = "Ex Aliquo", version = "0.10", dependencies = "required-after:crowley.skyblock@[1.26b,);after:TConstruct;after:Natura@[2.1.14,);after:arsmagica2;after:Thaumcraft@[4.1,);after:Growthcraft|Apples;after:Growthcraft|Bamboo;after:Growthcraft|Bees;after:Growthcraft|Grapes;after:Growthcraft|Hops;after:Growthcraft|Rice;after:Mariculture;after:MineFactoryReloaded;after:NetherOres;after:Metallurgy3Base;after:ExtraTiC")
+@Mod(modid = "exaliquo", name = "Ex Aliquo", version = "0.10.4", dependencies = "required-after:crowley.skyblock@[1.26b,);after:TConstruct@(1.5.2,];after:Natura@[2.1.14,);after:arsmagica2;after:Thaumcraft@[4.1,);after:Growthcraft|Apples;after:Growthcraft|Bamboo;after:Growthcraft|Bees;after:Growthcraft|Grapes;after:Growthcraft|Hops;after:Growthcraft|Rice;after:Mariculture;after:MineFactoryReloaded;after:NetherOres;after:Metallurgy3Base;after:ExtraTiC")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 
 public class exaliquo {
@@ -47,142 +61,62 @@ public class exaliquo {
 	{
 		if (Configurations.isOre)
 		{
-			Registries.registerOreDict();
+			Registries.registerNihiloOreDict();
 		}
-		GeneralAliquo.registerGeneralCompost();
-		GeneralAliquo.registerSieves();
-		GeneralAliquo.registerHammering();
-		if (Loader.isModLoaded("TConstruct") || Configurations.registerTConstruct)
+		GeneralAliquo.initGeneralStuff();
+		Crossmod.initCross();
+		if (isTConLoaded || Configurations.registerTConstruct)
 		{
 			Registries.registerExTConstructOres();
-			BonusSieving.addTinkerOreToSieves();
-			BonusHammerTime.addTinkerToMCHammer();
 		}
-		if (Loader.isModLoaded("TConstruct"))
+		if (isTConLoaded)
 		{
 			exaliquo.logger.log(Level.INFO,"Loading Tinker's Construct Compat");
-			BonusSieving.addTinkerToSieves();
-			MoltenMetals.addToSmelting();
-			Colors.registerTinkerColors();
-			ExtraCompost.registerTinkerCompost();
-			HotStuff.addTinkerFuels();
-			Registries.addModifiers();
-			Registries.addExTConstructOreDict();
+			TConstruct.initTConstruct();
 		}
-		if (Loader.isModLoaded("Natura"))
+		if (isNaturaLoaded)
 		{
 			exaliquo.logger.log(Level.INFO,"Loading Natura Compat");
-			BonusSieving.addNaturaToSieves();
-			Colors.registerNaturaColors();
-			ExtraCompost.registerNaturaCompost();
-			Registries.addNaturaCrafting();
+			Natura.initNatura();
 		}
-		if (Loader.isModLoaded("arsmagica2"))
+		if (isArsMagicaLoaded)
 		{
 			exaliquo.logger.log(Level.INFO,"Loading Ars Magica 2 Compat");
-			if (Configurations.sieveNovas)
-			{
-			BonusSieving.addArsToSieves();
-			}
-			EssenceRefining.addNihiloToArs();
-			BonusHammerTime.addArstoMCHammer();
-			Colors.registerArsColors();
-			ExtraCompost.registerArsCompost();
-			HotStuff.addArsFuels();
-			if (Loader.isModLoaded("TConstruct") && (Configurations.WYNAUT))
-			{
-				exaliquo.logger.log(Level.INFO,"What's better than a single Wobbuffet? ALL THE WYNAUT");
-				MoltenMetals.WYNAUT();
-			}
+			ArsMagica.initArsMagica();
 		}
-		if (Loader.isModLoaded("Thaumcraft"))
+		if (isThaumcraftLoaded)
 		{
 			exaliquo.logger.info("Loading Thaumcraft 4 Compat");
-			ExThaumiquo.addAspectstoNihilo();
-			ExThaumiquo.addCrucibleRecipes();
-			ExThaumiquo.addArcaneRecipes();
-			ExThaumiquo.addWorkbenchRecipes();
-			ExThaumiquo.addInfusionRecipes();
-			ExThaumiquo.addPages();
-			ExThaumiquo.addResearch();
-			BonusSieving.addThaumcraftToSieves();
-			BonusHammerTime.addThaumcraftToMCHammer();
-			HotStuff.addThaumicFuels();
-			Colors.registerThaumicColors();
-			ExtraCompost.registerThaumicCompost();
+			Thaumcraft.initThaumcraft();
 		}
-		if(Loader.isModLoaded("Growthcraft|Apples"))
+		if(isGrowthcraftLoaded)
 		{
-			exaliquo.logger.info("Loading GC Apple Compat");
-			ExtraCompost.registerGCAppleCompost();
+			exaliquo.logger.info("Loading Growthcraft Compat");
+			Growthcraft.initGrowthcraft();
 		}
-		if (Loader.isModLoaded("Growthcraft|Bamboo"))
-		{
-			exaliquo.logger.info("Loading GC Bamboo Compat");
-			BonusSieving.addBambooToSieves();
-			Colors.registerGCBambooColors();
-			ExtraCompost.registerGCBambooCompost();
-		}
-		if (Loader.isModLoaded("Growthcraft|Bees"))
-		{
-			exaliquo.logger.info("Loading GC Bees Compat");
-			BonusSieving.addBeesToSieves();
-		}
-		if (Loader.isModLoaded("Growthcraft|Grapes"))
-		{
-			exaliquo.logger.info("Loading GC Grapes Compat");
-			Colors.registerGCGrapesColors();
-			ExtraCompost.registerGCGrapesCompost();
-		}
-		if(Loader.isModLoaded("Growthcraft|Hops"))
-		{
-			exaliquo.logger.info("Loading GC Hops Compat");
-			Colors.registerGCHopsColors();
-			ExtraCompost.registerGCHopsCompost();
-		}
-		if(Loader.isModLoaded("Growthcraft|Rice"))
-		{
-			exaliquo.logger.info("Loading GC Rice Compat");
-			ExtraCompost.registerGCRiceCompost();
-		}
-		if (Loader.isModLoaded("Mariculture"))
+		if (isMaricultureLoaded)
 		{
 			exaliquo.logger.info("Loading Mariculture Compat");
-			BonusSieving.addMaricultureToSieves();
-			SkyFish.overrideFish();
-			SkyFish.addBooty();
+			Mariculture.initMariculture();
 		}
-		if (Loader.isModLoaded("MineFactoryReloaded"))
+		if (isMFRLoaded)
 		{
 			exaliquo.logger.info("Loading MFR Compat");
-			BonusSieving.addMFRToSieves();
-			Colors.registerMFRColors();
-			ExtraCompost.registerMFRCompost();
+			MineFactoryReloaded.initMFR();
 		}
-		if (Loader.isModLoaded("Metallurgy3Base") || Configurations.registerMetallurgy)
+		if (isMetallurgyLoaded || Configurations.registerMetallurgy)
+		{
+			Registries.registerExMetallurgyOres();
+		}
+		if (isMetallurgyLoaded)
 		{
 			exaliquo.logger.info("Loading Metallurgy Compat");
-			Registries.registerExMetallurgyOres();
-			BonusSieving.addMetallurgyToSieves();
-			BonusHammerTime.addMetallurgyToMCHammer();
+			Metallurgy.initMetallurgy();
 		}
-		if (Loader.isModLoaded("Metallurgy3Base"))
+		if (isDartcraftLoaded)
 		{
-			Registries.registerExMetallurgySmelting();
-			Registries.registerExMetallurgyCrafting();
-			if (Configurations.isOre)
-			{
-				Registries.registerExMetallurgyOreDict();
-			}
-		}
-		if (Loader.isModLoaded("ExtraTiC"))
-		{
-			MoltenMetals.addExMetallurgyToSmeltery();
-		}
-		if (Loader.isModLoaded("Dartcraft"))
-		{
-			Colors.registerDartcraftColors();
-			ExtraCompost.registerDartcraftCompost();
+			exaliquo.logger.info("Loading Dartcraft Compat");
+			Dartcraft.initDartcraft();
 		}
 	}
 }
