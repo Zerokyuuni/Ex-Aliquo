@@ -156,7 +156,7 @@ public class ModIDs
 		maricoral("Mariculture","item","coral"),
 		maribottle("Mariculture","item","liquidContainers"),
 		
-		hellfeesh("NetherOres","block","netherOresBlockHellfish"),
+		hellfeesh("Minecraft","block","netherOresBlockHellfish"),
 		
 		rubbersapling("MineFactoryReloaded","block","tile.mfr.rubberwood.sapling"),
 		rubberleaves("MineFactoryReloaded","block","tile.mfr.rubberwood.leaves"),
