@@ -4,6 +4,8 @@ import static exaliquo.data.ModIDs.getIDs;
 
 import java.util.Arrays;
 
+import powercrystals.netherores.NetherOresCore;
+
 import net.minecraft.block.Block;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
@@ -16,20 +18,14 @@ public class NetherOres_Thaumcraft
 {
 	protected static void Whenk()
 	{
-		if (Configurations.ninjaFeesh)
-		{
-			register(getIDs(Info.hellfeesh), 0, 0, 0, 0.0F, 0.0F);
-			
-			if (Configurations.whenk)
+			if (Configurations.whenk && Configurations.ninjaFeesh)
 			{
 				ThaumcraftApi.registerObjectTag(Block.netherrack.blockID, 0, null);
 			}
 			else
 			{
 				AspectList rack = (AspectList)ThaumcraftApi.objectTags.get(Arrays.asList(new Integer[] { Integer.valueOf(Block.netherrack.blockID), Integer.valueOf(-1) }));
-				ThaumcraftApi.registerObjectTag(getIDs(Info.hellfeesh), 0, rack);
-				//ThaumcraftApi.registerObjectTag(getIDs(Info.hellfeesh), 0, new AspectList().add(Aspect.FIRE, 1).add(Aspect.STONE, 1).add(Aspect.EARTH, 1));
+				ThaumcraftApi.registerObjectTag(NetherOresCore.blockHellfish.blockID, 0, rack);
 			}
-		}
 	}
 }

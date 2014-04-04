@@ -1,8 +1,14 @@
 package exaliquo;
 
+import static exaliquo.data.ModIDs.getIDs;
+import static exnihilo.registries.HammerRegistry.register;
+
 import java.util.ArrayList;
 
+import exaliquo.bridges.crossmod.Whenk;
 import exaliquo.data.Configurations;
+import exaliquo.data.ModsLoaded;
+import exaliquo.data.ModIDs.Info;
 import exnihilo.registries.ColorRegistry;
 import exnihilo.registries.CompostRegistry;
 import exnihilo.registries.HammerRegistry;
@@ -64,6 +70,10 @@ public class GeneralAliquo
 			HammerRegistry.register(Block.silverfish.blockID, 0, 0, 0, 0.0F, 0.0F);
 			HammerRegistry.register(Block.silverfish.blockID, 1, 0, 0, 0.0F, 0.0F);
 			HammerRegistry.register(Block.silverfish.blockID, 2, 0, 0, 0.0F, 0.0F);
+			if (ModsLoaded.isNetherOresLoaded)
+			{
+				Whenk.NinjaFeesh();
+			}
 		}
 	}	
 }

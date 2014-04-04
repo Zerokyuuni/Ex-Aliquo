@@ -1,17 +1,17 @@
 package exaliquo.bridges.crossmod;
 
-import cpw.mods.fml.common.Loader;
+import static exaliquo.data.ModsLoaded.*;
 
 public class Crossmod
 {
 
 	public static void initCross()
 	{
-		if (Loader.isModLoaded("ArsMagica") && Loader.isModLoaded("TConstruct"))
+		if (isArsMagicaLoaded && isTConLoaded)
 		{
 			ArsMagica_Tinker.SmeltArs();
 		}
-		if (Loader.isModLoaded("Thaumcraft") && Loader.isModLoaded("NetherOres"))
+		if (isThaumcraftLoaded && isNetherOresLoaded)
 		{
 			NetherOres_Thaumcraft.Whenk();
 		}

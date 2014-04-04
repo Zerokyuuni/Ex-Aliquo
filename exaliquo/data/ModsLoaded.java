@@ -12,6 +12,7 @@ public class ModsLoaded
 	public static final boolean isMetallurgyLoaded = Loader.isModLoaded("Metallurgy3Base");
 	public static final boolean isMFRLoaded = Loader.isModLoaded("MineFactoryReloaded");
 	public static final boolean isNaturaLoaded = Loader.isModLoaded("Natura");
+	public static final boolean isNetherOresLoaded = Loader.isModLoaded("NetherOres");
 	public static final boolean isTConLoaded = Loader.isModLoaded("TConstruct");
 	public static final boolean isThaumcraftLoaded = Loader.isModLoaded("Thaumcraft");
 }
