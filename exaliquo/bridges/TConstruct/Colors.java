@@ -14,5 +14,6 @@ public class Colors
 		register("tinberry", new Color("55301A"));
 		register("aluminumberry", new Color("405057"));
 		register("essenceberry", new Color("79B83D"));
+		register("slime", new Color(122F, 226F, 223F, 201F));
 	}
 }

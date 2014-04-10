@@ -39,20 +39,14 @@ public class GeneralAliquo
 		{
 			if (sapling.itemID != 6)
 			{
-				for (int i = 0; i <= sapling.getMaxDamage(); i++)
-				{
-					CompostRegistry.register(sapling.itemID, i, 0.125F, ColorRegistry.color("oak"));
-				}
+					CompostRegistry.register(sapling.itemID, sapling.getItemDamage(), 0.125F, ColorRegistry.color("oak"));
 			}
 		}
 		for (ItemStack leaves : treeLeaves)
 		{
 			if (leaves.itemID != 18)
 			{
-				for (int i = 0; i <= leaves.getMaxDamage(); i++)
-				{
-				CompostRegistry.register(leaves.itemID, i, 0.125F, ColorRegistry.color("oak"));
-				}
+				CompostRegistry.register(leaves.itemID, leaves.getItemDamage(), 0.125F, ColorRegistry.color("oak"));
 			}
 		}
 	}

@@ -20,10 +20,7 @@ public class CropXYZ
 			{
 				for (ItemStack Hope : Kibou)
 				{
-					for (int j = 0; j <= Hope.getMaxDamage(); j++)
-					{
-						register(Hope.itemID, j, 0.125F, color("tall_grass"));
-					}
+						register(Hope.itemID, Hope.getItemDamage(), 0.125F, color("tall_grass"));
 				}
 			}
 			
@@ -32,10 +29,7 @@ public class CropXYZ
 			{
 				for (ItemStack Chaos : TheSeventhOne)
 				{
-					for (int j = 0; j <= Chaos.getMaxDamage(); j++)
-					{
-						register(Chaos.itemID, j, 0.125F, color("tall_grass"));
-					}
+						register(Chaos.itemID, Chaos.getItemDamage(), 0.125F, color("tall_grass"));
 				}
 			}
 		}

@@ -22,5 +22,7 @@ public class Composting
 		}
 		register(getIDs(Info.oreberry), 5, 0.1F, color("essenceberry"));
 		register(getIDs(Info.hambone), 0, 1.0F, color("pork_raw"));
+		register(getIDs(Info.slimeleaves), 0, 0.125F, color("slime"));
+		register(getIDs(Info.slimesapling), 0, 0.125F, color("slime"));
 	}
 }

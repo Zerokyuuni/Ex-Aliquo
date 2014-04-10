@@ -25,20 +25,16 @@ import exaliquo.data.ModsLoaded;
 import exaliquo.data.ModIDs.Info;
 import static exaliquo.data.ModIDs.getIDs;
 import static exaliquo.data.ModIDs.getItem;
+import static exaliquo.proxy.ForestryReflection.*;
 
 public class SkyModifiers extends ActiveToolMod
 {
-	private Class forestryLeafBlock = null;
-	private Method drops = null;
-	private boolean extras = false;
-	private boolean forestryrefcheck = true;
 	
 	@Override
 	public boolean beforeBlockBreak (ToolCore tool, ItemStack item, int X, int Y, int Z, EntityLivingBase player)
 	{
 		NBTTagCompound tags = item.getTagCompound().getCompoundTag("InfiTool");
-		
-		if (tags.hasKey("Crooked"))
+		if (tags.getBoolean("Crooked"))
 		{
 			World world = player.worldObj;
 			int blockID = world.getBlockId(X,Y,Z);
@@ -48,51 +44,38 @@ public class SkyModifiers extends ActiveToolMod
 	
 			Block block = Block.blocksList[blockID];
 	
-			if (block.isLeaves(null, 0, 0, 0))
+			if (!world.isRemote && block != null && block.isLeaves(world, X, Y, Z))
 			{
-				if (!world.isRemote)
+				if (forestryrefcheck && ModsLoaded.isForestryLoaded)
 				{
-					if (forestryrefcheck && ModsLoaded.isForestryLoaded)
-					{
-						ForestryLeaves(world, block, meta, X, Y, Z);
-					}
-	
-					if (!extras)
-					{
-						block.dropBlockAsItem(world, X, Y, Z, meta, 0);
-					}
-	
-					if (ModData.ALLOW_SILKWORMS && world.rand.nextInt(130) == 0)
-					{
-						world.spawnEntityInWorld(new EntityItem(world, X + 0.5D, Y + 0.5D, Z + 0.5D, new ItemStack(getItem(Info.silkworm), 1, 0)));
-					}
+					ForestryLeaves(world, block, meta, X, Y, Z);
 				}
-	
-				validTarget = true;
-			}
-	
-			if (blockID == getIDs(Info.silkleaves))
-			{
-				if (!world.isRemote)
+				
+				if (!extras)
+				{
+					block.dropBlockAsItem(world, X, Y, Z, meta, 0);
+				}
+		
+				if (ModData.ALLOW_SILKWORMS && world.rand.nextInt(130) == 0)
+				{
+					world.spawnEntityInWorld(new EntityItem(world, X + 0.5D, Y + 0.5D, Z + 0.5D, new ItemStack(getItem(Info.silkworm), 1, 0)));
+				}
+					
+				if (blockID == getIDs(Info.silkleaves))
 				{
 					if (ModData.ALLOW_SILKWORMS && world.rand.nextInt(20) == 0)
 					{
 						world.spawnEntityInWorld(new EntityItem(world, X + 0.5D, Y + 0.5D, Z + 0.5D, new ItemStack(getItem(Info.silkworm), 1, 0)));
 					}
 				}
-	
-				validTarget = true;
-			}
-	
-			if (validTarget)
-			{
+					
 				item.damageItem(1, player);
 			}
-	
 			return false;
 		}
-		if (tags.hasKey("Hammered"))
+		if (tags.getBoolean("Hammered"))
 		{
+		System.out.println("Hammered");
 			World world = player.worldObj;
 			int blockID = world.getBlockId(X,Y,Z);
 			int blockMeta = world.getBlockMetadata(X,Y,Z);
@@ -100,8 +83,8 @@ public class SkyModifiers extends ActiveToolMod
 
 			ArrayList<Smashable> rewards = HammerRegistry.getRewards(blockID, blockMeta);
 			boolean validTarget = false;
-
-			if (rewards.size() > 0)
+			
+			if (!rewards.isEmpty())
 			{
 				Iterator<Smashable> it = rewards.iterator();
 				while(it.hasNext())
@@ -152,56 +135,4 @@ public class SkyModifiers extends ActiveToolMod
 		}
 		else return currentDamage;
     }
-	
-	private void ForestryLeaves(World world, Block block, int meta, int X, int Y, int Z)
-	{
-		try
-		{
-			if ((forestryLeafBlock != null) && (drops != null)) 
-			{
-					drops.invoke(forestryLeafBlock.cast(block), world, X, Y, Z, meta, 1.0F, true);
-			}
-			else
-			{
-				forestryLeafBlock = Class.forName("forestry.arboriculture.gadgets.BlockLeaves");
-				
-				if (forestryLeafBlock != null)
-				{	
-					drops = forestryLeafBlock.cast(block).getClass().getDeclaredMethod("spawnLeafDrops", World.class, int.class, int.class, int.class, int.class, float.class, boolean.class);
-					drops.setAccessible(true);
-					extras = true;
-				}
-			}
-		}
-		catch (IllegalAccessException e)
-		{
-			forestryrefcheck = false;
-			e.printStackTrace();
-		}
-		catch (IllegalArgumentException e)
-		{
-			forestryrefcheck = false;
-			e.printStackTrace();
-		}
-		catch (InvocationTargetException e)
-		{
-			forestryrefcheck = false;
-			e.printStackTrace();
-		}
-		catch (ClassNotFoundException e)
-		{
-			forestryrefcheck = false;
-			e.printStackTrace();
-		}
-		catch (NoSuchMethodException e)
-		{
-			forestryrefcheck = false;
-			e.printStackTrace();
-		}
-		catch (SecurityException e)
-		{
-			forestryrefcheck = false;
-			e.printStackTrace();
-		}
-	}
 }

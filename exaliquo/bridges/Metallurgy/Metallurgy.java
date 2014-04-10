@@ -11,6 +11,10 @@ public class Metallurgy
 		Sieving.SieveMetallurgy();
 		FurnaceSmelting.registerExMetallurgySmelting();
 		OreDict.registerExMetallurgyOreDict();
-		if (Loader.isModLoaded("ExtraTIC")) Smelting.SmeltMetallurgy();
+		if (Loader.isModLoaded("ExtraTiC")) 
+		{
+			System.out.println("Smelting Metallurgy metals");
+			Smelting.SmeltMetallurgy();
+		}
 	}
 }

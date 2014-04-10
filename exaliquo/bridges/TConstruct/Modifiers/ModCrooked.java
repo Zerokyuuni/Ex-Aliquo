@@ -12,11 +12,12 @@ import tconstruct.modifiers.tools.ModBoolean;
 
 public class ModCrooked extends ModBoolean {
 
+	static String name = "Crooked";
 	static String color = "\u00a77";
 	static String tooltip = "Crooked";
 	
 	public ModCrooked(ItemStack[] items, int effect) {
-		super(items, effect, tooltip, color, tooltip);
+		super(items, effect, name, color, tooltip);
 	}
 
 	@Override
@@ -37,7 +38,7 @@ public class ModCrooked extends ModBoolean {
 	public void modify(ItemStack[] input, ItemStack tool)
 	{
 		NBTTagCompound tags = tool.getTagCompound().getCompoundTag("InfiTool");
-		tags.setBoolean(key, true);
+		tags.setBoolean(name, true);
 		
 		int modifiers = tags.getInteger("Modifiers");
 		modifiers -= 1;

@@ -22,6 +22,7 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.crafting.CrucibleRecipe;
 import thaumcraft.api.crafting.IArcaneRecipe;
 import thaumcraft.api.crafting.InfusionRecipe;
+import thaumcraft.api.crafting.ShapedArcaneRecipe;
 import thaumcraft.api.research.ResearchCategories;
 import thaumcraft.api.research.ResearchCategoryList;
 import thaumcraft.api.research.ResearchItem;
@@ -383,71 +384,128 @@ public class ExThaumiquo
 	
 	static void changePrimalWands()
 	{
-		exaliquo.logger.log(Level.INFO, "Changing Primal Aspect Wand Recipes");
-		InfusionRecipe[] oldWands = {
+		exaliquo.logger.log(Level.INFO, "Changing Primal Aspect Wand and Staff Recipes");
+		
+		String[] infusionName = { "ROD_obsidian", "ROD_ice", "ROD_quartz", "ROD_reed", "ROD_blaze", "ROD_bone", "ROD_silverwood", "ROD_primal_staff"};
+		String[] infusionRecipe = { "WandRodObsidian", "WandRodIce", "WandRodQuartz", "WandRodReed", "WandRodBlaze", "WandRodBone", "WandRodSilverwood", "WandRodPrimalStaff"};
+		
+		String[] arcaneName = { "ROD_greatwood_staff", "ROD_obsidian_staff", "ROD_ice_staff", "ROD_quartz_staff", "ROD_reed_staff", "ROD_blaze_staff", "ROD_bone_staff", "ROD_silverwood_staff" };
+		String[] arcaneRecipe = { "WandRodGreatwoodStaff", "WandRodObsidianStaff", "WandRodIceStaff", "WandRodQuartzStaff", "WandRodReedStaff", "WandRodBlazeStaff", "WandRodBoneStaff", "WandRodSilverwoodStaff" };
+		String[] staffshape = { "  f", " g ", "s  " };
+		
+		InfusionRecipe[] oldInfusion = {
 				ThaumcraftApi.getInfusionRecipe(new ItemStack(getItem(Info.wands), 1, 1)),
 				ThaumcraftApi.getInfusionRecipe(new ItemStack(getItem(Info.wands), 1, 3)),
 				ThaumcraftApi.getInfusionRecipe(new ItemStack(getItem(Info.wands), 1, 4)),
 				ThaumcraftApi.getInfusionRecipe(new ItemStack(getItem(Info.wands), 1, 5)),
 				ThaumcraftApi.getInfusionRecipe(new ItemStack(getItem(Info.wands), 1, 6)),
-				ThaumcraftApi.getInfusionRecipe(new ItemStack(getItem(Info.wands), 1, 7))
-				};
+				ThaumcraftApi.getInfusionRecipe(new ItemStack(getItem(Info.wands), 1, 7)),
+				ThaumcraftApi.getInfusionRecipe(new ItemStack(getItem(Info.wands), 1, 2)),
+				ThaumcraftApi.getInfusionRecipe(new ItemStack(getItem(Info.wands), 1, 100))
+				}; //Obsidian, Ice, Quartz, Reed, Blaze, Bone, Silverwood, Primal
 		
-		InfusionRecipe[] newWands = {
-				new InfusionRecipe(oldWands[0].research, oldWands[0].recipeOutput, oldWands[0].instability, oldWands[0].aspects, new ItemStack(getItem(Info.wands), 1, 0), new ItemStack[] { new ItemStack(getItem(Info.resources), 1, 14), new ItemStack(getItem(Info.shard), 1, 3), new ItemStack(Block.obsidian) }),
-				new InfusionRecipe(oldWands[1].research, oldWands[1].recipeOutput, oldWands[1].instability, oldWands[1].aspects, new ItemStack(getItem(Info.wands), 1, 0), new ItemStack[] { new ItemStack(getItem(Info.resources), 1, 14), new ItemStack(getItem(Info.shard), 1, 2), new ItemStack(Block.ice) }),
-				new InfusionRecipe(oldWands[2].research, oldWands[2].recipeOutput, oldWands[2].instability, oldWands[2].aspects, new ItemStack(getItem(Info.wands), 1, 0), new ItemStack[] { new ItemStack(getItem(Info.resources), 1, 14), new ItemStack(getItem(Info.shard), 1, 4), new ItemStack(Block.blockNetherQuartz) }),
-				new InfusionRecipe(oldWands[3].research, oldWands[3].recipeOutput, oldWands[3].instability, oldWands[3].aspects, new ItemStack(getItem(Info.wands), 1, 0), new ItemStack[] { new ItemStack(getItem(Info.resources), 1, 14), new ItemStack(getItem(Info.shard), 1, 0), new ItemStack(Item.reed) }),
-				new InfusionRecipe(oldWands[4].research, oldWands[4].recipeOutput, oldWands[4].instability, oldWands[4].aspects, new ItemStack(getItem(Info.wands), 1, 0), new ItemStack[] { new ItemStack(getItem(Info.resources), 1, 14), new ItemStack(getItem(Info.shard), 1, 1), new ItemStack(Item.blazeRod) }),
-				new InfusionRecipe(oldWands[5].research, oldWands[5].recipeOutput, oldWands[5].instability, oldWands[5].aspects, new ItemStack(getItem(Info.wands), 1, 0), new ItemStack[] { new ItemStack(getItem(Info.resources), 1, 14), new ItemStack(getItem(Info.shard), 1, 5), new ItemStack(Item.bone) })
+		InfusionRecipe[] newInfusion = {
+				new InfusionRecipe(oldInfusion[0].research, oldInfusion[0].recipeOutput, oldInfusion[0].instability, oldInfusion[0].aspects, new ItemStack(getItem(Info.wands), 1, 0), new ItemStack[] { new ItemStack(getItem(Info.resources), 1, 14), new ItemStack(getItem(Info.shard), 1, 3), new ItemStack(Block.obsidian) }),
+				new InfusionRecipe(oldInfusion[1].research, oldInfusion[1].recipeOutput, oldInfusion[1].instability, oldInfusion[1].aspects, new ItemStack(getItem(Info.wands), 1, 0), new ItemStack[] { new ItemStack(getItem(Info.resources), 1, 14), new ItemStack(getItem(Info.shard), 1, 2), new ItemStack(Block.ice) }),
+				new InfusionRecipe(oldInfusion[2].research, oldInfusion[2].recipeOutput, oldInfusion[2].instability, oldInfusion[2].aspects, new ItemStack(getItem(Info.wands), 1, 0), new ItemStack[] { new ItemStack(getItem(Info.resources), 1, 14), new ItemStack(getItem(Info.shard), 1, 4), new ItemStack(Block.blockNetherQuartz) }),
+				new InfusionRecipe(oldInfusion[3].research, oldInfusion[3].recipeOutput, oldInfusion[3].instability, oldInfusion[3].aspects, new ItemStack(getItem(Info.wands), 1, 0), new ItemStack[] { new ItemStack(getItem(Info.resources), 1, 14), new ItemStack(getItem(Info.shard), 1, 0), new ItemStack(Item.reed) }),
+				new InfusionRecipe(oldInfusion[4].research, oldInfusion[4].recipeOutput, oldInfusion[4].instability, oldInfusion[4].aspects, new ItemStack(getItem(Info.wands), 1, 0), new ItemStack[] { new ItemStack(getItem(Info.resources), 1, 14), new ItemStack(getItem(Info.shard), 1, 1), new ItemStack(Item.blazeRod) }),
+				new InfusionRecipe(oldInfusion[5].research, oldInfusion[5].recipeOutput, oldInfusion[5].instability, oldInfusion[5].aspects, new ItemStack(getItem(Info.wands), 1, 0), new ItemStack[] { new ItemStack(getItem(Info.resources), 1, 14), new ItemStack(getItem(Info.shard), 1, 5), new ItemStack(Item.bone) }),
+				new InfusionRecipe(oldInfusion[6].research, oldInfusion[6].recipeOutput, oldInfusion[6].instability, oldInfusion[6].aspects, new ItemStack(getItem(Info.magicwood), 1, 1), new ItemStack[] { new ItemStack(getItem(Info.resources), 1, 14), new ItemStack(getItem(Info.wands), 1, 5), new ItemStack(getItem(Info.wands), 1, 6), new ItemStack(getItem(Info.wands), 1, 3), new ItemStack(getItem(Info.wands), 1, 0), new ItemStack(getItem(Info.wands), 1, 1), new ItemStack(getItem(Info.wands), 1, 4), new ItemStack(getItem(Info.wands), 1, 7) }),
+				new InfusionRecipe(oldInfusion[7].research, oldInfusion[7].recipeOutput, oldInfusion[7].instability, oldInfusion[7].aspects, new ItemStack(getItem(Info.wands), 1, 52), new ItemStack[] { new ItemStack(getItem(Info.resources), 1, 15), new ItemStack(getItem(Info.wands), 1, 51), new ItemStack(getItem(Info.wands), 1, 53), new ItemStack(getItem(Info.wands), 1, 54), new ItemStack(getItem(Info.resources), 1, 15), new ItemStack(getItem(Info.wands), 1, 55), new ItemStack(getItem(Info.wands), 1, 56), new ItemStack(getItem(Info.wands), 1, 57) })
 		};
 		
-		String[] wandNames = { "ROD_reed", "ROD_blaze", "ROD_obsidian", "ROD_ice", "ROD_quartz", "ROD_bone" };
-
+		IArcaneRecipe[] oldArcane = {
+				getArcaneRecipe("ROD_greatwood_staff"),
+				getArcaneRecipe("ROD_obsidian_staff"),
+				getArcaneRecipe("ROD_ice_staff"),
+				getArcaneRecipe("ROD_quartz_staff"),
+				getArcaneRecipe("ROD_reed_staff"),
+				getArcaneRecipe("ROD_blaze_staff"),
+				getArcaneRecipe("ROD_bone_staff"),
+				getArcaneRecipe("ROD_silverwood_staff")
+		};
+		
+		IArcaneRecipe[] newArcane = {
+				new ShapedArcaneRecipe(oldArcane[0].getResearch(), oldArcane[0].getRecipeOutput(), oldArcane[0].getAspects(), new Object[] { staffshape, 'f', new ItemStack(getItem(Info.resources), 1, 15), 'g', new ItemStack(getItem(Info.wands), 1, 0), 's', new ItemStack(getItem(Info.wands), 1, 2) }),
+				new ShapedArcaneRecipe(oldArcane[1].getResearch(), oldArcane[1].getRecipeOutput(), oldArcane[1].getAspects(), new Object[] { staffshape, 'f', new ItemStack(getItem(Info.resources), 1, 15), 'g', new ItemStack(getItem(Info.wands), 1, 1), 's', new ItemStack(getItem(Info.wands), 1, 50) }),
+				new ShapedArcaneRecipe(oldArcane[2].getResearch(), oldArcane[2].getRecipeOutput(), oldArcane[2].getAspects(), new Object[] { staffshape, 'f', new ItemStack(getItem(Info.resources), 1, 15), 'g', new ItemStack(getItem(Info.wands), 1, 3), 's', new ItemStack(getItem(Info.wands), 1, 50) }),
+				new ShapedArcaneRecipe(oldArcane[3].getResearch(), oldArcane[3].getRecipeOutput(), oldArcane[3].getAspects(), new Object[] { staffshape, 'f', new ItemStack(getItem(Info.resources), 1, 15), 'g', new ItemStack(getItem(Info.wands), 1, 4), 's', new ItemStack(getItem(Info.wands), 1, 50) }),
+				new ShapedArcaneRecipe(oldArcane[4].getResearch(), oldArcane[4].getRecipeOutput(), oldArcane[4].getAspects(), new Object[] { staffshape, 'f', new ItemStack(getItem(Info.resources), 1, 15), 'g', new ItemStack(getItem(Info.wands), 1, 5), 's', new ItemStack(getItem(Info.wands), 1, 50) }),
+				new ShapedArcaneRecipe(oldArcane[5].getResearch(), oldArcane[5].getRecipeOutput(), oldArcane[5].getAspects(), new Object[] { staffshape, 'f', new ItemStack(getItem(Info.resources), 1, 15), 'g', new ItemStack(getItem(Info.wands), 1, 6), 's', new ItemStack(getItem(Info.wands), 1, 50) }),
+				new ShapedArcaneRecipe(oldArcane[6].getResearch(), oldArcane[6].getRecipeOutput(), oldArcane[6].getAspects(), new Object[] { staffshape, 'f', new ItemStack(getItem(Info.resources), 1, 15), 'g', new ItemStack(getItem(Info.wands), 1, 7), 's', new ItemStack(getItem(Info.wands), 1, 50) }),
+				new ShapedArcaneRecipe(oldArcane[7].getResearch(), oldArcane[7].getRecipeOutput(), oldArcane[7].getAspects(), new Object[] { " gf", "gsg", "sg ", 'f', new ItemStack(getItem(Info.resources), 1, 15), 'g', new ItemStack(getItem(Info.wands), 1, 50), 's', new ItemStack(getItem(Info.wands), 1, 2) })
+		};
+		
+		for (int i = 0; i < infusionRecipe.length; i++)
+		{
+			ConfigResearch.recipes.put(infusionRecipe[i], newInfusion[i]);
+		}
+		for (int i = 0; i < arcaneRecipe.length; i++)
+		{
+			ConfigResearch.recipes.put(arcaneRecipe[i], newArcane[i]);
+		}
+		
 		try
 		{
-			ConfigResearch.recipes.put("WandRodObsidian", newWands[0]);
-			ConfigResearch.recipes.put("WandRodIce", newWands[1]);
-			ConfigResearch.recipes.put("WandRodQuartz", newWands[2]);
-			ConfigResearch.recipes.put("WandRodReed", newWands[3]);
-			ConfigResearch.recipes.put("WandRodBlaze", newWands[4]);
-			ConfigResearch.recipes.put("WandRodBone", newWands[5]);
-			
-			Field field = Class.forName("thaumcraft.api.ThaumcraftApi").getDeclaredField("craftingRecipes");
-			field.setAccessible(true);
-			ArrayList al = (ArrayList) field.get(oldWands[0]);
-			for (int i = 0; i < oldWands.length; i++)
+			//Reflectionstuff Start
+			Field recipes = Class.forName("thaumcraft.api.ThaumcraftApi").getDeclaredField("craftingRecipes");
+			recipes.setAccessible(true);
+			ArrayList oldList = (ArrayList) recipes.get(oldInfusion[0]);
+			for (int i = 0; i < oldInfusion.length; i++)
 			{
-				al.set(al.indexOf(oldWands[i]), newWands[i]);
-				removeResearch(wandNames[i]);
+				oldList.set(oldList.indexOf(oldInfusion[i]), newInfusion[i]);
 			}
-			field.set(field, al);
-			
-		    new ResearchItem("ROD_obsidian", "THAUMATURGY", new AspectList().add(Aspect.TOOL, 5).add(Aspect.EARTH, 8).add(Aspect.STONE, 5).add(Aspect.MAGIC, 5), -8, 2, 2, new ItemStack(getItem(Info.wands), 1, 1)).setPages(new ResearchPage[] { new ResearchPage("tc.research_page.ROD_obsidian.1"), new ResearchPage((InfusionRecipe)ConfigResearch.recipes.get("WandRodObsidian")) }).setSecondary().setConcealed().setParents(new String[] { "ROD_greatwood", "INFUSION" }).registerResearchItem();
-		    new ResearchItem("ROD_reed", "THAUMATURGY", new AspectList().add(Aspect.TOOL, 5).add(Aspect.AIR, 8).add(Aspect.PLANT, 5).add(Aspect.MAGIC, 5), -5, -1, 2, new ItemStack(getItem(Info.wands), 1, 5)).setPages(new ResearchPage[] { new ResearchPage("tc.research_page.ROD_reed.1"), new ResearchPage((InfusionRecipe)ConfigResearch.recipes.get("WandRodReed")) }).setSecondary().setConcealed().setParents(new String[] { "ROD_greatwood", "INFUSION" }).registerResearchItem();
-		    new ResearchItem("ROD_blaze", "THAUMATURGY", new AspectList().add(Aspect.TOOL, 5).add(Aspect.FIRE, 8).add(Aspect.ENERGY, 5).add(Aspect.MAGIC, 5), -7, 0, 2, new ItemStack(getItem(Info.wands), 1, 6)).setPages(new ResearchPage[] { new ResearchPage("tc.research_page.ROD_blaze.1"), new ResearchPage((InfusionRecipe)ConfigResearch.recipes.get("WandRodBlaze")) }).setSecondary().setConcealed().setParents(new String[] { "ROD_greatwood", "INFUSION" }).registerResearchItem();
-		    new ResearchItem("ROD_ice", "THAUMATURGY", new AspectList().add(Aspect.TOOL, 5).add(Aspect.ICE, 8).add(Aspect.WATER, 5).add(Aspect.MAGIC, 5), -7, 4, 2, new ItemStack(getItem(Info.wands), 1, 3)).setPages(new ResearchPage[] { new ResearchPage("tc.research_page.ROD_ice.1"), new ResearchPage((InfusionRecipe)ConfigResearch.recipes.get("WandRodIce")) }).setSecondary().setConcealed().setParents(new String[] { "ROD_greatwood", "INFUSION" }).registerResearchItem();
-		    new ResearchItem("ROD_quartz", "THAUMATURGY", new AspectList().add(Aspect.TOOL, 5).add(Aspect.ORDER, 8).add(Aspect.CRYSTAL, 5).add(Aspect.MAGIC, 5), -5, 5, 2, new ItemStack(getItem(Info.wands), 1, 4)).setPages(new ResearchPage[] { new ResearchPage("tc.research_page.ROD_quartz.1"), new ResearchPage((InfusionRecipe)ConfigResearch.recipes.get("WandRodQuartz")) }).setSecondary().setConcealed().setParents(new String[] { "ROD_greatwood", "INFUSION" }).registerResearchItem();
-		    new ResearchItem("ROD_bone", "THAUMATURGY", new AspectList().add(Aspect.TOOL, 5).add(Aspect.ENTROPY, 8).add(Aspect.UNDEAD, 5).add(Aspect.MAGIC, 5), -3, 0, 2, new ItemStack(getItem(Info.wands), 1, 7)).setPages(new ResearchPage[] { new ResearchPage("tc.research_page.ROD_bone.1"), new ResearchPage((InfusionRecipe)ConfigResearch.recipes.get("WandRodBone")) }).setSecondary().setConcealed().setParents(new String[] { "ROD_greatwood", "INFUSION" }).registerResearchItem();
+			for (int i = 0; i < oldArcane.length; i++)
+			{
+				oldList.set(oldList.indexOf(oldArcane[i]), newArcane[i]);
+			}
+			recipes.set(recipes, oldList);
+			//Reflectionstuff End
 		}
-		catch (SecurityException e)
+		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
-		catch (IllegalArgumentException e) {
-			e.printStackTrace();
-		} catch (NoSuchFieldException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
+		
+		ResearchItem[] infusionResearch = {
+				copyResearch(ResearchCategories.getResearch(infusionName[0])).setPages(new ResearchPage[] { new ResearchPage("tc.research_page.ROD_obsidian.1"), new ResearchPage((InfusionRecipe)ConfigResearch.recipes.get("WandRodObsidian")) }),
+				copyResearch(ResearchCategories.getResearch(infusionName[1])).setPages(new ResearchPage[] { new ResearchPage("tc.research_page.ROD_ice.1"), new ResearchPage((InfusionRecipe)ConfigResearch.recipes.get("WandRodIce")) }),
+				copyResearch(ResearchCategories.getResearch(infusionName[2])).setPages(new ResearchPage[] { new ResearchPage("tc.research_page.ROD_quartz.1"), new ResearchPage((InfusionRecipe)ConfigResearch.recipes.get("WandRodQuartz")) }),
+				copyResearch(ResearchCategories.getResearch(infusionName[3])).setPages(new ResearchPage[] { new ResearchPage("tc.research_page.ROD_reed.1"), new ResearchPage((InfusionRecipe)ConfigResearch.recipes.get("WandRodReed")) }),
+				copyResearch(ResearchCategories.getResearch(infusionName[4])).setPages(new ResearchPage[] { new ResearchPage("tc.research_page.ROD_blaze.1"), new ResearchPage((InfusionRecipe)ConfigResearch.recipes.get("WandRodBlaze")) }),
+				copyResearch(ResearchCategories.getResearch(infusionName[5])).setPages(new ResearchPage[] { new ResearchPage("tc.research_page.ROD_bone.1"), new ResearchPage((InfusionRecipe)ConfigResearch.recipes.get("WandRodBone")) }),
+				copyResearch(ResearchCategories.getResearch(infusionName[6])).setPages(new ResearchPage[] { new ResearchPage("tc.research_page.ROD_silverwood.1"), new ResearchPage((InfusionRecipe)ConfigResearch.recipes.get("WandRodSilverwood")) }),
+				copyResearch(ResearchCategories.getResearch(infusionName[7])).setPages(new ResearchPage[] { new ResearchPage("tc.research_page.ROD_primal_staff.1"), new ResearchPage((InfusionRecipe)ConfigResearch.recipes.get("WandRodPrimalStaff")) })
+		};
+		
+		ResearchItem[] arcaneResearch = {
+				copyResearch(ResearchCategories.getResearch(arcaneName[0])).setPages(new ResearchPage[] { new ResearchPage("tc.research_page.ROD_greatwood_staff.1"), new ResearchPage("tc.research_page.ROD_greatwood_staff.2"), new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("WandRodGreatwoodStaff")) }),
+				copyResearch(ResearchCategories.getResearch(arcaneName[1])).setPages(new ResearchPage[] { new ResearchPage("tc.research_page.ROD_obsidian_staff.1"), new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("WandRodObsidianStaff")) }),
+				copyResearch(ResearchCategories.getResearch(arcaneName[2])).setPages(new ResearchPage[] { new ResearchPage("tc.research_page.ROD_ice_staff.1"), new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("WandRodIceStaff")) }),
+				copyResearch(ResearchCategories.getResearch(arcaneName[3])).setPages(new ResearchPage[] { new ResearchPage("tc.research_page.ROD_quartz_staff.1"), new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("WandRodQuartzStaff")) }),
+				copyResearch(ResearchCategories.getResearch(arcaneName[4])).setPages(new ResearchPage[] { new ResearchPage("tc.research_page.ROD_reed_staff.1"), new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("WandRodReedStaff")) }),
+				copyResearch(ResearchCategories.getResearch(arcaneName[5])).setPages(new ResearchPage[] { new ResearchPage("tc.research_page.ROD_blaze_staff.1"), new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("WandRodBlazeStaff")) }),
+				copyResearch(ResearchCategories.getResearch(arcaneName[6])).setPages(new ResearchPage[] { new ResearchPage("tc.research_page.ROD_bone_staff.1"), new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("WandRodBoneStaff")) }),
+				copyResearch(ResearchCategories.getResearch(arcaneName[7])).setPages(new ResearchPage[] { new ResearchPage("tc.research_page.ROD_silverwood_staff.1"), new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("WandRodSilverwoodStaff")) })
+		};
+		
+		System.out.println(ResearchCategories.getResearch("ROD_obsidian"));
+		for (int i = 0; i < infusionResearch.length; i++)
+		{
+			removeResearch(infusionName[i]);
+			infusionResearch[i].registerResearchItem();
 		}
+		for (int i = 0; i < arcaneResearch.length; i++)
+		{
+			removeResearch(arcaneName[i]);
+			arcaneResearch[i].registerResearchItem();
+		}
+		System.out.println(ResearchCategories.getResearch("ROD_obsidian"));
 	}
 	
 	private static void removeResearch(String research)
 	{
-		ResearchItem researchname = ResearchCategories.getResearch(research);
 		Collection researchcategory = ResearchCategories.researchCategories.values();
 		for (Object obj : researchcategory)
 		{
@@ -456,10 +514,54 @@ public class ExThaumiquo
 			{
 				if (((ResearchItem)researchitem).key.equals(research))
 				{
+					System.out.println("Removing Research " + ((ResearchItem)researchitem).key);
 					researchlist.remove(researchitem);
 					break;
 				}
 			}
 		}
+	}
+	
+	private static ResearchItem copyResearch(ResearchItem research)
+	{
+		String k = research.key;
+		String cat = research.category;
+		AspectList as = research.tags;
+		int col = research.displayColumn;
+		int row = research.displayRow;
+		int complex = research.getComplexity();
+		ItemStack icon = research.icon_item;
+		
+		ResearchItem override = new ResearchItem(research.key, research.category, research.tags, research.displayColumn, research.displayRow, research.getComplexity(), research.icon_item);
+		//override.setPages(research.getPages());
+		if (research.isAutoUnlock()) override.setSpecial();
+		if (research.isConcealed()) override.setStub();
+		if (research.isHidden()) override.setHidden();
+		if (research.isRound()) override.setRound();
+		if (research.isSecondary()) override.setSecondary();
+		if (research.isStub()) override.setStub();
+		if (research.isVirtual()) override.setVirtual();
+		override.setSiblings(research.siblings);
+		override.setParents(research.parents);
+		override.setParentsHidden(research.parentsHidden);
+		override.setAspectTriggers(research.getAspectTriggers());
+		override.setItemTriggers(research.getItemTriggers());
+		
+		return override;
+	}
+	
+	private static IArcaneRecipe getArcaneRecipe(String research)
+	{
+		for (Object recipe : ThaumcraftApi.getCraftingRecipes())
+		{
+			if (recipe instanceof IArcaneRecipe)
+			{
+				if (((IArcaneRecipe)recipe).getResearch().equals(research))
+				{
+					return (IArcaneRecipe) recipe;
+				}
+			}
+		}
+		return null;
 	}
 }

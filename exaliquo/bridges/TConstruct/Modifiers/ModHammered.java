@@ -40,7 +40,7 @@ public class ModHammered extends ModBoolean
 	public void modify(ItemStack[] input, ItemStack tool)
 	{
 		NBTTagCompound tags = tool.getTagCompound().getCompoundTag("InfiTool");
-		tags.setBoolean(key, true);
+		tags.setBoolean(name, true);
 		
 		int modifiers = tags.getInteger("Modifiers");
 		modifiers -= 1;

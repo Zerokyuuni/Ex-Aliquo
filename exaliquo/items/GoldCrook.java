@@ -19,6 +19,7 @@ import exaliquo.data.ModIDs.Info;
 import exaliquo.data.ModsLoaded;
 import exnihilo.data.ModData;
 import exnihilo.items.ItemCrook;
+import static exaliquo.proxy.ForestryReflection.*;
 
 public class GoldCrook extends ItemCrook
 {
@@ -63,6 +64,8 @@ public class GoldCrook extends ItemCrook
 				if (forestryrefcheck && ModsLoaded.isForestryLoaded)
 				{
 					ForestryLeaves(world, block, meta, X, Y, Z);
+					ForestryLeaves(world, block, meta, X, Y, Z);
+					ForestryLeaves(world, block, meta, X, Y, Z);
 				}
 
 				if (!extras)
@@ -91,59 +94,5 @@ public class GoldCrook extends ItemCrook
 		}
 		
 		return false;
-	}
-	
-	private void ForestryLeaves(World world, Block block, int meta, int X, int Y, int Z)
-	{
-		try
-		{
-			if ((forestryLeafBlock != null) && (drops != null)) 
-			{
-					drops.invoke(forestryLeafBlock.cast(block), world, X, Y, Z, meta, 1.0F, true);
-					drops.invoke(forestryLeafBlock.cast(block), world, X, Y, Z, meta, 1.0F, true);
-					drops.invoke(forestryLeafBlock.cast(block), world, X, Y, Z, meta, 1.0F, true);
-			}
-			else
-			{
-				forestryLeafBlock = Class.forName("forestry.arboriculture.gadgets.BlockLeaves");
-				
-				if (forestryLeafBlock != null)
-				{	
-					drops = forestryLeafBlock.cast(block).getClass().getDeclaredMethod("spawnLeafDrops", World.class, int.class, int.class, int.class, int.class, float.class, boolean.class);
-					drops.setAccessible(true);
-					extras = true;
-				}
-			}
-		}
-		catch (IllegalAccessException e)
-		{
-			forestryrefcheck = false;
-			e.printStackTrace();
-		}
-		catch (IllegalArgumentException e)
-		{
-			forestryrefcheck = false;
-			e.printStackTrace();
-		}
-		catch (InvocationTargetException e)
-		{
-			forestryrefcheck = false;
-			e.printStackTrace();
-		}
-		catch (ClassNotFoundException e)
-		{
-			forestryrefcheck = false;
-			e.printStackTrace();
-		}
-		catch (NoSuchMethodException e)
-		{
-			forestryrefcheck = false;
-			e.printStackTrace();
-		}
-		catch (SecurityException e)
-		{
-			forestryrefcheck = false;
-			e.printStackTrace();
-		}
 	}
 }
