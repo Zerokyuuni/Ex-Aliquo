@@ -60,6 +60,8 @@ public class exaliquo {
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
+		Registries.postInitHammers();
+		
 		if (Configurations.isOre)
 		{
 			Registries.registerNihiloOreDict();

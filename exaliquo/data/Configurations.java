@@ -42,6 +42,13 @@ public class Configurations {
 	
 	public static int thaumHammer;
 	public static int invarHammer;
+	public static int copperHammer;
+	public static int tinHammer;
+	public static int silverHammer;
+	public static int leadHammer;
+	public static int platinumHammer;
+	public static int nickelHammer;
+	public static int aluminumHammer;
 	public static int reedCrook;
 	public static int goldCrook;
 	public static int hayCrook;
@@ -154,6 +161,13 @@ public class Configurations {
 		
 		thaumHammer = config.get("Ex Aliquo things","Thaumium Hammer ID", 20160).getInt(20160);
 		invarHammer = config.get("Ex Aliquo things","Invar Hammer ID", 20161).getInt(20161);
+		copperHammer = config.get("Ex Aliquo things","Copper Hammer ID", 20162).getInt(20162);
+		tinHammer = config.get("Ex Aliquo things","Tin Hammer ID", 20163).getInt(20163);
+		silverHammer = config.get("Ex Aliquo things","Silver Hammer ID", 20164).getInt(20164);
+		leadHammer = config.get("Ex Aliquo things","Lead Hammer ID", 20165).getInt(20165);
+		platinumHammer = config.get("Ex Aliquo things","Platinum Hammer ID", 20166).getInt(20166);
+		nickelHammer = config.get("Ex Aliquo things","Nickel Hammer ID", 20167).getInt(20167);
+		aluminumHammer = config.get("Ex Aliquo things","Aluminum Hammer ID", 20168).getInt(20168);
 		reedCrook = config.get("Ex Aliquo things","Reed Crook", 20300).getInt(20300);
 		goldCrook = config.get("Ex Aliquo things","Golden Crook", 20301).getInt(20301);
 		hayCrook = config.get("Ex Aliquo things","Hay Crook", 20302).getInt(20302);
