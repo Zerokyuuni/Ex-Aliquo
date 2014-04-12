@@ -2,6 +2,7 @@ package exaliquo;
 
 import static exaliquo.data.ModIDs.getBlock;
 import net.minecraft.block.Block;
+import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -38,14 +39,15 @@ import exaliquo.blocks.ores.OreZinc;
 import exaliquo.bridges.TConstruct.SkyModifiers;
 import exaliquo.bridges.TConstruct.Modifiers.ModCrooked;
 import exaliquo.bridges.TConstruct.Modifiers.ModHammered;
+import exaliquo.data.AliquoMaterial;
 import exaliquo.data.Configurations;
 import exaliquo.data.ExATab;
 import exaliquo.data.OreDict;
 import static exaliquo.data.ModIDs.getItem;
 import exaliquo.data.ModIDs.Info;
+import exaliquo.items.AliquoHammer;
 import exaliquo.items.GoldCrook;
 import exaliquo.items.HayCrook;
-import exaliquo.items.InvarHammer;
 import exaliquo.items.ReedCrook;
 import exaliquo.items.ThaumiumHammer;
 import exaliquo.items.blocks.ItemBlockOreAdamantine;
@@ -113,6 +115,13 @@ public class Registries
 	private static String[] oreshape = { "ii", "ii" };
 	public static Item hammerThaum;
 	public static Item hammerInvar;
+	public static Item hammerCopper;
+	public static Item hammerTin;
+	public static Item hammerSilver;
+	public static Item hammerLead;
+	public static Item hammerPlatinum;
+	public static Item hammerNickel;
+	public static Item hammerAluminum;
 	public static Item crookReed;
 	public static Item crookGold;
 	public static Item crookHay;
@@ -174,10 +183,26 @@ public class Registries
 	public static Item zincOreItem;
 	
 	public static void registerItems() {
-		hammerThaum = new ThaumiumHammer(Configurations.thaumHammer, OreDict.getMaterial("THAUMIUM")).setUnlocalizedName("ExAliquo.ThaumHammer").setCreativeTab(exatab);
-		GameRegistry.registerItem(hammerThaum, "ExAliquo.ThaumHammer");
-		hammerInvar = new InvarHammer(Configurations.invarHammer, OreDict.getMaterial("INVAR")).setUnlocalizedName("ExAliquo.InvarHammer").setCreativeTab(exatab);
-		GameRegistry.registerItem(hammerInvar,"ExAliquo.InvarHammer");
+		hammerThaum = new ThaumiumHammer(Configurations.thaumHammer)
+			.setUnlocalizedName("ExAliquo.ThaumHammer")
+			.registerItem().setCreativeTab(exatab);
+		hammerInvar = new AliquoHammer(Configurations.invarHammer, "invar")
+			.registerItem().setCreativeTab(exatab);
+		hammerCopper = new AliquoHammer(Configurations.copperHammer, "copper")
+			.registerItem().setCreativeTab(exatab);
+		hammerTin = new AliquoHammer(Configurations.tinHammer, "tin")
+			.registerItem().setCreativeTab(exatab);
+		hammerSilver = new AliquoHammer(Configurations.silverHammer, "silver")
+			.registerItem().setCreativeTab(exatab);
+		hammerLead = new AliquoHammer(Configurations.leadHammer, "lead")
+			.registerItem().setCreativeTab(exatab);
+		hammerPlatinum = new AliquoHammer(Configurations.platinumHammer, "platinum")
+			.registerItem().setCreativeTab(exatab);
+		hammerNickel = new AliquoHammer(Configurations.nickelHammer, "nickel")
+			.registerItem().setCreativeTab(exatab);
+		hammerAluminum = new AliquoHammer(Configurations.aluminumHammer, "aluminum")
+			.registerItem().setCreativeTab(exatab);
+		
 		crookReed = new ReedCrook(Configurations.reedCrook).setUnlocalizedName("ExAliquo.ReedCrook").setCreativeTab(exatab);
 		GameRegistry.registerItem(crookReed, "ExAliquo.ReedCrook");
 		crookGold = new GoldCrook(Configurations.goldCrook).setUnlocalizedName("ExAliquo.GoldCrook").setCreativeTab(exatab);
@@ -188,10 +213,27 @@ public class Registries
 
 	public static void registerRecipes()
 	{
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(hammerInvar), new Object[] { hammershape, 's', "stickWood", 'i', "ingotInvar" }));
 		GameRegistry.addShapedRecipe(new ItemStack(crookReed), new Object[] { crookshape, 'i', Item.reed });
 		GameRegistry.addShapedRecipe(new ItemStack(crookGold), new Object[] { crookshape, 'i', Item.ingotGold });
 		GameRegistry.addShapedRecipe(new ItemStack(crookHay), new Object[] { "wwi", "iwi", " w ", 'w', Item.wheat, 'i', Block.fenceIron });
+	}
+	
+	public static void postInitHammers() {
+		for (AliquoHammer hammer : AliquoHammer.registeredHammers()) {
+			AliquoMaterial am = AliquoMaterial.get(hammer.material);
+			
+			EnumToolMaterial toolEnum = am.getToolEnumFromRecipe();
+			if (toolEnum != null)
+				GameRegistry.addRecipe(new ShapedOreRecipe(
+						hammer,
+						hammershape,
+						's', "stickWood",
+						'i', hammer.getIngotName()));
+			else
+				toolEnum = am.getFallbackToolEnum();
+			
+			hammer.setToolMaterial(toolEnum);
+		}
 	}
 
 	public static void registerNihiloOreDict()
