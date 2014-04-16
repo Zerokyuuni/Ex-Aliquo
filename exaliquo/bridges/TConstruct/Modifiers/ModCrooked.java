@@ -27,7 +27,11 @@ public class ModCrooked extends ModBoolean {
 		if (!validType(toolitem)) return false;
 		
 		NBTTagCompound tags = tool.getTagCompound().getCompoundTag("InfiTool");
-		if (!tags.getBoolean("Lava") && !tags.hasKey("Lapis") && !tags.hasKey("Silk Touch") && !tags.hasKey("Hammered"))
+		if (Configurations.fortuneCrook == true && !tags.getBoolean("Lava") && !tags.hasKey("Silk Touch") && !tags.hasKey("Hammered"))
+				{
+		    return tags.getInteger("Modifiers") > 0 && !tags.getBoolean(key);
+		}
+		else if (!tags.getBoolean("Lava") && !tags.hasKey("Lapis") && !tags.hasKey("Silk Touch") && !tags.hasKey("Hammered"))
 		{
 		    return tags.getInteger("Modifiers") > 0 && !tags.getBoolean(key);
 		}

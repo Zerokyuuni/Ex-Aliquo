@@ -16,6 +16,8 @@ public class Configurations {
 	public static boolean sieveEssenceBushes;
 	public static boolean sieveNetherOres;
 	public static int dualTools;
+	public static boolean fortuneCrook;
+	public static boolean fortuneHammer;
 	public static boolean miniSmelting;
 	public static boolean registerTConstruct;
 	
@@ -136,6 +138,8 @@ public class Configurations {
 		allowTinkerBushCompost = config.get("TCon Tweaks", "Can oreberry bushes be composted", false).getBoolean(false);
 		miniSmelting = config.get("TCon Tweaks", "Enable mini-smelteries", false).getBoolean(false);
 		dualTools = config.get("TCon Tweaks", "Modifier lock", 0, "0 is default (tool restrictions), 1 is dual-use tools unrestricted, 2 is fully unlock").getInt(0);
+		fortuneCrook = config.get("TCon Tweaks", "Fortune-Crooking Interaction", false).getBoolean(false);
+		fortuneHammer = config.get("TCon Tweaks", "Fortune-Hammering Interaction", false).getBoolean(false);
 		
 		sieveRedwoods = config.get("Natura Tweaks", "Can redwood trees be obtained", false, "Redwoods eat every block going both up and down. Use at your own peril. Or enjoyment").getBoolean(false);
 		sieveHopseed = config.get("Natura Tweaks", "Can hopseed trees be obtained", false).getBoolean(false);
