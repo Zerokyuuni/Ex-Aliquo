@@ -35,10 +35,10 @@ public class Sieving
 			}
 			if (Configurations.sieveBerryBushes)
 			{
-				register(topiary, 0, getIDs(Info.good), 0, 64);
-				register(topiary, 0, getIDs(Info.good), 1, 64);
-				register(topiary, 0, getIDs(Info.good), 2, 64);
-				register(topiary, 0, getIDs(Info.good), 3, 64);
+				register(topiary, i, getIDs(Info.good), 0, 64);
+				register(topiary, i, getIDs(Info.good), 1, 64);
+				register(topiary, i, getIDs(Info.good), 2, 64);
+				register(topiary, i, getIDs(Info.good), 3, 64);
 			}
 		}
 		if (Configurations.sieveNetherTrees)
