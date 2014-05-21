@@ -215,4 +215,5 @@ block.ExAliquo.ZincGravel.name=Zinc Gravel
 block.ExAliquo.ZincSand.name=Zinc Sand
 block.ExAliquo.ZincDust.name=Zinc Dust
 #General
-itemGroup.Ex Aliquo=Ex Aliquo
+itemGroup.ExA=Ex Aliquo General
+itemGroup.ExAOres=Ex Aliquo Ores

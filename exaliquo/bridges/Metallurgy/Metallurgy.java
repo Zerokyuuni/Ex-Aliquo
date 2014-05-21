@@ -7,10 +7,8 @@ public class Metallurgy
 
 	public static void initMetallurgy()
 	{
-		Hammering.HammerMetallurgy();
-		Sieving.SieveMetallurgy();
-		FurnaceSmelting.registerExMetallurgySmelting();
-		OreDict.registerExMetallurgyOreDict();
+		//Hammering.HammerMetallurgy();
+		//OreDict.registerExMetallurgyOreDict();
 		if (Loader.isModLoaded("ExtraTiC")) 
 		{
 			System.out.println("Smelting Metallurgy metals");

@@ -7,5 +7,6 @@ public class Mariculture
 	{
 		Sieving.SieveMariculture();
 		AliquoFish.InitFishery();
+		CrucibleSmelt.SmeltMariculture();
 	}
 }

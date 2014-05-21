@@ -30,15 +30,4 @@ public class Sieving
 		SieveRegistry.register(soil, 0, getIDs(Info.materials), 1, 3);
 		SieveRegistry.register(soil, 0, getIDs(Info.materials), 17, 10);
 	}
-	
-	public static void ExTinkerSieves()
-	{
-		if (Configurations.sieveNetherOres)
-		{
-			SieveRegistry.register(netherrack, 0, Registries.cobaltOreItem.itemID, 0, 96);
-			SieveRegistry.register(netherrack, 0, Registries.arditeOreItem.itemID, 0, 96);
-			SieveRegistry.register(soulsand, 0, Registries.cobaltOreItem.itemID, 1, 96);
-			SieveRegistry.register(soulsand, 0, Registries.arditeOreItem.itemID, 1, 96);
-		}
-	}
 }

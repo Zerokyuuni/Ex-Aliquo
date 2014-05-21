@@ -17,6 +17,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.Loader;
 import tconstruct.library.ActiveToolMod;
+import tconstruct.library.tools.AbilityHelper;
 import tconstruct.library.tools.ToolCore;
 import exnihilo.data.ModData;
 import exnihilo.registries.HammerRegistry;
@@ -69,7 +70,7 @@ public class SkyModifiers extends ActiveToolMod
 					}
 				}
 					
-				item.damageItem(1, player);
+				AbilityHelper.damageTool(item, 1, player, false);
 			}
 			return false;
 		}
@@ -108,7 +109,7 @@ public class SkyModifiers extends ActiveToolMod
 
 				if (validTarget)
 				{
-					item.damageItem(1, player);
+					AbilityHelper.damageTool(item, 1, player, false);
 					
 					if (!world.isRemote)
 					{

@@ -55,6 +55,7 @@ public class GeneralAliquo
 	{
 		SieveRegistry.register(Block.lavaStill.blockID, 0, Item.fishCooked.itemID, 0, 1);
 		SieveRegistry.register(Block.waterStill.blockID, 0, Item.fishRaw.itemID, 0, 1);
+		SieveRegistry.register(Block.dragonEgg.blockID, 0, Registries.dragonEgg.itemID, 0, 1);
 	}
 	
 	public static void registerGeneralHammering()

@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -13,6 +14,8 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.registry.TickRegistry;
+import cpw.mods.fml.relauncher.Side;
 import exaliquo.bridges.ArsMagica.ArsMagica;
 import exaliquo.bridges.Dart.Dartcraft;
 import exaliquo.bridges.Growthcraft.Growthcraft;
@@ -25,9 +28,13 @@ import exaliquo.bridges.TConstruct.TConstruct;
 import exaliquo.bridges.Thaumcraft.ExThaumiquo;
 import exaliquo.bridges.Thaumcraft.Thaumcraft;
 import exaliquo.bridges.crossmod.Crossmod;
+import exaliquo.data.AliquoEvents;
 import exaliquo.data.Colors;
 import exaliquo.data.Configurations;
+import exaliquo.data.ExAOreTab;
 import exaliquo.data.ExATab;
+import exaliquo.data.AliquoTickHandler;
+import exaliquo.data.OreDictDrops;
 import exaliquo.proxy.ForestryReflection;
 import static exaliquo.data.ModsLoaded.*;
 
@@ -45,10 +52,16 @@ public class exaliquo {
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		Configurations.Load(event.getModConfigurationDirectory());
-		Registries.exatab = new ExATab("Ex Aliquo");
+		Registries.exatab = new ExATab("ExA");
+		Registries.oretab = new ExAOreTab("ExAOres");
 		Registries.registerItems();
+		Registries.registerBlocks();
 		Registries.registerRecipes();
 		Registries.exatab.initTab(new ItemStack(Registries.crookGold, 1, 0));
+		Registries.oretab.initTab(new ItemStack(Registries.cobaltOreItem, 1, 0));
+		
+		MinecraftForge.EVENT_BUS.register(new AliquoEvents());
+		TickRegistry.registerTickHandler(new AliquoTickHandler(), Side.CLIENT);
 	}
 	
 	@EventHandler
@@ -68,10 +81,7 @@ public class exaliquo {
 		}
 		GeneralAliquo.initGeneralStuff();
 		Crossmod.initCross();
-		if (isTConLoaded || Configurations.registerTConstruct)
-		{
-			Registries.registerExTConstructOres();
-		}
+		OreDictDrops.CheckMetals();
 		if (isTConLoaded)
 		{
 			exaliquo.logger.log(Level.INFO,"Loading Tinker's Construct Compat");
@@ -106,10 +116,6 @@ public class exaliquo {
 		{
 			exaliquo.logger.info("Loading MFR Compat");
 			MineFactoryReloaded.initMFR();
-		}
-		if (isMetallurgyLoaded || Configurations.registerMetallurgy)
-		{
-			Registries.registerExMetallurgyOres();
 		}
 		if (isMetallurgyLoaded)
 		{

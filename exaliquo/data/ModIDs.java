@@ -164,7 +164,10 @@ public class ModIDs
 		rubberleaves("MineFactoryReloaded","block","tile.mfr.rubberwood.leaves"),
 		
 		dartsapling("DartCraft","block","forceSapling"),
-		dartleaves("DartCraft","block","forceLeaves");
+		dartleaves("DartCraft","block","forceLeaves"),
+		
+		liquidpyro("ThermalExpansion","block","FluidPyrotheum"),
+		liquidcold("ThermalExpansion","block","FluidCryotheum");
 		
 		private final String mod;
 		private final String type;

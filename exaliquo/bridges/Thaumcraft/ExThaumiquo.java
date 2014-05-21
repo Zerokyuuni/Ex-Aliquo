@@ -72,13 +72,13 @@ public class ExThaumiquo
 		{
 			new ExAResearchItem("SKYMATRIX",
 					"SKYCHEMY",
-					new AspectList().add(Aspect.TOOL, 0).add(Aspect.AIR, 0),
+					new AspectList().add(Aspect.EARTH,1),
 					3,
 					4,
 					0,
 					new ItemStack(getBlock(Info.devices), 1, 2)).setPages(new ResearchPage[] {
 							new ResearchPage("exa.page.SKYMATRIX.1"), new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("SkyMatrix"))
-					}).setParentsHidden("INFUSION").setConcealed().registerResearchItem();
+					}).setConcealed().setParentsHidden("INFUSION").setStub().registerResearchItem();
 			
 			new ExAResearchItem("GREATWOOD",
 					"SKYCHEMY",
@@ -150,27 +150,27 @@ public class ExThaumiquo
 		
 		new ExAResearchItem("THAUMHAMMER",
 				"SKYCHEMY",
-				new AspectList().add(Aspect.TOOL, 0).add(Aspect.AIR, 0),
+				new AspectList().add(Aspect.EARTH,1),
 				-3,
 				3,
 				0,
 				new ItemStack(Registries.hammerThaum)).setPages(new ResearchPage[] {
 						new ResearchPage("exa.page.THAUMHAMMER.1"), new ResearchPage((IRecipe)ConfigResearch.recipes.get("ThaumiumHammer"))
-				}).setParentsHidden("THAUMIUM").setConcealed().registerResearchItem();
+				}).setConcealed().setParentsHidden("THAUMIUM").setStub().registerResearchItem();
 		
 		new ExAResearchItem("SKYFILTER",
 				"SKYCHEMY",
-				new AspectList().add(Aspect.TOOL, 0).add(Aspect.AIR, 0),
+				new AspectList().add(Aspect.EARTH,1),
 				3,
 				3,
 				0,
 				new ItemStack(getItem(Info.resources), 1, 8)).setPages(new ResearchPage[] {
 						new ResearchPage("exa.page.SKYFILTER.1"), new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("Skyfilter"))
-				}).setParentsHidden("DISTILESSENTIA").setConcealed().registerResearchItem();
+				}).setConcealed().setParentsHidden("DISTILESSENTIA").setStub().registerResearchItem();
 		
 		new ExAResearchItem("OBSIDIANTOTEM",
 				"SKYCHEMY",
-				new AspectList().add(Aspect.ELDRITCH, 6).add(Aspect.STONE, 12).add(Aspect.DARKNESS, 6),
+				new AspectList().add(Aspect.ELDRITCH, 3).add(Aspect.EARTH, 8).add(Aspect.DARKNESS, 3),
 				2,
 				4,
 				1,
@@ -490,7 +490,6 @@ public class ExThaumiquo
 				copyResearch(ResearchCategories.getResearch(arcaneName[7])).setPages(new ResearchPage[] { new ResearchPage("tc.research_page.ROD_silverwood_staff.1"), new ResearchPage((IArcaneRecipe)ConfigResearch.recipes.get("WandRodSilverwoodStaff")) })
 		};
 		
-		System.out.println(ResearchCategories.getResearch("ROD_obsidian"));
 		for (int i = 0; i < infusionResearch.length; i++)
 		{
 			removeResearch(infusionName[i]);
@@ -501,7 +500,6 @@ public class ExThaumiquo
 			removeResearch(arcaneName[i]);
 			arcaneResearch[i].registerResearchItem();
 		}
-		System.out.println(ResearchCategories.getResearch("ROD_obsidian"));
 	}
 	
 	private static void removeResearch(String research)
@@ -514,7 +512,6 @@ public class ExThaumiquo
 			{
 				if (((ResearchItem)researchitem).key.equals(research))
 				{
-					System.out.println("Removing Research " + ((ResearchItem)researchitem).key);
 					researchlist.remove(researchitem);
 					break;
 				}

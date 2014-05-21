@@ -37,13 +37,24 @@ public class OreDict
 		}
 	}
 
-	public static ItemStack getFirstOre(String string) {
+	public static ItemStack getFirstOre(String string)
+	{
+		return getFirstOre(string, true);
+	}
+	
+	public static ItemStack getFirstOre(String string, boolean warning)
+	{
 		ArrayList<ItemStack> ores = OreDictionary.getOres(string);
 		if (!ores.isEmpty())
 		{
 			return ores.get(0);
 		}
-		exaliquo.logger.warning("ExAliquo could not find the oreDict item called by" + string);
+		if (warning) exaliquo.logger.warning("ExAliquo could not find the oreDict item called by " + string);
 		return new ItemStack(Block.redstoneWire, 1, 0);
+	}
+
+	public static Block getBlock(ItemStack itemStack)
+	{
+		return Block.blocksList[itemStack.itemID];
 	}
 }

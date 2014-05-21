@@ -1,6 +1,7 @@
 package exaliquo.bridges.crossmod;
 
 import static exaliquo.data.ModsLoaded.*;
+import cpw.mods.fml.common.Loader;
 
 public class Crossmod
 {
@@ -14,6 +15,14 @@ public class Crossmod
 		if (isThaumcraftLoaded && isNetherOresLoaded)
 		{
 			NetherOres_Thaumcraft.Whenk();
+		}
+		if (isExtraTICLoaded && isMetallurgyLoaded)
+		{
+			ExtraTic_Metallurgy.SmeltMetallurgy();
+		}
+		if (isExtraTICLoaded && Loader.isModLoaded("Mekanisum"))
+		{
+			ExtraTic_Mekanism.SmeltMekanism();
 		}
 		CropXYZ.Shoukan();
 	}

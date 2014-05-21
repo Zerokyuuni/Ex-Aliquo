@@ -12,7 +12,6 @@ public class ForestryReflection
 	public static boolean forestryrefcheck = true;
 	private static Class forestryLeafBlock = null;
 	private static Method drops = null;
-	private static Object forestryLeafInstance = null;
 	private static final Class[] spawnLeafParams = { World.class, int.class, int.class, int.class, int.class, float.class, boolean.class };
 
 	public static void initProxy()
@@ -23,7 +22,6 @@ public class ForestryReflection
 			
 			if (forestryLeafBlock != null)
 			{
-				forestryLeafInstance = forestryLeafBlock.newInstance();
 				drops = forestryLeafBlock.getDeclaredMethod("spawnLeafDrops", spawnLeafParams);
 				drops.setAccessible(true);
 				extras = true;
@@ -42,11 +40,14 @@ public class ForestryReflection
 		{
 			try
 			{
-				drops.invoke(forestryLeafInstance, world, X, Y, Z, meta, 1.0F, true);
+				drops.invoke(forestryLeafBlock.cast(block), world, X, Y, Z, meta, 1.0F, true);
 			}
 			catch (Exception e)
 			{
-				e.printStackTrace();
+				if (!block.isLeaves(world, X, Y, Z))
+				{
+					e.printStackTrace();
+				}
 			}
 		}
 	}

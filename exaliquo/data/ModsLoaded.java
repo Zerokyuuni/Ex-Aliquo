@@ -6,6 +6,7 @@ public class ModsLoaded
 {
 	public static final boolean isArsMagicaLoaded = Loader.isModLoaded("arsmagica2");
 	public static final boolean isDartcraftLoaded = Loader.isModLoaded("Dartcraft");
+	public static final boolean isExtraTICLoaded = Loader.isModLoaded("ExtraTiC");
 	public static final boolean isForestryLoaded = Loader.isModLoaded("Forestry");
 	public static final boolean isGrowthcraftLoaded = Loader.isModLoaded("Growthcraft|Core");
 	public static final boolean isMaricultureLoaded = Loader.isModLoaded("Mariculture");

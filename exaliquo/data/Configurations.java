@@ -52,10 +52,14 @@ public class Configurations {
 	public static int reedCrook;
 	public static int goldCrook;
 	public static int hayCrook;
+	public static int dragonEgg;
 	
 	public static boolean ninjaFeesh;
 	public static boolean hammerNetherOres;
 	public static boolean whenk;
+	
+	public static int blockEndEye;
+	public static int blockEndCake;
 	
 	public static int cobaltOreBlock;
 	public static int arditeOreBlock;
@@ -171,6 +175,10 @@ public class Configurations {
 		reedCrook = config.get("Ex Aliquo things","Reed Crook", 20300).getInt(20300);
 		goldCrook = config.get("Ex Aliquo things","Golden Crook", 20301).getInt(20301);
 		hayCrook = config.get("Ex Aliquo things","Hay Crook", 20302).getInt(20302);
+		dragonEgg = config.get("Ex Aliquo things","Dragon Egg", 20303).getInt(20303);
+		
+		blockEndEye = config.get("Ex Aliquo things","EnderBlock", 2298).getInt(2298);
+		blockEndCake = config.get("Ex Aliquo things","EnderCake", 2299).getInt(2299);
 		
 		registerMetallurgy = config.get("Metallurgy Things", "Load ExMetallurgy ores anyway", false, "Only used to get the Gravel/Sand/Dust for decorative purposes").getBoolean(false);
 		

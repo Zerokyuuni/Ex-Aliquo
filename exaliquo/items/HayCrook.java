@@ -1,5 +1,9 @@
 package exaliquo.items;
 
+import java.util.List;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
@@ -45,5 +49,13 @@ public class HayCrook extends ItemCrook
 		}
 		
 		return true;
+	}
+	
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void addInformation(ItemStack itemstack, EntityPlayer player, List list, boolean flag)
+	{
+		list.add("I said Hay, Hay, Hay crook!");
+		list.add("http://youtu.be/eh7lp9umG2I");
 	}
 }

@@ -5,6 +5,7 @@ import static exaliquo.data.ModIDs.getItem;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -15,6 +16,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import exaliquo.data.ModIDs.Info;
 import exaliquo.data.ModsLoaded;
 import exnihilo.data.ModData;
@@ -94,5 +97,12 @@ public class GoldCrook extends ItemCrook
 		}
 		
 		return false;
+	}
+	
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void addInformation(ItemStack itemstack, EntityPlayer player, List list, boolean flag)
+	{
+		list.add("I am probably a crook");
 	}
 }

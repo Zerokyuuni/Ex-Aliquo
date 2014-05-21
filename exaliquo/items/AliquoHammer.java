@@ -17,26 +17,29 @@ import exaliquo.AliquoRegistry;
 import exaliquo.data.OreDict;
 import exnihilo.items.hammers.ItemHammerBase;
 
-public class AliquoHammer extends ItemHammerBase {
+public class AliquoHammer extends ItemHammerBase
+{
 	
 	private static final List<AliquoHammer> registeredHammers = Lists.newArrayList();
 	
 	public final String material;
 	
-	public AliquoHammer(int id, String material) {
+	public AliquoHammer(int id, String material)
+	{
 		super(id, EnumToolMaterial.WOOD);
 		this.material = material;
-		setUnlocalizedName(
-				"ExAliquo." + LOWER_CAMEL.to(UPPER_CAMEL, material) + "Hammer");
+		setUnlocalizedName("ExAliquo." + LOWER_CAMEL.to(UPPER_CAMEL, material) + "Hammer");
 	}
 	
-	public AliquoHammer registerItem() {
+	public AliquoHammer registerItem()
+	{
 		GameRegistry.registerItem(this, getUnlocalizedName().substring(5));
 		registeredHammers.add(this);
 		return this;
 	}
 	
-	public static Iterable<AliquoHammer> registeredHammers() {
+	public static Iterable<AliquoHammer> registeredHammers()
+	{
 		return Iterables.unmodifiableIterable(registeredHammers);
 	}
 	
@@ -46,7 +49,9 @@ public class AliquoHammer extends ItemHammerBase {
 	 * Register the texture according to the tool material enum's preference.
 	 * If a preference does not exist, use the default texture.
 	 */
-	@Override public void registerIcons(IconRegister ir) {
+	@Override 
+	public void registerIcons(IconRegister ir)
+	{
 		String texture = AliquoRegistry.getHammerTexture(toolMaterial);
 		itemIcon = ir.registerIcon(texture != null ? texture
 				: "exaliquo:Hammer" + LOWER_CAMEL.to(UPPER_CAMEL, material));
@@ -55,24 +60,30 @@ public class AliquoHammer extends ItemHammerBase {
 	/**
 	 * Derive the ingot name to be used in ore dict
 	 */
-	public String getIngotName() {
+	public String getIngotName()
+	{
 		return "ingot" + LOWER_CAMEL.to(UPPER_CAMEL, material);
 	}
 	
-	@Override public boolean getIsRepairable(ItemStack tool, ItemStack ingot) {
+	@Override
+	public boolean getIsRepairable(ItemStack tool, ItemStack ingot)
+	{
 		return OreDict.isOreDict(ingot, getIngotName());
 	}
 	
 	
 	
-	public void setToolMaterial(EnumToolMaterial stat) {
+	public void setToolMaterial(EnumToolMaterial stat)
+	{
 		toolMaterial = stat;
 		setMaxDamage(stat.getMaxUses());
 		efficiencyOnProperMaterial = stat.getEfficiencyOnProperMaterial();
 		damageVsEntity = 3 + stat.getDamageVsEntity();
 	}
 	
-	@Override public AliquoHammer setUnlocalizedName(String unlocalized) {
+	@Override 
+	public AliquoHammer setUnlocalizedName(String unlocalized)
+	{
 		super.setUnlocalizedName(unlocalized);
 		return this;
 	}
