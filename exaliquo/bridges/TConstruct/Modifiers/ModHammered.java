@@ -29,7 +29,7 @@ public class ModHammered extends ModBoolean
 		if (!validType(toolitem)) return false;
 		
 		NBTTagCompound tags = tool.getTagCompound().getCompoundTag("InfiTool");
-		if (Configurations.fortuneHammer == true && !tags.getBoolean("Lava") && !tags.hasKey("Silk Touch") && !tags.hasKey("Crooked"))
+		if (Configurations.fortuneHammer && !tags.getBoolean("Lava") && !tags.hasKey("Silk Touch") && !tags.hasKey("Crooked"))
 		{
 			return tags.getInteger("Modifiers") > 0 && !tags.getBoolean(key);
 		}

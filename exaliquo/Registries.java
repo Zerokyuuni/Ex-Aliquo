@@ -31,6 +31,7 @@ import exaliquo.items.HayCrook;
 import exaliquo.items.ReedCrook;
 import exaliquo.items.ThaumiumHammer;
 import exaliquo.items.blocks.ItemBlockOre;
+import exaliquo.data.ModsLoaded;
 
 public class Registries
 {
@@ -116,8 +117,10 @@ public class Registries
 	
 	public static void registerItems()
 	{
-		//if (Display.getTitle().equals("Minecraft 1.6.4")
-		hammerThaum = new ThaumiumHammer(Configurations.thaumHammer).setUnlocalizedName("ExAliquo.ThaumHammer").registerItem().setCreativeTab(exatab);
+		if (ModsLoaded.isThaumcraftLoaded)
+		{
+			hammerThaum = new ThaumiumHammer(Configurations.thaumHammer).setUnlocalizedName("ExAliquo.ThaumHammer").registerItem().setCreativeTab(exatab);
+		}
 		hammerInvar = new AliquoHammer(Configurations.invarHammer, "invar").registerItem().setCreativeTab(exatab);
 		hammerCopper = new AliquoHammer(Configurations.copperHammer, "copper").registerItem().setCreativeTab(exatab);
 		hammerTin = new AliquoHammer(Configurations.tinHammer, "tin").registerItem().setCreativeTab(exatab);

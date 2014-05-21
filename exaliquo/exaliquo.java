@@ -38,7 +38,7 @@ import exaliquo.data.OreDictDrops;
 import exaliquo.proxy.ForestryReflection;
 import static exaliquo.data.ModsLoaded.*;
 
-@Mod(modid = "exaliquo", name = "Ex Aliquo", version = "0.10.5", dependencies = "required-after:crowley.skyblock@[1.26b,);after:TConstruct@(1.5.2,];after:Natura@[2.1.14,);after:arsmagica2;after:Thaumcraft@[4.1,);after:Growthcraft|Apples;after:Growthcraft|Bamboo;after:Growthcraft|Bees;after:Growthcraft|Grapes;after:Growthcraft|Hops;after:Growthcraft|Rice;after:Mariculture;after:MineFactoryReloaded;after:NetherOres;after:Metallurgy3Base;after:ExtraTiC;after:Forestry;after:ExtraTrees;after:pamharvestcraft")
+@Mod(modid = "exaliquo", name = "Ex Aliquo", version = "0.11", dependencies = "required-after:crowley.skyblock@[1.26b,);after:TConstruct@(1.5.2,];after:Natura@[2.1.14,);after:arsmagica2;after:Thaumcraft@[4.1,);after:Growthcraft|Apples;after:Growthcraft|Bamboo;after:Growthcraft|Bees;after:Growthcraft|Grapes;after:Growthcraft|Hops;after:Growthcraft|Rice;after:Mariculture@[1.2.2,);after:MineFactoryReloaded;after:NetherOres;after:Metallurgy3Base;after:ExtraTiC;after:Forestry;after:ExtraTrees;after:pamharvestcraft")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 
 public class exaliquo {
