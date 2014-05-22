@@ -7,19 +7,15 @@ import net.minecraftforge.common.Configuration;
 
 public class Configurations {
 
-	public static boolean WYNAUT;
-	
 	public static boolean isOre;
 	public static boolean allowDustSmelting;
 	public static boolean dustValue;
 	public static boolean sieveOreBushes;
 	public static boolean sieveEssenceBushes;
-	public static boolean sieveNetherOres;
 	public static int dualTools;
 	public static boolean fortuneCrook;
 	public static boolean fortuneHammer;
 	public static boolean miniSmelting;
-	public static boolean registerTConstruct;
 	
 	public static boolean sieveRedwoods;
 	public static boolean sieveHopseed;
@@ -38,7 +34,6 @@ public class Configurations {
 	public static boolean harderWands;
 	
 	public static boolean fishingOysters;
-	public static boolean endOverride;
 	
 	public static boolean sacredohgodthewood;
 	
@@ -57,7 +52,6 @@ public class Configurations {
 	public static int dragonEgg;
 	
 	public static boolean ninjaFeesh;
-	public static boolean hammerNetherOres;
 	public static boolean whenk;
 	
 	public static int blockEndEye;
@@ -118,9 +112,7 @@ public class Configurations {
 	public static int vulcaniteOreItem;
 	public static int vyroxeresOreItem;
 	public static int zincOreItem;
-	
-	public static boolean registerMetallurgy;
-	
+		
 	public static void Load (File location)
 	{
 		File file = new File(location + "/exaliquo.cfg");
@@ -138,7 +130,6 @@ public class Configurations {
 		dustValue = config.get("TCon Tweaks", "Normal dust value in the smeltery", true, "Normal is 1/4 the block value. False means dusts are 1/6 the value").getBoolean(true);
 		sieveOreBushes = config.get("TCon Tweaks", "Can orebushes be obtained", true).getBoolean(true);
 		sieveEssenceBushes = config.get("TCon Tweaks","Can essense bushes be obtained", true).getBoolean(true);
-		sieveNetherOres = config.get("TCon Tweaks", "Can nether ores be obtained", true, "Without Tinker's Construct installed, this can be used to get the Gravel/Sand/Dust for decorative purposes").getBoolean(true);
 		allowTinkerBushCompost = config.get("TCon Tweaks", "Can oreberry bushes be composted", false).getBoolean(false);
 		miniSmelting = config.get("TCon Tweaks", "Enable mini-smelteries", false).getBoolean(false);
 		dualTools = config.get("TCon Tweaks", "Modifier lock", 0, "0 is default (tool restrictions), 1 is dual-use tools unrestricted, 2 is fully unlock").getInt(0);
@@ -155,15 +146,12 @@ public class Configurations {
 		hammerMoonstone = config.get("ArsMagica Tweaks", "Can moonstone be obtained", false).getBoolean(false);
 		sieveNovas = config.get("ArsMagica Tweaks", "Can desert novas be obtained", true).getBoolean(true);
 		
-		WYNAUT = config.get("ArsMagica Tweaks","TinkerBridge", true).getBoolean(true);
-		
 		silverwoodSwitch = config.get("Thaumcraft Tweaks", "Silverwood Setting", 0, "Set 0 for default, 1 for tweaked difficulty, and -1 to disable. See the forum post for difficulty changes").getInt(0);
 		alternatewater = config.get("Thaumcraft Tweaks", "For tundra-less skyblocks", false).getBoolean(false);
 		runichax = config.get("Thaumcraft Tweaks", "Alternate Runics to prevent wall", true, "False to instead change how greatwoods are obtained").getBoolean(false);
 		harderWands = config.get("Thaumcraft Tweaks", "Do the primal aspect wand cores require a Greatwood wand core", false).getBoolean(false);
 		
 		fishingOysters = config.get("Mariculture Tweaks", "Can Oysters be obtained via fishing", true).getBoolean(true);
-		endOverride = config.get("Mariculture Tweaks", "Override end-only fishables", true).getBoolean(true);
 		
 		sacredohgodthewood = config.get("MineFactory Reloaded Tweaks","Can Sacred Rubber Trees be obtained", false).getBoolean(false);
 		
@@ -183,8 +171,6 @@ public class Configurations {
 		
 		blockEndEye = config.get("Ex Aliquo things","EnderBlock", 2298).getInt(2298);
 		blockEndCake = config.get("Ex Aliquo things","EnderCake", 2299).getInt(2299);
-		
-		registerMetallurgy = config.get("Metallurgy Things", "Load ExMetallurgy ores anyway", false, "Only used to get the Gravel/Sand/Dust for decorative purposes").getBoolean(false);
 		
 		cobaltOreBlock = config.get("TCon Block IDs", "CobaltOre Block", 2300).getInt(2300);
 		arditeOreBlock = config.get("TCon Block IDs", "ArditeOre Block", 2301).getInt(2301);
@@ -244,7 +230,6 @@ public class Configurations {
 		
 		ninjaFeesh = config.get("Ex Aliquo multi-mod tweaks","Hide Feesh from hammers",true).getBoolean(true);
 		isOre = config.get("Ex Aliquo multi-mod tweaks", "Are Gravel/Sand/Dust Ores actually ores", true, "False for counting as an ingot").getBoolean(true);
-		hammerNetherOres = config.get("Ex Aliquo multi-mod tweaks", "Does the hammer work on ores in the nether", true).getBoolean(true);
 		whenk = config.get("Ex Aliquo multi-mod tweaks", "Whenk :V", true, "Requires ninja-like feesh to do anything").getBoolean(true);
 		
 		config.save();

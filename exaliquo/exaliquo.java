@@ -27,6 +27,7 @@ import exaliquo.bridges.Natura.Natura;
 import exaliquo.bridges.TConstruct.TConstruct;
 import exaliquo.bridges.Thaumcraft.ExThaumiquo;
 import exaliquo.bridges.Thaumcraft.Thaumcraft;
+import exaliquo.bridges.ThermalExpansion.ThermalExpansion;
 import exaliquo.bridges.crossmod.Crossmod;
 import exaliquo.data.AliquoEvents;
 import exaliquo.data.Colors;
@@ -38,7 +39,7 @@ import exaliquo.data.OreDictDrops;
 import exaliquo.proxy.ForestryReflection;
 import static exaliquo.data.ModsLoaded.*;
 
-@Mod(modid = "exaliquo", name = "Ex Aliquo", version = "0.11.1", dependencies = "required-after:crowley.skyblock@[1.26b,);after:TConstruct@(1.5.2,];after:Natura@[2.1.14,);after:arsmagica2;after:Thaumcraft@[4.1,);after:Growthcraft|Apples;after:Growthcraft|Bamboo;after:Growthcraft|Bees;after:Growthcraft|Grapes;after:Growthcraft|Hops;after:Growthcraft|Rice;after:Mariculture@[1.2.2,);after:MineFactoryReloaded;after:NetherOres;after:Metallurgy3Base;after:ExtraTiC;after:Forestry;after:ExtraTrees;after:pamharvestcraft")
+@Mod(modid = "exaliquo", name = "Ex Aliquo", version = "0.11.2", dependencies = "required-after:crowley.skyblock@[1.26b,);after:TConstruct@(1.5.2,];after:Natura@[2.1.14,);after:arsmagica2;after:Thaumcraft@[4.1,);after:Growthcraft|Apples;after:Growthcraft|Bamboo;after:Growthcraft|Bees;after:Growthcraft|Grapes;after:Growthcraft|Hops;after:Growthcraft|Rice;after:Mariculture@[1.2.2,);after:MineFactoryReloaded;after:NetherOres;after:Metallurgy3Base;after:ExtraTiC;after:Forestry;after:ExtraTrees;after:pamharvestcraft;after:ThermalExpansion")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 
 public class exaliquo {
@@ -130,6 +131,11 @@ public class exaliquo {
 		if (isForestryLoaded)
 		{
 			ForestryReflection.initProxy();
+		}
+		if (isThermalExpansionLoaded)
+		{
+			exaliquo.logger.info("Loading Thermal Expansion Compat");
+			ThermalExpansion.initThermalExpansion();
 		}
 	}
 }
