@@ -12,6 +12,6 @@ public class Sieving
 	protected static void SieveMariculture()
 	{
 		if (Modules.isActive(Modules.worldplus)) register(sand, 0, getIDs(Info.maricoral), 0, 32);
-		register(sand, 3, getIDs(Info.mariores), 3, 64);
+		register(sand, 2, getIDs(Info.mariores), 3, 64);
 	}
 }

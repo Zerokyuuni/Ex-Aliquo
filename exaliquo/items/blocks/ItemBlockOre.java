@@ -13,11 +13,13 @@ public class ItemBlockOre extends ItemBlock
 		setHasSubtypes(true);
 	}
 	
+	@Override
 	public String getUnlocalizedName(ItemStack item)
 	{
 		return "block.ExAliquo." + this.getUnlocalizedName().substring(5) + Registries.oreType[item.getItemDamage()];
 	}
 	
+	@Override
 	public int getMetadata (int meta)
     {
         return meta;

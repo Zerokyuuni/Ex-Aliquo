@@ -4,9 +4,7 @@ import static com.google.common.base.CaseFormat.LOWER_CAMEL;
 import static com.google.common.base.CaseFormat.UPPER_UNDERSCORE;
 import static com.google.common.base.Predicates.notNull;
 import static cpw.mods.fml.common.ObfuscationReflectionHelper.getPrivateValue;
-import static net.minecraft.item.EnumToolMaterial.GOLD;
-import static net.minecraft.item.EnumToolMaterial.IRON;
-import static net.minecraft.item.EnumToolMaterial.WOOD;
+import static net.minecraft.item.EnumToolMaterial.*;
 
 import java.util.Arrays;
 
@@ -32,7 +30,11 @@ public enum AliquoMaterial {
 	INVAR		(IRON),
 	SILVER		(GOLD),
 	ALUMINUM	(WOOD, "ALUMINIUM"), // just an example to set multiple names, maybe no need for aluminum
-	
+	LEAD		(IRON),
+	NICKEL		(STONE),
+	TIN			(STONE),
+	COPPER		(IRON),
+	PLATINUM	(GOLD)
 	// add default values here
 	;
 	

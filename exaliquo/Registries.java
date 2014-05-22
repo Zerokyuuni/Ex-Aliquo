@@ -121,14 +121,14 @@ public class Registries
 		{
 			hammerThaum = new ThaumiumHammer(Configurations.thaumHammer).setUnlocalizedName("ExAliquo.ThaumHammer").registerItem().setCreativeTab(exatab);
 		}
-		hammerInvar = new AliquoHammer(Configurations.invarHammer, "invar").registerItem().setCreativeTab(exatab);
-		hammerCopper = new AliquoHammer(Configurations.copperHammer, "copper").registerItem().setCreativeTab(exatab);
-		hammerTin = new AliquoHammer(Configurations.tinHammer, "tin").registerItem().setCreativeTab(exatab);
-		hammerSilver = new AliquoHammer(Configurations.silverHammer, "silver").registerItem().setCreativeTab(exatab);
-		hammerLead = new AliquoHammer(Configurations.leadHammer, "lead").registerItem().setCreativeTab(exatab);
-		hammerPlatinum = new AliquoHammer(Configurations.platinumHammer, "platinum").registerItem().setCreativeTab(exatab);
-		hammerNickel = new AliquoHammer(Configurations.nickelHammer, "nickel").registerItem().setCreativeTab(exatab);
-		hammerAluminum = new AliquoHammer(Configurations.aluminumHammer, "aluminum").registerItem().setCreativeTab(exatab);
+		hammerInvar = new AliquoHammer(Configurations.invarHammer, "invar").registerItem();
+		hammerCopper = new AliquoHammer(Configurations.copperHammer, "copper").registerItem();
+		hammerTin = new AliquoHammer(Configurations.tinHammer, "tin").registerItem();
+		hammerSilver = new AliquoHammer(Configurations.silverHammer, "silver").registerItem();
+		hammerLead = new AliquoHammer(Configurations.leadHammer, "lead").registerItem();
+		hammerPlatinum = new AliquoHammer(Configurations.platinumHammer, "platinum").registerItem();
+		hammerNickel = new AliquoHammer(Configurations.nickelHammer, "nickel").registerItem();
+		hammerAluminum = new AliquoHammer(Configurations.aluminumHammer, "aluminum").registerItem();
 		
 		crookReed = new ReedCrook(Configurations.reedCrook).setUnlocalizedName("ExAliquo.ReedCrook").setCreativeTab(exatab);
 		GameRegistry.registerItem(crookReed, "ExAliquo.ReedCrook");
@@ -161,7 +161,7 @@ public class Registries
 		arditeOreBlock = new AliquoOre(Configurations.arditeOreBlock).setUnlocalizedName("Ardite");
 		GameRegistry.registerBlock(arditeOreBlock, ItemBlockOre.class, "ExAliquo.ArditeOreBlock");
 		
-		adamantineOreBlock = new AliquoOre(Configurations.adamantineOreBlock).setUnlocalizedName("Adamantine").setCreativeTab(exatab);
+		adamantineOreBlock = new AliquoOre(Configurations.adamantineOreBlock).setUnlocalizedName("Adamantine");
 		GameRegistry.registerBlock(adamantineOreBlock, ItemBlockOre.class, "ExAliquo.AdamantineOreBlock");
 		alduoriteOreBlock = new AliquoOre(Configurations.alduoriteOreBlock).setUnlocalizedName("Alduorite");
 		GameRegistry.registerBlock(alduoriteOreBlock, ItemBlockOre.class, "ExAliquo.AlduoriteOreBlock");
@@ -215,60 +215,60 @@ public class Registries
 	
 	static void registerOreItems()
 	{
-		cobaltOreItem = new AliquoItemOre(Configurations.cobaltOreItem).setUnlocalizedName("ExAliquo.OreCobaltItem");
+		cobaltOreItem = new AliquoItemOre(Configurations.cobaltOreItem).setUnlocalizedName("Cobalt");
 		GameRegistry.registerItem(cobaltOreItem, "ExAliquo.OreCobaltItem");
-		arditeOreItem = new AliquoItemOre(Configurations.arditeOreItem).setUnlocalizedName("ExAliquo.OreArditeItem");
+		arditeOreItem = new AliquoItemOre(Configurations.arditeOreItem).setUnlocalizedName("Ardite");
 		GameRegistry.registerItem(arditeOreItem, "ExAliquo.OreArditeItem");
 		
-		adamantineOreItem = new AliquoItemOre(Configurations.adamantineOreItem).setUnlocalizedName("ExAliquo.OreAdamantiumItem");
+		adamantineOreItem = new AliquoItemOre(Configurations.adamantineOreItem).setUnlocalizedName("Adamantine");
 		GameRegistry.registerItem(adamantineOreItem, "ExAliquo.OreAdamantineItem");
-		alduoriteOreItem = new AliquoItemOre(Configurations.alduoriteOreItem).setUnlocalizedName("ExAliquo.OreAlduoriteItem");
+		alduoriteOreItem = new AliquoItemOre(Configurations.alduoriteOreItem).setUnlocalizedName("Alduorite");
 		GameRegistry.registerItem(alduoriteOreItem, "ExAliquo.OreAlduoriteItem");
-		astralsilverOreItem = new AliquoItemOre(Configurations.astralsilverOreItem).setUnlocalizedName("ExAliquo.OreAstralSilverItem");
+		astralsilverOreItem = new AliquoItemOre(Configurations.astralsilverOreItem).setUnlocalizedName("AstralSilver");
 		GameRegistry.registerItem(astralsilverOreItem, "ExAliquo.OreAstralSilverItem");
-		atlarusOreItem = new AliquoItemOre(Configurations.atlarusOreItem).setUnlocalizedName("ExAliquo.OreAtlarusItem");
+		atlarusOreItem = new AliquoItemOre(Configurations.atlarusOreItem).setUnlocalizedName("Atlarus");
 		GameRegistry.registerItem(atlarusOreItem, "ExAliquo.OreAtlarusItem");
-		carmotOreItem = new AliquoItemOre(Configurations.carmotOreItem).setUnlocalizedName("ExAliquo.OreCarmotItem");
+		carmotOreItem = new AliquoItemOre(Configurations.carmotOreItem).setUnlocalizedName("Carmot");
 		GameRegistry.registerItem(carmotOreItem, "ExAliquo.CarmotOreItem");
-		ceruclaseOreItem = new AliquoItemOre(Configurations.ceruclaseOreItem).setUnlocalizedName("ExAliquo.OreCeruclaseItem");
+		ceruclaseOreItem = new AliquoItemOre(Configurations.ceruclaseOreItem).setUnlocalizedName("Ceruclase");
 		GameRegistry.registerItem(ceruclaseOreItem, "ExAliquo.CeruclaseOreItem");
-		deepironOreItem = new AliquoItemOre(Configurations.deepironOreItem).setUnlocalizedName("ExAliquo.OreDeepIronItem");
+		deepironOreItem = new AliquoItemOre(Configurations.deepironOreItem).setUnlocalizedName("DeepIron");
 		GameRegistry.registerItem(deepironOreItem, "ExAliquo.DeepIronOreItem");
-		eximiteOreItem = new AliquoItemOre(Configurations.eximiteOreItem).setUnlocalizedName("ExAliquo.OreEximiteItem");
+		eximiteOreItem = new AliquoItemOre(Configurations.eximiteOreItem).setUnlocalizedName("Eximite");
 		GameRegistry.registerItem(eximiteOreItem, "ExAliquo.EximiteOreItem");
-		ignatiusOreItem = new AliquoItemOre(Configurations.ignatiusOreItem).setUnlocalizedName("ExAliquo.OreIgnatiusItem");
+		ignatiusOreItem = new AliquoItemOre(Configurations.ignatiusOreItem).setUnlocalizedName("Ignatius");
 		GameRegistry.registerItem(ignatiusOreItem, "ExAliquo.IgnatiusOreItem");
-		infuscoliumOreItem = new AliquoItemOre(Configurations.infuscoliumOreItem).setUnlocalizedName("ExAliquo.OreInfuscoliumItem");
+		infuscoliumOreItem = new AliquoItemOre(Configurations.infuscoliumOreItem).setUnlocalizedName("Infuscolium");
 		GameRegistry.registerItem(infuscoliumOreItem, "ExAliquo.InfuscoliumOreItem");
-		kalendriteOreItem = new AliquoItemOre(Configurations.kalendriteOreItem).setUnlocalizedName("ExAliquo.OreKalendriteItem");
+		kalendriteOreItem = new AliquoItemOre(Configurations.kalendriteOreItem).setUnlocalizedName("Kalendrite");
 		GameRegistry.registerItem(kalendriteOreItem, "ExAliquo.KalendriteOreItem");
-		lemuriteOreItem = new AliquoItemOre(Configurations.lemuriteOreItem).setUnlocalizedName("ExAliquo.OreLemuriteItem");
+		lemuriteOreItem = new AliquoItemOre(Configurations.lemuriteOreItem).setUnlocalizedName("Lemurite");
 		GameRegistry.registerItem(lemuriteOreItem, "ExAliquo.LemuriteOreItem");
-		manganeseOreItem = new AliquoItemOre(Configurations.manganeseOreItem).setUnlocalizedName("ExAliquo.OreManganeseItem");
+		manganeseOreItem = new AliquoItemOre(Configurations.manganeseOreItem).setUnlocalizedName("Manganese");
 		GameRegistry.registerItem(manganeseOreItem, "Exaliquo.ManganeseOreItem");
-		meutoiteOreItem = new AliquoItemOre(Configurations.meutoiteOreItem).setUnlocalizedName("ExAliquo.OreMeuroiteItem");
+		meutoiteOreItem = new AliquoItemOre(Configurations.meutoiteOreItem).setUnlocalizedName("Meuroite");
 		GameRegistry.registerItem(meutoiteOreItem, "ExAliquo.MeuroiteOreItem");
-		midasiumOreItem = new AliquoItemOre(Configurations.midasiumOreItem).setUnlocalizedName("ExAliquo.OreMidasiumItem");
+		midasiumOreItem = new AliquoItemOre(Configurations.midasiumOreItem).setUnlocalizedName("Midasium");
 		GameRegistry.registerItem(midasiumOreItem, "ExAliquo.MidasiumOreItem");
-		mithrilOreItem = new AliquoItemOre(Configurations.mithrilOreItem).setUnlocalizedName("ExAliquo.OreMithrilItem");
+		mithrilOreItem = new AliquoItemOre(Configurations.mithrilOreItem).setUnlocalizedName("Mithril");
 		GameRegistry.registerItem(mithrilOreItem, "ExAliquo.MithrilOreItem");
-		orichalcumOreItem = new AliquoItemOre(Configurations.orichalcumOreItem).setUnlocalizedName("ExAliquo.OreOrichalcumItem");
+		orichalcumOreItem = new AliquoItemOre(Configurations.orichalcumOreItem).setUnlocalizedName("Orichalcum");
 		GameRegistry.registerItem(orichalcumOreItem, "ExAliquo.OrichalcumOreItem");
-		oureclaseOreItem = new AliquoItemOre(Configurations.oureclaseOreItem).setUnlocalizedName("ExAliquo.OreOureclaseItem");
+		oureclaseOreItem = new AliquoItemOre(Configurations.oureclaseOreItem).setUnlocalizedName("Oureclase");
 		GameRegistry.registerItem(oureclaseOreItem, "ExAliquo.OureclaseOreItem");
-		prometheumOreItem = new AliquoItemOre(Configurations.prometheumOreItem).setUnlocalizedName("ExAliquo.OrePrometheumItem");
+		prometheumOreItem = new AliquoItemOre(Configurations.prometheumOreItem).setUnlocalizedName("Prometheum");
 		GameRegistry.registerItem(prometheumOreItem, "ExAliquo.PromethiumOreItem");
-		rubraciumOreItem = new AliquoItemOre(Configurations.rubraciumOreItem).setUnlocalizedName("ExAliquo.OreRubraciumItem");
+		rubraciumOreItem = new AliquoItemOre(Configurations.rubraciumOreItem).setUnlocalizedName("Rubracium");
 		GameRegistry.registerItem(rubraciumOreItem, "ExAliquo.RubraciumOreItem");
-		sanguiniteOreItem = new AliquoItemOre(Configurations.sanguiniteOreItem).setUnlocalizedName("ExAliquo.OreSanguiniteItem");
+		sanguiniteOreItem = new AliquoItemOre(Configurations.sanguiniteOreItem).setUnlocalizedName("Sanguinite");
 		GameRegistry.registerItem(sanguiniteOreItem, "ExAliquo.SanguinuteOreItem");
-		shadowironOreItem = new AliquoItemOre(Configurations.shadowironOreItem).setUnlocalizedName("ExAliquo.OreShadowIronItem");
+		shadowironOreItem = new AliquoItemOre(Configurations.shadowironOreItem).setUnlocalizedName("ShadowIron");
 		GameRegistry.registerItem(shadowironOreItem, "ExAliquo.ShadowIronOreItem");
-		vulcaniteOreItem = new AliquoItemOre(Configurations.vulcaniteOreItem).setUnlocalizedName("ExAliquo.OreVulcaniteItem");
+		vulcaniteOreItem = new AliquoItemOre(Configurations.vulcaniteOreItem).setUnlocalizedName("Vulcanite");
 		GameRegistry.registerItem(vulcaniteOreItem, "ExAliquo.VulcaniteOreItem");
-		vyroxeresOreItem = new AliquoItemOre(Configurations.vyroxeresOreItem).setUnlocalizedName("ExAliquo.OreVyroxeresItem");
+		vyroxeresOreItem = new AliquoItemOre(Configurations.vyroxeresOreItem).setUnlocalizedName("Vyroxeres");
 		GameRegistry.registerItem(vyroxeresOreItem, "ExAliquo.VyroxeresOreItem");
-		zincOreItem = new AliquoItemOre(Configurations.zincOreItem).setUnlocalizedName("ExAliquo.OreZincItem");
+		zincOreItem = new AliquoItemOre(Configurations.zincOreItem).setUnlocalizedName("Zinc");
 		GameRegistry.registerItem(zincOreItem, "ExAliquo.ZincOreItem");
 	}
 
@@ -278,6 +278,8 @@ public class Registries
 		GameRegistry.addShapedRecipe(new ItemStack(crookGold), new Object[] { crookshape, 'i', Item.ingotGold });
 		GameRegistry.addShapedRecipe(new ItemStack(crookHay), new Object[] { "wwi", "iwi", " w ", 'w', Item.wheat, 'i', Block.fenceIron });
 		GameRegistry.addShapedRecipe(new ItemStack(Item.potion, 1, 0), new Object[] { "ccc", "cbc", "ccc", 'c', Block.cactus, 'b', Item.glassBottle });
+		GameRegistry.addShapedRecipe(new ItemStack(blockEndEye), new Object[] { oreshape, 'i', Item.enderPearl});
+		GameRegistry.addShapedRecipe(new ItemStack(blockEndCake), new Object[] { "eee", "cnc", "eee", 'e', blockEndEye, 'c', Item.cake, 'n', new ItemStack(Item.appleGold, 1, 1)});
 		
 		registerOreCrafting();
 	}
@@ -322,11 +324,13 @@ public class Registries
 			AliquoMaterial am = AliquoMaterial.get(hammer.material);
 			
 			EnumToolMaterial toolEnum = am.getToolEnumFromRecipe();
-			if (toolEnum != null)
-				GameRegistry.addRecipe(new ShapedOreRecipe(
-						hammer,	hammershape, 's', "stickWood", 'i', hammer.getIngotName()));
-			else
+			System.out.println(hammer.getIngotName());
+			if (toolEnum == null)
+			{
 				toolEnum = am.getFallbackToolEnum();
+			}
+			
+			GameRegistry.addRecipe(new ShapedOreRecipe(hammer, hammershape, 's', "stickWood", 'i', hammer.getIngotName()));
 			
 			hammer.setToolMaterial(toolEnum);
 		}

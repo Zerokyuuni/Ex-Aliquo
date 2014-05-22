@@ -16,33 +16,38 @@ public class AliquoItemOre extends Item
 	
 	@SideOnly(Side.CLIENT)
 	private Icon[] icon;
-	private String name = this.getUnlocalizedName().substring(5);
+	//private String name = this.getUnlocalizedName().substring(5);
 	
 	public AliquoItemOre(int par1) {
 		super(par1);
 		setHasSubtypes(true);
+		setCreativeTab(Registries.oretab);
 	}
 	
+	@Override
 	public String getUnlocalizedName(ItemStack item)
 	{
-			return "item.ExAliquo." + name + Registries.oreType[item.getItemDamage()];
+			return "item.ExAliquo." + this.getUnlocalizedName().substring(5) + Registries.oreType[item.getItemDamage()];
 	}
 	
+	@Override
 	public int getMetadata (int meta)
     {
         return meta;
     }
 	
+	@Override
 	public void registerIcons(IconRegister register)
 	{
 		icon = new Icon[3];
 		
 		for (int i = 0; i < icon.length; i++)
 		{
-			icon[i] = register.registerIcon("exaliquo:" + Registries.oreType[i] + "/Item" + name + Registries.oreType[i]);
+			icon[i] = register.registerIcon("exaliquo:" + Registries.oreType[i] + "/Item" + this.getUnlocalizedName().substring(5) + Registries.oreType[i]);
 		}
 	}
 	
+	@Override
 	public Icon getIconFromDamage(int meta)
 	{
 		return icon[meta];

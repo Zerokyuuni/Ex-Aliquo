@@ -14,6 +14,7 @@ import com.google.common.collect.Lists;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import exaliquo.AliquoRegistry;
+import exaliquo.Registries;
 import exaliquo.data.OreDict;
 import exnihilo.items.hammers.ItemHammerBase;
 
@@ -29,6 +30,7 @@ public class AliquoHammer extends ItemHammerBase
 		super(id, EnumToolMaterial.WOOD);
 		this.material = material;
 		setUnlocalizedName("ExAliquo." + LOWER_CAMEL.to(UPPER_CAMEL, material) + "Hammer");
+		setCreativeTab(Registries.exatab);
 	}
 	
 	public AliquoHammer registerItem()
