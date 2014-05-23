@@ -19,11 +19,9 @@ public class BlockEndEye extends Block
 
 	@SideOnly(Side.CLIENT)
 	private Icon[] icon;
-	@SideOnly(Side.CLIENT)
 	private Random rand = new Random();
 	@SideOnly(Side.CLIENT)
 	private int eye;
-	@SideOnly(Side.CLIENT)
 	private boolean allow = true;
 	
 	public BlockEndEye(int id) {
@@ -53,7 +51,7 @@ public class BlockEndEye extends Block
 			allow = false;
 			return icon[eyeBlink()];
 		}
-		if (AliquoTickHandler.tick == 20 && !allow)
+		if (AliquoTickHandler.tick > 20 && !allow)
 		{
 			allow = true;
 			return icon[0];

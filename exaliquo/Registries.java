@@ -324,7 +324,6 @@ public class Registries
 			AliquoMaterial am = AliquoMaterial.get(hammer.material);
 			
 			EnumToolMaterial toolEnum = am.getToolEnumFromRecipe();
-			System.out.println(hammer.getIngotName());
 			if (toolEnum == null)
 			{
 				toolEnum = am.getFallbackToolEnum();
